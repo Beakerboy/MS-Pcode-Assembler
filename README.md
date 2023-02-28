@@ -343,7 +343,13 @@ A standard size/data record
     <td class="tg-0pky" colspan="14">PcodeDirectory (varies)</td>
   </tr>
   <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" colspan="16">PcodeTable (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
   </tr>
 </tbody>
 </table>
