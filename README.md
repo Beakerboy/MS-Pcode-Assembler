@@ -46,7 +46,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">0</td>
     <td class="tg-0pky" colspan="4">1</td>
     <td class="tg-0pky" colspan="2">0x08F3</td>
-    <td class="tg-0pky" colspan="2">Cookie</td>
+    <td class="tg-0pky" colspan="2">ModuleCookie</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="1">-1</td>
   </tr>
@@ -72,19 +72,21 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>SignatureByte (1 byte):</b> Specifies the beginning of the PerformanceCache. MUST be 0x01.
 
-<b>Header (4 bytes):</b>Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file.
+<b>Header (4 bytes):</b> Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file.
 
-<b>ObjectTableOffset (4 bytes):</b>138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
+<b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
-<b>??? (4 bytes):</b>High two bytes seem to always be zero.
+<b>??? (4 bytes):</b >High two bytes seem to always be zero.
 
-<b>D4 (4 bytes):</b>Value is 0xD4.
+<b>D4 (4 bytes):</b> Value is 0xD4.
 
-<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
+<b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
 <b>-1 (4 bytes):</b>All Fs.
 
-<b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+<b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+
+<b>ModuleCookie (2 bytes):</b> The value from the Project stream.
 
 ## Object Table
 
