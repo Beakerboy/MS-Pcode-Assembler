@@ -53,9 +53,9 @@ The performance cache precedes the compressed source container within a vbaProje
 </table>
 
 <b>SignatureByte (1 byte):</b> Specifies the beginning of the PerformanceCache. MUST be 0x01.
+<b>Header (4 bytes):</b>Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file.
+<b>ObjectTableOffset (4 bytes):</b>138 less than the offset to the <b>ObjectTable</b>.
 
-
-Like many containers, the cache begins with 0x01. The next byte is always 0x16 followed by a byte that is common among all streams in a file.
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
 
