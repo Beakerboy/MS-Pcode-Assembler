@@ -131,7 +131,7 @@ Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the 
   <tr>
     <td class="tg-0pky" colspan="2">SignatureBytes</td>
     <td class="tg-0pky" colspan="2">Length</td>
-    <td class="tg-0pky" colspan="2">PcodeDirectoryRecord</td>
+    <td class="tg-0pky" colspan="12">PcodeDirectoryRecord</td>
   </tr>
 </tbody>
 </table>
