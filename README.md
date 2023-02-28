@@ -182,7 +182,6 @@ The performance cache precedes the compressed source container within a vbaProje
 </tbody>
 </table>
 
-Next FF FF FF FF 01 01 XX XX XX XX
-
+### Pcode Data
 Next the line data, are they padded? For example, 6 data bytes followed with 0x0000 and 2 bytes followed by 0xFFFF and 4 mystery bytes.
 
