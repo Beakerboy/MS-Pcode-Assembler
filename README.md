@@ -47,7 +47,8 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="1">SignatureByte</td>
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
-    <td class="tg-0pky" colspan="2">???</td>
+    <td class="tg-0pky" colspan="4">???</td>
+    <td class="tg-0pky" colspan="4">D4</td>
   </tr>
 </tbody>
 </table>
@@ -58,6 +59,9 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ObjectTableOffset (4 bytes):</b>138 less than the offset to the <b>ObjectTable</b>.
 
+<b>??? (4 bytes):</b>High two bytes seem to always be zero.
+
+<b>D4 (4 bytes):</b>Value is 0xD4.
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
 
