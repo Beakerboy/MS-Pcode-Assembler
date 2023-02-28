@@ -47,7 +47,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>Header (4 bytes):</b>Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file.
 
-<b>ObjectTableOffset (4 bytes):</b>138 less than the offset to the <b>ObjectTable</b>.
+<b>ObjectTableOffset (4 bytes):</b>138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
 <b>??? (4 bytes):</b>High two bytes seem to always be zero.
 
@@ -57,7 +57,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>-1 (4 bytes):</b>All Fs.
 
-<b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <b>PcodeDirectory</b>.
+<b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
 
 ## Object Table
 
