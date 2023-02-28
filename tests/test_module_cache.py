@@ -21,7 +21,7 @@ def test_doc_cache():
     cache.object_table = bytes.fromhex(" ".join(object_table))
     cache.pcode = b''
 
-    f = open('tests/blank/vbaProject.bin', 'rb')
+    f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x0800)
     file_data = f.read(0x0333)
     assert cache.to_bytes() == file_data
@@ -32,7 +32,7 @@ def test_module_cache():
     cache.cookie = 0xB241
     cache.misc = [0x0316, 0x0222, 0x027D, 3, 0, 2, 0xFFFF, "FFFFFFFF", 0]
     cache.indirect_table = struct.pack("<iI", -1, 0x78)
-    f = open('tests/blank/vbaProject.bin', 'rb')
+    f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x1200)
     file_data = f.read(0x0283)
     assert cache.to_bytes() == file_data
