@@ -65,8 +65,83 @@ The performance cache precedes the compressed source container within a vbaProje
 
 ## Pcode
 
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">SignatureBytes</td>
+    <td class="tg-0pky" colspan="14">PcodeDirectory (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">Pcode (varies)</td>
+  </tr>
+</tbody>
+</table>
+
+<b>SignatureBytes (2 byte):</b> Specifies the beginning of the Pcode. MUST be 0xCAFE.
+
+<b>PcodeDirectory (varies):</b> An array of PcodeDirectory objects.
+
+<b>Pcode (varies):</b> The Pcode.
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
+### Pcode Directory
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">SignatureBytes</td>
+    <td class="tg-0pky" colspan="2">Length</td>
+    <td class="tg-0pky" colspan="2">PcodeDirectoryRecord</td>
+  </tr>
+</tbody>
+</table>
+
+<b>SignatureBytes (2 byte):</b> Specifies the beginning of the PcodeDirctory. MUST be 0x0001.
+
+<b>Length (2 byte):</b> Specifies the number of PcodeDirectoryRecord listings. MUST be equal to the number of lines in the source file.
+
+<b>PcodeDirectoryRecord (12 byte):</b>
+
 
 Next is an array of 12 byte sequences. Each array element represents a line in the file. Bytes 4-5 are the length of the line, and 8-11 are the offset.
 
