@@ -32,7 +32,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="3">GUIDs</td>
+    <td class="tg-0pky" colspan="16">GUIDs</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -75,6 +75,7 @@ The performance cache precedes the compressed source container within a vbaProje
   </tr>
 </tbody>
 </table>
+<b>SignatureByte (1 byte):</b> Specifies the beginning of the PerformanceCache. MUST be 0x01.
 
 ## Header
 
@@ -101,108 +102,41 @@ The performance cache precedes the compressed source container within a vbaProje
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="1">SignatureByte</td>
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
     <td class="tg-0pky" colspan="4"> ? Offset</td>
-    <td class="tg-0pky" colspan="3">D4</td>
+    <td class="tg-0pky" colspan="4">D4</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="1">...</td>
     <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
     <td class="tg-0pky" colspan="4">-1</td>
     <td class="tg-0pky" colspan="4">PcodeDirectoryOffset</td>
-    <td class="tg-0pky" colspan="3">????</td>
+    <td class="tg-0pky" colspan="4">????</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="1">...</td>
     <td class="tg-0pky" colspan="4">0</td>
     <td class="tg-0pky" colspan="4">1</td>
     <td class="tg-0pky" colspan="2">ProjectCookie</td>
     <td class="tg-0pky" colspan="2">ModuleCookie</td>
     <td class="tg-0pky" colspan="2">0</td>
-    <td class="tg-0pky" colspan="1">-1</td>
+    <td class="tg-0pky" colspan="2">-1</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="1">...</td>
     <td class="tg-0pky" colspan="4">???</td>
     <td class="tg-0pky" colspan="4">???</td>
     <td class="tg-0pky" colspan="2">0xB6</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
-    <td class="tg-0pky" colspan="1">0</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="3">...</td>
-    <td class="tg-0pky" colspan="4">-1</td>
-    <td class="tg-0pky" colspan="4">0</td>
-    <td class="tg-0pky" colspan="2">-1</td>
-    <td class="tg-0pky" colspan="3">GUIDs</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...GUIDS(varies)</td>
-    </tr>
-  <tr>
-    <td class="tg-0pky" colspan="4">16</td>
-    <td class="tg-0pky" colspan="4">3</td>
-    <td class="tg-0pky" colspan="4">5</td>
-    <td class="tg-0pky" colspan="4">7</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="4">-1</td>
-    <td class="tg-0pky" colspan="4">-1</td>
-    <td class="tg-0pky" colspan="2">0x0101</td>
-    <td class="tg-0pky" colspan="4">8</td>
-    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">0</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="2">...</td>
-    <td class="tg-0pky" colspan="4">0x78</td>
-    <td class="tg-0pky" colspan="1">????</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...GUIDs</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">ObjectTable</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">UTF-16 GUID</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">IndirectTable</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">Lots of F's</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">Mystery</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">Pcode</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="16">...</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">-1</td>
   </tr>
 </tbody>
 </table>
-
-<b>SignatureByte (1 byte):</b> Specifies the beginning of the PerformanceCache. MUST be 0x01.
 
 <b>Header (4 bytes):</b> Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file.
 
