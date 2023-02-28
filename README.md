@@ -199,6 +199,7 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
 </tbody>
 </table>
 <b>1 or 0 (2 bytes):</b> 1 if the guid is included, 0 if not.
+
 <b>UTF16GuidRecord (80 bytes):</b> A <b>UTF16GuidRecord</b>.
 
 ### UTF-16 GUID record
