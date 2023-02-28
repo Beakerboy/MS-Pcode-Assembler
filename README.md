@@ -5,7 +5,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 # Header
 
-    <table class="tg">
+<table class="tg">
 <thead>
   <tr>
     <th class="tg-0pky"></th>
