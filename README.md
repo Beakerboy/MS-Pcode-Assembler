@@ -46,8 +46,8 @@ The performance cache precedes the compressed source container within a vbaProje
   <tr>
     <td class="tg-0pky" colspan="1">SignatureByte</td>
     <td class="tg-0pky" colspan="4">Header</td>
-    <td class="tg-0pky" colspan="8">ObjectTableOffset</td>
-    <td class="tg-0pky" colspan="16">???</td>
+    <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
+    <td class="tg-0pky" colspan="2">???</td>
   </tr>
 </tbody>
 </table>
