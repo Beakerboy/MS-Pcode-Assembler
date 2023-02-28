@@ -44,7 +44,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="16">UTF-16 GUID (optional)</td>
+    <td class="tg-0pky" colspan="16">UTF-16 GUID</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -184,12 +184,8 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="14"></td>
     <td class="tg-0pky" colspan="2">1 or 0</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="2">Length (0x4E)</td>
-    <td class="tg-0pky" colspan="14">GUID</td>
+    <td class="tg-0pky" colspan="14">UTF16GuidRecord (optional)</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -203,14 +199,46 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
 </tbody>
 </table>
 
+### UTF-16 GUID record
+A standard size/data record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Length (0x4E)</td>
+    <td class="tg-0pky" colspan="14">GUID</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
+
     Example Data:
-                                              01 00                ..
     4E 00 30 00 7B 00 30 00 30 00 30 00 32 00 30 00  N.0.{.0.0.0.2.0.
     38 00 31 00 39 00 2D 00 30 00 30 00 30 00 30 00  8.1.9.-.0.0.0.0.
     2D 00 30 00 30 00 30 00 30 00 2D 00 43 00 30 00  -.0.0.0.0.-.C.0.
     30 00 30 00 2D 00 30 00 30 00 30 00 30 00 30 00  0.0.-.0.0.0.0.0.
     30 00 30 00 30 00 30 00 30 00 34 00 36 00 7D 00  0.0.0.0.0.4.6.}.
-    00 00 00 00 00 00 FF FF FF FF 01 01              ............
 
 ## Indirect Table
 
