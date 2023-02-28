@@ -18,8 +18,9 @@ class ModuleCache():
         oto = self.object_table_offset() - 0x8A
         ito = self.id_table_offset() - 10
         magic_ofs = self.magic_offset() - 0x3C
+        myo = self.mystery_offset()
         ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
-                         oto, self.misc[1], 0xD4, ito, -1, magic_ofs,
+                         oto, myo, 0xD4, ito, -1, magic_ofs,
                          self.misc[2], 0, 1, 0x08F3, self.cookie,
                          0, -1, self.misc[3], self.misc[4],
                          0xB6, -1, 0x0101, 0, -1, 0, -1)
@@ -70,6 +71,9 @@ class ModuleCache():
     def magic_offset(self):
         in_len = len(self.indirect_table) + 4
         return self.id_table_offset() + 0xC7 + in_len
+
+    def mystery_offset(self):
+        return self.magic_offset - 0x43
 
     def _create_pcode(self) -> bytes:
         num = 0
