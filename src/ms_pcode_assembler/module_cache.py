@@ -4,7 +4,8 @@ import struct
 class ModuleCache():
 
     def __init__(self):
-        self.cookie = 0
+        self.module_cookie = 0
+        self.project_cookie = 0
         self.misc = []
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
@@ -21,7 +22,7 @@ class ModuleCache():
         myo = self.mystery_offset()
         ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
                          oto, myo, 0xD4, ito, -1, magic_ofs,
-                         self.misc[2], 0, 1, 0x08F3, self.cookie,
+                         self.misc[2], 0, 1, project_cookie, self.cookie,
                          0, -1, self.misc[3], self.misc[4],
                          0xB6, -1, 0x0101, 0, -1, 0, -1)
         ca += self.guids1
