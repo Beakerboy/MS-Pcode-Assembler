@@ -53,7 +53,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>D4 (4 bytes):</b>Value is 0xD4.
 
-<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <a href="#IndirectTable"><b>IndirectTable</b></a>.
+<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
 <b>-1 (4 bytes):</b>All Fs.
 
