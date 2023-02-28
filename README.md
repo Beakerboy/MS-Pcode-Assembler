@@ -24,22 +24,6 @@ The performance cache precedes the compressed source container within a vbaProje
     <th class="tg-0pky">0D</th>
     <th class="tg-0pky">0E</th>
     <th class="tg-0pky">0F</th>
-    <th class="tg-0pky">10</th>
-    <th class="tg-0pky">11</th>
-    <th class="tg-0pky">12</th>
-    <th class="tg-0pky">13</th>
-    <th class="tg-0pky">14</th>
-    <th class="tg-0pky">15</th>
-    <th class="tg-0pky">16</th>
-    <th class="tg-0pky">17</th>
-    <th class="tg-0pky">18</th>
-    <th class="tg-0pky">19</th>
-    <th class="tg-0pky">1A</th>
-    <th class="tg-0pky">1B</th>
-    <th class="tg-0pky">1C</th>
-    <th class="tg-0pky">1D</th>
-    <th class="tg-0pky">1E</th>
-    <th class="tg-0pky">1F</th>
   </tr>
 </thead>
 <tbody>
@@ -48,7 +32,10 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
     <td class="tg-0pky" colspan="4">???</td>
-    <td class="tg-0pky" colspan="4">D4</td>
+    <td class="tg-0pky" colspan="3">D4</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="1">...</td>
   </tr>
 </tbody>
 </table>
