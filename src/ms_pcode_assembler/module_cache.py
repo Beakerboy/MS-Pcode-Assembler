@@ -73,7 +73,7 @@ class ModuleCache():
         return self.id_table_offset() + 0xC7 + in_len
 
     def mystery_offset(self):
-        return self.magic_offset - 0x43
+        return self.magic_offset() - 0x43
 
     def _create_pcode(self) -> bytes:
         num = 0
