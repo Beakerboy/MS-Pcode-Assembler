@@ -3,7 +3,7 @@ Create the VBA performance cache from source code.
 
 The performance cache precedes the compressed source container within a vbaProject.bin Module Stream.
 
-# Header
+## Header
 
 <table class="tg">
 <thead>
@@ -59,8 +59,12 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <b>PcodeDirectory</b>.
 
+## Object Table
 
-# Indirect Table
+## Indirect Table
+
+## Pcode
+
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
 
