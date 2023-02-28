@@ -105,7 +105,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
     <td class="tg-0pky" colspan="4"> ? Offset</td>
-    <td class="tg-0pky" colspan="4">D4</td>
+    <td class="tg-0pky" colspan="4">0xD4</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
@@ -143,8 +143,6 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
 <b>? Offset (4 bytes):</b > An offset to an unknown record type.
-
-<b>D4 (4 bytes):</b> Value is 0xD4.
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
