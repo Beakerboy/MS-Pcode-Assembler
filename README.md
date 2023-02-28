@@ -404,7 +404,7 @@ The <b>Pcode Directory</b> is a list of one <b>PcodeDirectoryRecord</b> for each
 
 <b>Length (2 bytes):</b> Specifies the number of PcodeDirectoryRecord listings. MUST be equal to the number of lines in the source file.
 
-<b>PcodeDirectoryRecord (12 bytes):</b>
+<b>PcodeDirectoryRecords (12 bytes each):</b>
 
 #### Pcode Directory Record
 Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table</b> that holds the opcodes for the particular line in the source code.
