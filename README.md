@@ -156,6 +156,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 ## Guids
 Guids in binary form are packed together
+The data is then padded with FF to offset 0x179.
 
 ## Object Table
 
