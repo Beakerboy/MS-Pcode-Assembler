@@ -142,7 +142,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
-<b>? Offset (4 bytes):</b > A n offset to an unknown record type.
+<b>? Offset (4 bytes):</b > An offset to an unknown record type.
 
 <b>D4 (4 bytes):</b> Value is 0xD4.
 
