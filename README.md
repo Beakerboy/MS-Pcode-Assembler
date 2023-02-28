@@ -439,6 +439,9 @@ Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table<
 </tbody>
 </table>
 
+    Example Data
+    42 A1 0C 00 06 00 0C 00 20 00 00 00
+
 ### Pcode Data
 Next the line data, are they padded? For example, 6 data bytes followed with 0x0000 and 2 bytes followed by 0xFFFF and 4 mystery bytes.
 
