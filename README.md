@@ -2,6 +2,79 @@
 Create the VBA performance cache from source code.
 
 The performance cache precedes the compressed source container within a vbaProject.bin Module Stream.
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="1">SignatureByte</td>
+    <td class="tg-0pky" colspan="15">Header</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="3">GUIDs</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">ObjectTable</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">UTF-16 GUID (optional)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">IndirectTable</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Lots of F's</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Mystery</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Pcode</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
 
 ## Header
 
