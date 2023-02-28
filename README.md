@@ -45,7 +45,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="1">...</td>
     <td class="tg-0pky" colspan="4">0</td>
     <td class="tg-0pky" colspan="4">1</td>
-    <td class="tg-0pky" colspan="2">0x08F3</td>
+    <td class="tg-0pky" colspan="2">ProjectCookie</td>
     <td class="tg-0pky" colspan="2">ModuleCookie</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="1">-1</td>
@@ -83,6 +83,8 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>-1 (4 bytes):</b>All Fs.
 
 <b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+
+<b>ProjectCookie (2 bytes):</b> The value from the Project stream.
 
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
 
