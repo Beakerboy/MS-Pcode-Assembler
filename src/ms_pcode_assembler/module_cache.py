@@ -18,10 +18,10 @@ class ModuleCache():
         oto = self.object_table_offset() - 0x8A
         ito = self.id_table_offset() - 10
         magic_ofs = self.magic_offset() - 0x3C
-        ca = struct.pack("<BIIIIIiIIIIHHHhHHHHHhHIiIh", 1, self.misc[0],
+        ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
                          oto, self.misc[1], 0xD4, ito, -1, magic_ofs,
                          self.misc[2], 0, 1, 0x08F3, self.cookie,
-                         0, -1, self.misc[3], 0, self.misc[4], 0,
+                         0, -1, self.misc[3], self.misc[4],
                          0xB6, -1, 0x0101, 0, -1, 0, -1)
         ca += self.guids1
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
