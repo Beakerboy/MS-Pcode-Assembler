@@ -400,11 +400,11 @@ The <b>Pcode Directory</b> is a list of one <b>PcodeDirectoryRecord</b> for each
 </tbody>
 </table>
 
-<b>SignatureBytes (2 byte):</b> Specifies the beginning of the PcodeDirctory. MUST be 0x0001.
+<b>SignatureBytes (2 bytes):</b> Specifies the beginning of the PcodeDirctory. MUST be 0x0001.
 
-<b>Length (2 byte):</b> Specifies the number of PcodeDirectoryRecord listings. MUST be equal to the number of lines in the source file.
+<b>Length (2 bytes):</b> Specifies the number of PcodeDirectoryRecord listings. MUST be equal to the number of lines in the source file.
 
-<b>PcodeDirectoryRecord (12 byte):</b>
+<b>PcodeDirectoryRecord (12 bytes):</b>
 
 #### Pcode Directory Record
 Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table</b> that holds the opcodes for the particular line in the source code.
