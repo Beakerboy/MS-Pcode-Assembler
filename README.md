@@ -53,14 +53,14 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>D4 (4 bytes):</b>Value is 0xD4.
 
-<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <b>IndirectTable</b>.
+<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <a href="#IndirectTable"><b>IndirectTable</b></a>.
 
 <b>-1 (4 bytes):</b>All Fs.
 
 <b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <b>PcodeDirectory</b>.
 
 
-
+# Indirect Table
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
 
