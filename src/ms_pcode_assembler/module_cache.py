@@ -22,15 +22,15 @@ class ModuleCache():
         myo = self.mystery_offset()
         ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
                          oto, myo, 0xD4, ito, -1, magic_ofs,
-                         self.misc[2], 0, 1, self.project_cookie,
-                         self.module_cookie, 0, -1, self.misc[3],
-                         self.misc[4], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+                         self.misc[1], 0, 1, self.project_cookie,
+                         self.module_cookie, 0, -1, self.misc[2],
+                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
         ca += self.guids1
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[5])
+                          8, -1, 0x78, self.misc[4])
         ca += self.guids2
         ca += struct.pack("<hIIihIhIhHIHhIH", -1, 0, 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[6])
+                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
         ca += b'\xFF' * 0x80
         ca += struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
@@ -40,11 +40,11 @@ class ModuleCache():
             ca += struct.pack("<H", 0)
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
         ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[8])
+        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
         fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[7],
+              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
               "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[7], "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
               "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
               "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
