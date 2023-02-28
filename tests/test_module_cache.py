@@ -1,6 +1,6 @@
 import struct
 import uuid
-from vbaProjectCompiler.Models.Entities.module_cache import ModuleCache
+from ms_pcode_assembler.module_cache import ModuleCache
 
 
 def test_doc_cache():
