@@ -90,6 +90,42 @@ The performance cache precedes the compressed source container within a vbaProje
   <tr>
     <td class="tg-0pky" colspan="16">...GUIDs</td>
   </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">ObjectTable</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">UTF-16 GUID</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">IndirectTable</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Lots of F's</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Mystery</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Pcode</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
 </tbody>
 </table>
 
