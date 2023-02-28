@@ -104,7 +104,7 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>Pcode (varies):</b> The Pcode.
 
 ### Pcode Directory
-
+The <b>Pcode Directory</b> is a list of one <b>PcodeDirectoryRecord</b> for each line in the module source file.
 <table class="tg">
 <thead>
   <tr>
@@ -150,7 +150,7 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>PcodeDirectoryRecord (12 byte):</b>
 
 #### Pcode Directory Record
-
+Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table</b> that holds the opcodes for the particular line in the source code.
 <table class="tg">
 <thead>
   <tr>
