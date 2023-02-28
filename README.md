@@ -74,7 +74,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
-<b>??? (4 bytes):</b >High two bytes seem to always be zero.
+<b>Offset (4 bytes):</b >A mystery offset.
 
 <b>D4 (4 bytes):</b> Value is 0xD4.
 
