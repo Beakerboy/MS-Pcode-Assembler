@@ -92,7 +92,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="14">PcodeDirectory (varies)</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">Pcode (varies)</td>
+    <td class="tg-0pky" colspan="16">Pcode (varies)</td>
   </tr>
 </tbody>
 </table>
