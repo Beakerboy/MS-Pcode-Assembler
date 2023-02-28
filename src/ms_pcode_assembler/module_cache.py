@@ -72,7 +72,12 @@ class ModuleCache():
         return self.id_table_offset() + 0xC7 + in_len
 
     def _create_pcode(self) -> bytes:
-        pcode = ("FE CA 01 00 00 00 FF FF FF FF 01",
-                 "01 08 00 00 00 FF FF FF FF 78 00 00 00 FF FF FF",
-                 "FF 00 00")
-        return bytes.fromhex(" ".join(pcode))
+        num = 0
+        pcode = struct.pack("<HHH", 0xCAFE, 1, num)
+        for i in range(num):
+            pass
+        pcode += struct.pack("<iHI", -1, 0x0101, 8)
+        # Pcode Table
+        # Footer?
+        pcode += struct.pack("<iIiH", -1, 0x78, -1, 0)
+        return pcode
