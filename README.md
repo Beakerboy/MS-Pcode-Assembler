@@ -282,6 +282,37 @@ A standard size/data record
     30 00 30 00 30 00 30 00 30 00 34 00 36 00 7D 00  0.0.0.0.0.4.6.}.
 
 ## Indirect Table
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">Length</td>
+    <td class="tg-0pky" colspan="12">Data (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
 
 ## Pcode
 
