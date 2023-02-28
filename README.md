@@ -156,6 +156,9 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
 
+## Guids
+Guids in binary form are packed together
+
 ## Object Table
 
 ## UTF-16 Guid
