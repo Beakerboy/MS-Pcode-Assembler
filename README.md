@@ -36,6 +36,9 @@ The performance cache precedes the compressed source container within a vbaProje
   </tr>
   <tr>
     <td class="tg-0pky" colspan="1">...</td>
+    <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="4">PcodeDirectoryOffset</td>
   </tr>
 </tbody>
 </table>
@@ -49,6 +52,15 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>??? (4 bytes):</b>High two bytes seem to always be zero.
 
 <b>D4 (4 bytes):</b>Value is 0xD4.
+
+<b>IndirectTableOffset (4 bytes):</b>10 less than the offset to the <b>IndirectTable</b>.
+
+<b>-1 (4 bytes):</b>All Fs.
+
+<b>PcodeDirectoryOffset (4 bytes):</b>60 less than the offset to the <b>PcodeDirectory</b>.
+
+
+
 
 Magic code is 0xCAFE, followed by 0x0001. The next two bytes is the size of the following array.
 
