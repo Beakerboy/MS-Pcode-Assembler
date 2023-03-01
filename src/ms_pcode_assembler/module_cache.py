@@ -3,9 +3,13 @@ import struct
 
 class ModuleCache():
 
-    def __init__(self):
+    def __init__(self, version, project_cookie):
+        self.version = version
+        self.project_cookie = project_cookie
+        self.clear_variables()
+
+    def clear_variables(self):
         self.module_cookie = 0
-        self.project_cookie = 0
         self.misc = []
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
