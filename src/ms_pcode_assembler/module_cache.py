@@ -3,10 +3,23 @@ import struct
 
 class ModuleCache():
 
-    def __init__(self, version, project_cookie):
+    def __init__(self, version, syskind, project_cookie):
         self.version = version
+        self.syskind = 2
         self.project_cookie = project_cookie
         self.clear_variables()
+
+    def get_vba_version(self):
+        if self.version >= 0x6B:
+            if version >= 0x97:
+                return 7
+            else:
+                return 6
+        else:
+            return 5
+
+    def is_64bit(self):
+        return self.syskind == 3
 
     def clear_variables(self):
         self.module_cookie = 0
