@@ -254,6 +254,11 @@ Several Guids in binary form are packed together
     <td class="tg-0pky" colspan="4">3</td>
     <td class="tg-0pky" colspan="4">5</td>
     <td class="tg-0pky" colspan="4">7</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="2">0x0101</td>
   </tr>
 </tbody>
 </table>
