@@ -3,9 +3,9 @@ import struct
 
 class ModuleCache():
 
-    def __init__(self, version, syskind, project_cookie):
+    def __init__(self, version, project_cookie, syskind=2):
         self.version = version
-        self.syskind = 2
+        self.syskind = syskind
         self.project_cookie = project_cookie
         self.rfff_value = b'\x00' * 5
         self.clear_variables()
