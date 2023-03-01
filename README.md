@@ -141,7 +141,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
-<b>? Offset1 (4 bytes):</b > An offset to an unknown record type.
+<b>RFFFF Offset (4 bytes):</b > Offset to the RFFFFs
 
 <b>? Offset2 (4 bytes):</b > The offset to 0x454D.
 
@@ -429,6 +429,113 @@ A standard size/data record
 </tbody>
 </table>
 
+## RFFFF
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="5">7362C66307</td>
+    <td class="tg-0pky" colspan="1">0</td>
+    <td class="tg-0pky" colspan="10">RFFFFs (optional)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
+<b> RFFFFs :</b> one or more RFFFF records
+### RFFFF Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="1">1</td>
+    <td class="tg-0pky" colspan="2">size</td>
+    <td class="tg-0pky" colspan="10">data</td>
+  </tr>
+</tbody>
+</table>
+
+    Example Data:
+    01 24 00 2A 00 5C 00 52 00 66 00 66 00 66 00 66  .$.*.\.R.f.f.f.f
+    00 2A 00 32 00 33 00 36 00 33 00 63 00 36 00 39  .*.2.3.6.3.c.6.9
+    00 61 00 37 00 34 00                             .a.7.4.
+
+## DF Section
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="1">0xDF</td>
+    <td class="tg-0pky" colspan="2">Count</td>
+    <td class="tg-0pky" colspan="13">Data (optional)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
+
+If there is data, we start with "00 00 00 00". each entry is 4-4-2-2
+
+After this is 58 0's
 ## Pcode
 
 <table class="tg">
