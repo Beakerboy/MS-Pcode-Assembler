@@ -74,7 +74,7 @@ class ModuleCache():
         ca += self.rff_section()
         df_count = len(self.df_data).to_bytes(2, "little")
         if df_count > 0:
-            df_string = 0.to_bytes(4, "little")
+            df_string = (0).to_bytes(4, "little")
             for df in self.df_data:
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2[, df[3])
         ca += b'\xDF' + df_count + df_string + b'\x00' * 58
