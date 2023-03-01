@@ -77,7 +77,8 @@ class ModuleCache():
             df_string = (0).to_bytes(4, "little")
             for df in self.df_data:
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2], df[3])
-        ca += b'\xDF' + df_count .to_bytes(2, "little") + df_string + b'\x00' * 58
+        ca += b'\xDF' + df_count .to_bytes(2, "little") + df_string
+        ca += b'\x00' * 58
         ca += self._create_pcode()
         return ca
 
