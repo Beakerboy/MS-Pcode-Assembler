@@ -394,7 +394,6 @@ The <b>Pcode Directory</b> is a list of one <b>PcodeDirectoryRecord</b> for each
   <tr>
     <td class="tg-0pky" colspan="4">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
-    <td class="tg-0pky" colspan="4">????</td>
   </tr>
 </tbody>
 </table>
@@ -442,5 +441,40 @@ Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table<
     42 A1 0C 00 06 00 0C 00 20 00 00 00
 
 ### Pcode Data
-Next the line data, are they padded? For example, 6 data bytes followed with 0x0000 and 2 bytes followed by 0xFFFF and 4 mystery bytes.
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">Size</td>
+    <td class="tg-0pky" colspan="12">Data</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="2">0</td>
+  </tr>
+</tbody>
+</table>
+Insert format of data. Each data element is padded to fill 8 byte increments.
 
