@@ -10,7 +10,6 @@ class ModuleCache():
 
     def clear_variables(self):
         self.module_cookie = 0
-        self.project_cookie = project_cookie
         self.misc = []
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
