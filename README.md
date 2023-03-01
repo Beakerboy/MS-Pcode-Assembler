@@ -195,7 +195,7 @@ The performance cache precedes the compressed source container within a vbaProje
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">-1</td>
-    <td class="tg-0pky" colspan="2">0</td>
+    <td class="tg-0pky" colspan="4">0</td>
   </tr>
 </tbody>
 </table>
@@ -203,6 +203,52 @@ The performance cache precedes the compressed source container within a vbaProje
 
 ## Guids
 Several Guids in binary form are packed together
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">unknown</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">0</td>
+    <td class="tg-0pky" colspan="8">Guid</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="8">...</td>
+    <td class="tg-0pky" colspan="8">Guid</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="8">...</td>
+    <td class="tg-0pky" colspan="8">Guid</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="8">...</td>
+    <td class="tg-0pky" colspan="4">Count</td>
+    <td class="tg-0pky" colspan="4">Guid (optional)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="12">...</td>
+  </tr>
+</tbody>
+</table>
 
 ## Object Table
 <table class="tg">
