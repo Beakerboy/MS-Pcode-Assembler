@@ -147,7 +147,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
-<b>? Offset3 (4 bytes):</b > Can be -1.
+<b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset after the DF.
 
 <b>-1 (4 bytes):</b>All Fs.
 
