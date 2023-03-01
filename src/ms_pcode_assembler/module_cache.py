@@ -12,7 +12,7 @@ class ModuleCache():
 
     def get_vba_version(self):
         if self.version >= 0x6B:
-            if version >= 0x97:
+            if self.version >= 0x97:
                 return 7
             else:
                 return 6
