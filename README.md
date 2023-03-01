@@ -155,8 +155,7 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
 
 ## Guids
-Guids in binary form are packed together
-The data is then padded with FF to offset 0x179.
+Several Guids in binary form are packed together
 
 ## Object Table
 <table class="tg">
