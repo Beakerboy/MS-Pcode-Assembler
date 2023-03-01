@@ -463,6 +463,7 @@ A standard size/data record
 </tbody>
 </table>
 <b> RFFFFs :</b> one or more RFFFF records
+
 ### RFFFF Record
 <table class="tg">
 <thead>
