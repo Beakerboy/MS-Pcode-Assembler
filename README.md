@@ -163,8 +163,9 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>ProjectCookie (2 bytes):</b> The value from the Project stream.
 
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
+
  ## Declaration Table
- <table class="tg">
+<table class="tg">
 <thead>
   <tr>
     <th class="tg-0pky">00</th>
@@ -203,6 +204,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 ## Guids
 Several Guids in binary form are packed together
+<table class="tg">
 <thead>
   <tr>
     <th class="tg-0pky">00</th>
