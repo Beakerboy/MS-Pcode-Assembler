@@ -110,12 +110,12 @@ The performance cache precedes the compressed source container within a vbaProje
   <tr>
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
-    <td class="tg-0pky" colspan="4"> ? Offset</td>
-    <td class="tg-0pky" colspan="4">0xD4</td>
+    <td class="tg-0pky" colspan="4"> ? Offset 1</td>
+    <td class="tg-0pky" colspan="4">? Offset 2</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
-    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="4">? Offset 3</td>
     <td class="tg-0pky" colspan="4">PcodeDirectoryOffset</td>
     <td class="tg-0pky" colspan="4">????</td>
   </tr>
@@ -148,9 +148,13 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
 
-<b>? Offset (4 bytes):</b > An offset to an unknown record type.
+<b>? Offset1 (4 bytes):</b > An offset to an unknown record type.
+
+<b>? Offset2 (4 bytes):</b > The offset to 0x454D.
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
+
+<b>? Offset3 (4 bytes):</b > Can be -1.
 
 <b>-1 (4 bytes):</b>All Fs.
 
