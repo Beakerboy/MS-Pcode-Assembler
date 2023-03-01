@@ -453,7 +453,7 @@ A standard size/data record
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="5">7362C66307</td>
+    <td class="tg-0pky" colspan="5">Data</td>
     <td class="tg-0pky" colspan="1">0</td>
     <td class="tg-0pky" colspan="10">RFFFFs (optional)</td>
   </tr>
