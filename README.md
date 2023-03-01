@@ -133,13 +133,6 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="2">0xB6</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
-    <td class="tg-0pky" colspan="2">DeclarationTableSize</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" colspan="2">...</td>
-    <td class="tg-0pky" colspan="4">-1</td>
-    <td class="tg-0pky" colspan="4">0</td>
-    <td class="tg-0pky" colspan="2">-1</td>
   </tr>
 </tbody>
 </table>
