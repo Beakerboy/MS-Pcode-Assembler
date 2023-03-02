@@ -42,7 +42,7 @@ class ModuleCache():
         ca += self.declaration_table_section()
         ca += struct.pack("<hhhH", -1, -1, -1, 0)
         ca += self.guids1
-        ca += len(guids_extra).to_bytes(4, "little")
+        ca += len(self.guids_extra).to_bytes(4, "little")
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[4])
         ca += self.guids2
