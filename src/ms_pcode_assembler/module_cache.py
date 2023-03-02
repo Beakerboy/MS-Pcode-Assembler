@@ -81,7 +81,7 @@ class ModuleCache():
         ca += self._create_pcode()
         return ca
 
-    def guid_section() -> bytes:
+    def guid_section(self) -> bytes:
         ca = (0).to_bytes(2, "little")
         for guid in self.guids1:
             ca += guid.bytes_le
