@@ -151,7 +151,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>-1 (4 bytes):</b>All Fs.
 
-<b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+<b>PcodeDirectoryOffset (4 bytes):</b> Points to the bytes after the 0xDF that follows the DF section 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
 
 <b>End Offset (4 bytes):</b> Marks the end of the Pcode data. The compressed source container is 6 bytes after this.
 
