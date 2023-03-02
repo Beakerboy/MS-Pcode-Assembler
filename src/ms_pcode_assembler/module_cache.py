@@ -175,7 +175,7 @@ class ModuleCache():
             return self.rfff_offset() + 7
 
     def end_offset(self) -> int:
-        return self.magic_offset() + 0x3C + 16 + len(self.pcode)
+        return self.magic_offset() + 0x3C + 16 + len(self.pcode) + len(self.pcode_dir)
 
     def _create_pcode(self) -> bytes:
         num = len(self.pcode_dir) // 12
