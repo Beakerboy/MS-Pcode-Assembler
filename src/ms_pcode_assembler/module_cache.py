@@ -86,7 +86,8 @@ class ModuleCache():
                            self.misc[3], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self) -> bytes:
-        ca = len(self.declaration_table).to_bytes(4, "little") + self.declaration_table
+        ca = len(self.declaration_table).to_bytes(4, "little")
+        ca += self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
 
     def rff_section(self) -> bytes:
