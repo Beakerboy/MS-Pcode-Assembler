@@ -70,13 +70,13 @@ class ModuleCache():
         return ca
 
     def header_section(self) -> bytes:
-        oto = self.object_table_offset() - 0x8A
+        dfo = self.df_offset()
         ito = self.id_table_offset() - 10
         magic_ofs = self.magic_offset() - 0x3C
         myo = self.mystery_offset()
         ffo = self.four_five_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           oto, myo, ffo, ito, -1, magic_ofs,
+                           dfo, myo, ffo, ito, -1, magic_ofs,
                            self.misc[1], 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
@@ -115,6 +115,9 @@ class ModuleCache():
 
     def four_five_offset(self) -> int:
         return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
+
+    def df_offset(self) -> int:
+        return self.four_five_offset() + 28
 
     def object_table_offset(self) -> int:
         """
