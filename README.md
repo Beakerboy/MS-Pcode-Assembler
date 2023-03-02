@@ -337,8 +337,8 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="2">1 or 0</td>
-    <td class="tg-0pky" colspan="14">UTF16GuidRecord (optional)</td>
+    <td class="tg-0pky" colspan="2">Count</td>
+    <td class="tg-0pky" colspan="14">UTF16GuidRecord (optional)(varies)</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -356,7 +356,7 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
 <b>UTF16GuidRecord ():</b> A <b>UTF16GuidRecord</b>.
 
 ### UTF-16 GUID record
-A standard size/data record
+A standard size/data record. There may be multiple guids. Identical to the module VB_BASE attribute.
 <table class="tg">
 <thead>
   <tr>
@@ -380,8 +380,8 @@ A standard size/data record
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="2">Length (0x4E)</td>
-    <td class="tg-0pky" colspan="14">GUID</td>
+    <td class="tg-0pky" colspan="2">Length</td>
+    <td class="tg-0pky" colspan="14">GUIDs</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
