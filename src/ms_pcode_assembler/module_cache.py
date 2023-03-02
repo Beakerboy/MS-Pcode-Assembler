@@ -34,20 +34,15 @@ class ModuleCache():
         self.indirect_table = b''
         self.object_table = b''
         self.df_data = []
-        self.pcode = b''
+        self.pcode = struct.pack("<iI", -1, 0x78)
         self.rfff_data = []
 
     def to_bytes(self) -> bytes:
         ca = self.header_section()
         ca += self.declaration_table_section()
-        ca += struct.pack("<hhhH", -1, -1, -1, 0)
-        ca += self.guids1
-        ca += len(self.guids_extra).to_bytes(4, "little")
-        ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[4])
-        ca += self.guids2
-        ca += struct.pack("<hIIihIhIhHIHhIH", -1, 0, 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
+        ca += self.guid_section()
+        ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
+                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
         ca += struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
@@ -57,11 +52,11 @@ class ModuleCache():
             ca += struct.pack("<H", 0)
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
         ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
+        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
+              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
               "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF", self.misc[5], "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
               "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
               "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
@@ -75,20 +70,33 @@ class ModuleCache():
         return ca
 
     def header_section(self) -> bytes:
-        oto = self.object_table_offset() - 0x8A
-        ito = self.id_table_offset() - 10
-        magic_ofs = self.magic_offset() - 0x3C
-        myo = self.mystery_offset()
+        dfo = self.df_offset()
+        ito = self.id_table_offset()
+        magic_ofs = self.magic_offset()
+        rfo = self.rfff_offset()
+        ffo = self.four_five_offset()
+        edo = self.end_offset()
+        sdo = self.second_df_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           oto, myo, 0xD4, ito, -1, magic_ofs,
-                           self.misc[1], 0, 1, self.project_cookie,
-                           self.module_cookie, 0, -1, self.misc[2],
-                           self.misc[3], 0xB6, -1, 0x0101)
+                           dfo, rfo, ffo, ito, sdo, magic_ofs,
+                           edo, 0, 1, self.project_cookie,
+                           self.module_cookie, 0, -1, self.misc[1],
+                           self.misc[2], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
         ca += self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
+
+    def guid_section(self) -> bytes:
+        ca = struct.pack("<hhhH", -1, -1, -1, 0)
+        ca += self.guids1
+        ca += len(self.guids_extra).to_bytes(4, "little")
+        ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
+                          8, -1, 0x78, self.misc[3])
+        ca += self.guids2
+        ca += struct.pack("<hI", -1, 0)
+        return ca
 
     def rff_section(self) -> bytes:
         rfff_string = b''
@@ -107,33 +115,53 @@ class ModuleCache():
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2], df[3])
         return df_count .to_bytes(2, "little") + df_string
 
+    def four_five_offset(self) -> int:
+        return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
+
+    def df_offset(self) -> int:
+        return self.four_five_offset() + 28
+
     def object_table_offset(self) -> int:
         """
         The object table offset is 8A less than the position.
         The object table is between the block of F's and the
         Utf-16 Guid.
         """
-        return 0x014A + len(self.guids1)
+        return 0x017A + len(self.guids_extra) * 16
 
     def id_table_offset(self) -> int:
-        guid_len = 2 if len(self.guid) == 0 else 0x52
-        ob_len = len(self.object_table) + 4
-        return self.object_table_offset() + ob_len + guid_len + 0x12
+        """
+        the offset for the byte that follows the UTF-16 GUiD
+        """
+        guid_len = 2 if len(self.guid) == 0 else 4 + len(self.guid)
+        return (self.object_table_offset() + 4 + len(self.object_table)
+                + 8 + guid_len)
+
+    def rfff_offset(self):
+        return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
+
+    def second_df_offset(self) -> int:
+        return -1
 
     def magic_offset(self):
-        in_len = len(self.indirect_table) + 4
-        return self.id_table_offset() + 0xC7 + in_len
+        """
+        0x3C before the 0xCAFE tag
+        """
+        if self.second_df_offset() > 0:
+            return self.second_df_offset() + 12
+        else:
+            return self.rfff_offset() + 7
 
-    def mystery_offset(self):
-        return self.magic_offset() - 0x43
+    def end_offset(self) -> int:
+        return self.magic_offset() + 0x3C + 16 + len(self.pcode)
 
     def _create_pcode(self) -> bytes:
         num = 0
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
         for i in range(num):
             pass
-        pcode += struct.pack("<iHI", -1, 0x0101, 8)
-        # Pcode Table
-        # Footer?
-        pcode += struct.pack("<iIiH", -1, 0x78, -1, 0)
+        pcode += struct.pack("<iH", -1, 0x0101)
+        pcode += len(self.pcode).to_bytes(4, "little")
+        pcode += self.pcode
+        pcode += struct.pack("iH", -1, 0)
         return pcode
