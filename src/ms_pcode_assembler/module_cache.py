@@ -71,7 +71,7 @@ class ModuleCache():
 
     def header_section(self) -> bytes:
         dfo = self.df_offset()
-        ito = self.id_table_offset() - 12
+        ito = self.id_table_offset()
         magic_ofs = self.magic_offset() - 0x3C
         rfo = self.rfff_offset()
         ffo = self.four_five_offset()
@@ -129,8 +129,12 @@ class ModuleCache():
         return 0x017A + len(self.guids_extra) * 16
 
     def id_table_offset(self) -> int:
+        """
+        the offset for the byte that follows the UTF-16 GUiD
+        """
+        guid_len = 2 if len(self.guid) == 0 else 4 + len(self.guid)
         return (self.object_table_offset() + 4 + len(self.object_table)
-                + 8 + 4 + 2 + len(self.guid) + 12)
+                + 8 + guid_len)
 
     def rfff_offset(self):
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x82
