@@ -63,7 +63,7 @@ class ModuleCache():
               "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
               "FF FF")
         ca += bytes.fromhex(" ".join(fo))
-        ca += self.rfff_section()
+        ca += self.rff_section()
         ca += self.df_section()
         ca += b'\x00' * 58
         ca += self._create_pcode()
