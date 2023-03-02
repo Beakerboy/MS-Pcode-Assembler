@@ -44,8 +44,7 @@ class ModuleCache():
         ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
-        ca += struct.pack("<I", len(self.object_table)) + self.object_table
-        ca += struct.pack("<hHI", -1, 0x0101, 0)
+        ca = self.object_table_section()
         if len(self.guid) > 0:
             ca += struct.pack("<HH", 1, len(self.guid)) + self.guid
         else:
@@ -96,6 +95,11 @@ class ModuleCache():
                           8, -1, 0x78, self.misc[3])
         ca += self.guids2
         ca += struct.pack("<hI", -1, 0)
+        return ca
+
+    def object_table_section(self) -> bytes:
+        ca = struct.pack("<I", len(self.object_table)) + self.object_table
+        ca += struct.pack("<hHI", -1, 0x0101, 0)
         return ca
 
     def rff_section(self) -> bytes:
