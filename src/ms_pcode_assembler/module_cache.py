@@ -47,7 +47,7 @@ class ModuleCache():
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
         ca += self.object_table_section()
-        ca += utf16_guid_section()
+        ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
         ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
