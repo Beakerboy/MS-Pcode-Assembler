@@ -74,8 +74,9 @@ class ModuleCache():
         ito = self.id_table_offset() - 10
         magic_ofs = self.magic_offset() - 0x3C
         myo = self.mystery_offset()
+        ffo = self.four_five_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           oto, myo, 0xD4, ito, -1, magic_ofs,
+                           oto, myo, ffo, ito, -1, magic_ofs,
                            self.misc[1], 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
@@ -111,6 +112,9 @@ class ModuleCache():
             for df in self.df_data:
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2], df[3])
         return df_count .to_bytes(2, "little") + df_string
+
+    def four_five_offset(self) -> int:
+        return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
 
     def object_table_offset(self) -> int:
         """
