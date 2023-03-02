@@ -39,19 +39,7 @@ class ModuleCache():
         self.rfff_data = []
 
     def to_bytes(self) -> bytes:
-        # object table offset
-        oto = self.object_table_offset() - 0x8A
-        # indirect table offset
-        ito = self.id_table_offset() - 10
-        magic_ofs = self.magic_offset() - 0x3C
-        rff_ofs = self.rff_offset()
-        guid_end_ofs = 0xD4 + len(self.guids_extra) * 16
-        df_ofs = self.df_offset()
-        ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
-                         oto, rff_ofs, guid_end_ofs, ito, df_ofs, magic_ofs,
-                         self.misc[1], 0, 1, self.project_cookie,
-                         self.module_cookie, 0, -1, self.misc[2],
-                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+        ca = self.header_section()
         ca += self.guid_section()
         ca += struct.pack("<hIIihIhIhHIHhIH", -1, 0, 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
@@ -80,6 +68,21 @@ class ModuleCache():
         ca += b'\x00' * 58
         ca += self._create_pcode()
         return ca
+
+    def header_section(self) -> bytes:
+        # object table offset
+        oto = self.object_table_offset() - 0x8A
+        # indirect table offset
+        ito = self.id_table_offset() - 10
+        magic_ofs = self.magic_offset() - 0x3C
+        rff_ofs = self.rff_offset()
+        guid_end_ofs = 0xD4 + len(self.guids_extra) * 16
+        df_ofs = self.df_offset()
+        return struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
+                         oto, rff_ofs, guid_end_ofs, ito, df_ofs, magic_ofs,
+                         self.misc[1], 0, 1, self.project_cookie,
+                         self.module_cookie, 0, -1, self.misc[2],
+                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
 
     def guid_section(self) -> bytes:
         ca = (0).to_bytes(2, "little")
