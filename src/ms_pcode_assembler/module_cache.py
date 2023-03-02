@@ -72,12 +72,13 @@ class ModuleCache():
     def header_section(self) -> bytes:
         dfo = self.df_offset()
         ito = self.id_table_offset()
-        magic_ofs = self.magic_offset() - 0x3C
+        magic_ofs = self.magic_offset()
         rfo = self.rfff_offset()
         ffo = self.four_five_offset()
         edo = self.end_offset()
+        sdo = self.second_df_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           dfo, rfo, ffo, ito, -1, magic_ofs,
+                           dfo, rfo, ffo, ito, ado, magic_ofs,
                            edo, 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
@@ -139,9 +140,14 @@ class ModuleCache():
     def rfff_offset(self):
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
+    def second_df_offset(self) -> int:
+        return -1
+
     def magic_offset(self):
-        in_len = len(self.indirect_table) + 4
-        return self.id_table_offset() + 0xC7 + in_len
+        if self.second_df_offset() > 0:
+            return second_df_offset() + 12
+        else:
+            return self.rfff_offset() + 7
 
     def end_offset(self) -> int:
         return self.magic_offset() + 6 + len(self.pcode) + 10 + 12
