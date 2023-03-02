@@ -137,7 +137,7 @@ class ModuleCache():
                 + 8 + guid_len)
 
     def rfff_offset(self):
-        return self.id_table_offset() + 4 + len(self.indirect_table) + 0x82
+        return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
     def magic_offset(self):
         in_len = len(self.indirect_table) + 4
