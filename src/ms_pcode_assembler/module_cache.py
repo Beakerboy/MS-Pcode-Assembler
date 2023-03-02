@@ -28,7 +28,7 @@ class ModuleCache():
         self.misc = []
         zero_guid = UUID(int=0x0)
         # utf-16 encoded guid with opening "0{" and closing bracket.
-        self.guid = b''
+        self.guid = []
         self.guids1 = [zero_guid, zero_guid, zero_guid]
         self.guids_extra = []
         self.guids2 = [zero_guid, zero_guid]
@@ -47,11 +47,7 @@ class ModuleCache():
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
         ca += self.object_table_section()
-        if len(self.guid) > 0:
-            ca += struct.pack("<HH", 1, len(self.guid)) + self.guid
-        else:
-            ca += struct.pack("<H", 0)
-        ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
+        ca += utf16_guid_section()
         ca += self.indirect_table_section()
         ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
@@ -106,6 +102,17 @@ class ModuleCache():
     def object_table_section(self) -> bytes:
         ca = struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
+        return ca
+
+    def utf16_guid_section(self) -> bytes:
+        ca = len(self.guid).to_bytes(2, "little")
+        if len(self.guid) > 0:
+            guid_str = "0"
+            for guid in self.guid:
+                guid_str += "{" + str(guid) + "}"
+            guid_str_bytes = bytes(guid_str, "utf_16_le")
+            ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
+        ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
         return ca
 
     def indirect_table_section(self) -> bytes:
