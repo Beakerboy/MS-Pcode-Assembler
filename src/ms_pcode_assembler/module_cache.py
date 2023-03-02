@@ -134,11 +134,12 @@ class ModuleCache():
     def df_offset(self) -> int:
         if len(self.df_data):
             length = 0
-            for rff in self.rfff_data
+            for rff in self.rfff_data:
                 length += 2 + len(rff) * 2
             return self.rff + 6 + length
         else:
             return -1
+
     def _create_pcode(self) -> bytes:
         num = 0
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
