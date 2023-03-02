@@ -44,7 +44,7 @@ class ModuleCache():
         ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
-        ca = self.object_table_section()
+        ca += self.object_table_section()
         if len(self.guid) > 0:
             ca += struct.pack("<HH", 1, len(self.guid)) + self.guid
         else:
