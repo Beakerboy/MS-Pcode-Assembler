@@ -71,7 +71,7 @@ class ModuleCache():
 
     def header_section(self) -> bytes:
         dfo = self.df_offset()
-        ito = self.id_table_offset() - 10
+        ito = self.id_table_offset() - 12
         magic_ofs = self.magic_offset() - 0x3C
         rfo = self.rfff_offset()
         ffo = self.four_five_offset()
@@ -129,9 +129,8 @@ class ModuleCache():
         return 0x017A + len(self.guids_extra) * 16
 
     def id_table_offset(self) -> int:
-        guid_len = 2 if len(self.guid) == 0 else 0x52
-        ob_len = len(self.object_table) + 4
-        return self.object_table_offset() + ob_len + guid_len + 0x12
+        ofs = (self.object_table_offset() + 4 + len(self.object_table)
+               + 8 + 4 + 2 + len(self.guid) + 12
 
     def rfff_offset(self):
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x82
