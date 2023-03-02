@@ -36,15 +36,7 @@ class ModuleCache():
         self.rfff_data = []
 
     def to_bytes(self) -> bytes:
-        oto = self.object_table_offset() - 0x8A
-        ito = self.id_table_offset() - 10
-        magic_ofs = self.magic_offset() - 0x3C
-        myo = self.mystery_offset()
-        ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
-                         oto, myo, 0xD4, ito, -1, magic_ofs,
-                         self.misc[1], 0, 1, self.project_cookie,
-                         self.module_cookie, 0, -1, self.misc[2],
-                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+        ca = header_section()
         ca += self.guids1
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[4])
@@ -77,6 +69,17 @@ class ModuleCache():
         ca += self._create_pcode()
         return ca
 
+    def header_section(self) -> bytes:
+        oto = self.object_table_offset() - 0x8A
+        ito = self.id_table_offset() - 10
+        magic_ofs = self.magic_offset() - 0x3C
+        myo = self.mystery_offset()
+        return struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
+                         oto, myo, 0xD4, ito, -1, magic_ofs,
+                         self.misc[1], 0, 1, self.project_cookie,
+                         self.module_cookie, 0, -1, self.misc[2],
+                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+    
     def rff_section(self) -> bytes:
         rfff_string = b''
         for rfff in self.rfff_data:
