@@ -145,7 +145,7 @@ class ModuleCache():
 
     def magic_offset(self):
         if self.second_df_offset() > 0:
-            return second_df_offset() + 12
+            return self.second_df_offset() + 12
         else:
             return self.rfff_offset() + 7
 
