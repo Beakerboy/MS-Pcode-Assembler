@@ -39,6 +39,7 @@ def test_module_cache():
 
 def test_full_cache():
     cache = ModuleCache(0xB2, 0x78B9)
+    cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
     cache.misc = [0x6000316, 0x0123, 0x88, 8, 0x18, "00000000", 1]
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
@@ -51,6 +52,9 @@ def test_full_cache():
     guid2 = uuid.UUID(bytes_le=b'\xAA\x36\x92\xBE\x96\xC1\xA5\x47' +
                                b'\x81\xD2\xCF\xA6\x4F\x5A\x18\xE2')
     cache.guids_extra = [guid2]
+    cache.guids2 = [guid2, guid1]
+    cache.rfff_data = ['*\Rffff*2363c69a74']
+    cache.df_data = [-1, 0x60, 5, 0]
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
