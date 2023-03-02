@@ -109,7 +109,7 @@ The performance cache precedes the compressed source container within a vbaProje
 <tbody>
   <tr>
     <td class="tg-0pky" colspan="4">Header</td>
-    <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
+    <td class="tg-0pky" colspan="4">DF offset</td>
     <td class="tg-0pky" colspan="4">RFFFF Offset</td>
     <td class="tg-0pky" colspan="4">45 Offset</td>
   </tr>
@@ -117,7 +117,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
     <td class="tg-0pky" colspan="4">? Offset 3</td>
     <td class="tg-0pky" colspan="4">PcodeDirectoryOffset</td>
-    <td class="tg-0pky" colspan="4">????</td>
+    <td class="tg-0pky" colspan="4">End Offset</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">0</td>
@@ -139,7 +139,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>Header (4 bytes):</b> Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file. Should this be split into one byte, two bytes and one byte?
 
-<b>ObjectTableOffset (4 bytes):</b> 138 less than the offset to the <a href="#object-table"><b>ObjectTable</b></a>.
+<b>ObjectTableOffset (4 bytes):</b> Offset to the 0xDF that follows the </a>.
 
 <b>RFFFF Offset (4 bytes):</b > Offset to the RFFFFs
 
@@ -152,6 +152,8 @@ The performance cache precedes the compressed source container within a vbaProje
 <b>-1 (4 bytes):</b>All Fs.
 
 <b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+
+<b>End Offset (4 bytes):</b> Marks the end of the Pcode data. The compressed source container is 6 bytes after this.
 
 <b>ProjectCookie (2 bytes):</b> The value from the Project stream.
 
