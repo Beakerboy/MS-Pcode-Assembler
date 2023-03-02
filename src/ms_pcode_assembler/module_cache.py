@@ -144,13 +144,16 @@ class ModuleCache():
         return -1
 
     def magic_offset(self):
+        """
+        0x3C before the 0xCAFE tag
+        """
         if self.second_df_offset() > 0:
             return self.second_df_offset() + 12
         else:
             return self.rfff_offset() + 7
 
     def end_offset(self) -> int:
-        return self.magic_offset() + 6 + len(self.pcode) + 10 + 12
+        return self.magic_offset() + 0x3C + 6 + len(self.pcode) + 10 + 12
 
     def _create_pcode(self) -> bytes:
         num = 0
