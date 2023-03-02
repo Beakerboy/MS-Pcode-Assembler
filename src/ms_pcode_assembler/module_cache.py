@@ -45,16 +45,16 @@ class ModuleCache():
         ca += self.declaration_table_section()
         ca += self.guid_section()
         ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
+                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
         ca += b'\xFF' * 0x80
         ca += self.object_table_section()
         ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
+        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
         fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
+              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
               "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[5], "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
               "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
               "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
@@ -77,9 +77,9 @@ class ModuleCache():
         sdo = self.second_df_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
                            dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, 0, 1, self.project_cookie,
-                           self.module_cookie, 0, -1, self.misc[1],
-                           self.misc[2], 0xB6, -1, 0x0101)
+                           edo, self.misc[1], 1, self.project_cookie,
+                           self.module_cookie, 0, -1, self.misc[2],
+                           self.misc[3], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
@@ -94,7 +94,7 @@ class ModuleCache():
         for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[3])
+                          8, -1, 0x78, self.misc[4])
         for guid in self.guids2:
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
