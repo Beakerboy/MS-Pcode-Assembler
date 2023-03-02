@@ -84,6 +84,7 @@ class ModuleCache():
                            self.misc[1], 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
+
     def declaration_table_section(self) -> bytes:
         ca = len().to_bytes(4, "little") + self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
