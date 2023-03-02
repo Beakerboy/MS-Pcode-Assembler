@@ -6,7 +6,7 @@ from ms_pcode_assembler.module_cache import ModuleCache
 def test_doc_cache():
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB81C
-    cache.misc = [0x0316, 0x032D, 0x0123, 0x88, 8, 0x18, "00000000", 1]
+    cache.misc = [0x0316, 0x0123, 0x88, 8, 0x18, "00000000", 1]
     guid = uuid.UUID('0002081900000000C000000000000046')
     cache.guid = bytes(("0{" + str(guid) + "}").upper(), "utf_16_le")
 
@@ -29,7 +29,7 @@ def test_doc_cache():
 def test_module_cache():
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB241
-    cache.misc = [0x0316, 0x027D, 3, 0, 2, 0xFFFF, "FFFFFFFF", 0]
+    cache.misc = [0x0316, 3, 0, 2, 0xFFFF, "FFFFFFFF", 0]
     cache.indirect_table = struct.pack("<iI", -1, 0x78)
     f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x1200)
