@@ -79,7 +79,7 @@ class ModuleCache():
                            self.misc[1], 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
-    
+
     def rff_section(self) -> bytes:
         rfff_string = b''
         for rfff in self.rfff_data:
