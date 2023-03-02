@@ -163,7 +163,14 @@ class ModuleCache():
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
     def second_df_offset(self) -> int:
-        return -1
+        df_data_len = len(self.df_data)
+        if df_data_len == 0:
+            return -1
+        rf_len = 6
+        for rf in self.rff_data:
+            rf_len += len(rf) * 2 + 3
+
+        return self.rfff_offset() + rf_len + 1
 
     def magic_offset(self):
         """
