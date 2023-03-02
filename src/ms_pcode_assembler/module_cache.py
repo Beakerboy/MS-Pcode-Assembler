@@ -129,8 +129,8 @@ class ModuleCache():
         return 0x017A + len(self.guids_extra) * 16
 
     def id_table_offset(self) -> int:
-        ofs = (self.object_table_offset() + 4 + len(self.object_table)
-               + 8 + 4 + 2 + len(self.guid) + 12
+        return (self.object_table_offset() + 4 + len(self.object_table)
+                + 8 + 4 + 2 + len(self.guid) + 12)
 
     def rfff_offset(self):
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x82
