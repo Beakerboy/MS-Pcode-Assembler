@@ -1,4 +1,5 @@
 import struct
+from uuid import UUID
 
 
 class ModuleCache():
@@ -25,11 +26,12 @@ class ModuleCache():
     def clear_variables(self):
         self.module_cookie = 0
         self.misc = []
+        zero_guid = UUID(int=0x0)
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
-        self.guids1 = b'\x00' * 48
+        self.guids1 = [zero_guid, zero_guid, zero_guid]
         self.guids_extra = []
-        self.guids2 = b'\x00' * 32
+        self.guids2 = [zero_guid, zero_guid]
         self.declaration_table = b''
         self.indirect_table = b''
         self.object_table = b''
@@ -44,14 +46,13 @@ class ModuleCache():
         ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
-        ca += struct.pack("<I", len(self.object_table)) + self.object_table
-        ca += struct.pack("<hHI", -1, 0x0101, 0)
+        ca += self.object_table_section()
         if len(self.guid) > 0:
             ca += struct.pack("<HH", 1, len(self.guid)) + self.guid
         else:
             ca += struct.pack("<H", 0)
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
-        ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
+        ca += self.indirect_table_section()
         ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
               "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
@@ -90,13 +91,26 @@ class ModuleCache():
 
     def guid_section(self) -> bytes:
         ca = struct.pack("<hhhH", -1, -1, -1, 0)
-        ca += self.guids1
+        for guid in self.guids1:
+            ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
+        for guid in self.guids_extra:
+            ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[3])
-        ca += self.guids2
+        for guid in self.guids2:
+            ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
         return ca
+
+    def object_table_section(self) -> bytes:
+        ca = struct.pack("<I", len(self.object_table)) + self.object_table
+        ca += struct.pack("<hHI", -1, 0x0101, 0)
+        return ca
+
+    def indirect_table_section(self) -> bytes:
+        return (struct.pack("<I", len(self.indirect_table))
+                + self.indirect_table)
 
     def rff_section(self) -> bytes:
         rfff_string = b''
