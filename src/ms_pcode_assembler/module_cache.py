@@ -42,7 +42,7 @@ class ModuleCache():
         ca += self.declaration_table_section()
         ca += self.guid_section()
         ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
+                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
         ca += b'\xFF' * 0x80
         ca += struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
@@ -54,9 +54,9 @@ class ModuleCache():
         ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
         ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
         fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
+              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
               "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF", self.misc[5], "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
               "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
               "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
@@ -80,8 +80,8 @@ class ModuleCache():
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
                            dfo, rfo, ffo, ito, sdo, magic_ofs,
                            edo, 0, 1, self.project_cookie,
-                           self.module_cookie, 0, -1, self.misc[2],
-                           self.misc[3], 0xB6, -1, 0x0101)
+                           self.module_cookie, 0, -1, self.misc[1],
+                           self.misc[2], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
@@ -93,7 +93,7 @@ class ModuleCache():
         ca += self.guids1
         ca += len(self.guids_extra).to_bytes(4, "little")
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[4])
+                          8, -1, 0x78, self.misc[3])
         ca += self.guids2
         ca += struct.pack("<hI", -1, 0)
         return ca
