@@ -72,8 +72,8 @@ class ModuleCache():
     def header_section(self) -> bytes:
         dfo = self.df_offset()
         ito = self.id_table_offset() - 10
-        rfo = self.rfff_offset() - 0x3C
-        myo = self.mystery_offset()
+        magic_ofs = self.magic_offset() - 0x3C
+        rfo = self.rfff_offset()
         ffo = self.four_five_offset()
         edo = self.end_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
