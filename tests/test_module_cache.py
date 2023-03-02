@@ -43,7 +43,7 @@ def test_full_cache():
     cache.misc = [0x6000316, 0x0123, 0x88, 8, 0x18, "00000000", 1]
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
-    
+
     guid1 = uuid.UUID(bytes_le=b'\xA6\xB1\x2C\xB6\x36\x4E\x61\x47' +
                                b'\xB9\xB2\xB7\x24\x66\x0C\x9F\xA6')
     guid_zero = uuid.UUID(int=0x0)
