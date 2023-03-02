@@ -50,7 +50,7 @@ class ModuleCache():
         else:
             ca += struct.pack("<H", 0)
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
-        ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
+        ca += self.indirect_table_section()
         ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
               "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
@@ -101,6 +101,9 @@ class ModuleCache():
         ca = struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
         return ca
+
+    def indirect_table_section(self) -> bytes:
+        return struct.pack("<I", len(self.indirect_table)) + self.indirect_table
 
     def rff_section(self) -> bytes:
         rfff_string = b''
