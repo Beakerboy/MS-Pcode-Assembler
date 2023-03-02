@@ -167,7 +167,7 @@ class ModuleCache():
         if df_data_len == 0:
             return -1
         rf_len = 6
-        for rf in self.rff_data:
+        for rf in self.rfff_data:
             rf_len += len(rf) * 2 + 3
 
         return self.rfff_offset() + rf_len + 1
