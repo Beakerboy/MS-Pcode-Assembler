@@ -53,7 +53,7 @@ def test_full_cache():
                                b'\x81\xD2\xCF\xA6\x4F\x5A\x18\xE2')
     cache.guids_extra = [guid2]
     cache.guids2 = [guid2, guid1]
-    cache.rfff_data = ['*\Rffff*2363c69a74']
+    cache.rfff_data = ['*\\Rffff*2363c69a74']
     cache.df_data = [-1, 0x60, 5, 0]
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
