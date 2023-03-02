@@ -41,7 +41,7 @@ def test_full_cache():
     cache = ModuleCache(0xB2, 0x78B9)
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
-    cache.misc = [0x6000316, 5, 3, 0x80, 8, 0x18, "00000000", 1, 0x70]
+    cache.misc = [0x6000316, 5, 3, 0x80, 8, 0xFFFF, "00000000", 1, 0x70]
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
 
