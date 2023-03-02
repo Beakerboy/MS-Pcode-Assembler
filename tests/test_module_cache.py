@@ -98,7 +98,7 @@ def test_full_cache():
                       "A0 02 00 00 00 00 FF FF FF FF FF FF 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 FF FF FF FF",
                       "1D 00 18 00 25 00 00 00 FF FF FF FF 50 01 00 00",
-                      "FF FF FF FF A0 01 00 00")
+                      "FF FF FF FF A0 01 00 00 00 00")
     cache.indirect_table = bytes.fromhex(" ".join(indirect_table))
     object_table = ("02 00 53 10 FF FF FF FF 00 00 01 00 53 0C FF FF",
                     "FF FF 00 00 01 00 53 94 FF FF FF FF 00 00 00 00",
