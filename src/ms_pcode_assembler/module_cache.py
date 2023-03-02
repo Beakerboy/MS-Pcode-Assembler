@@ -1,4 +1,5 @@
 import struct
+from uuid import UUID
 
 
 class ModuleCache():
@@ -25,11 +26,12 @@ class ModuleCache():
     def clear_variables(self):
         self.module_cookie = 0
         self.misc = []
+        zero_guid = UUID(int=0x0)
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
-        self.guids1 = b'\x00' * 48
+        self.guids1 = [zero_guid, zero_guid, zero_guid]
         self.guids_extra = []
-        self.guids2 = b'\x00' * 32
+        self.guids2 = [zero_guid, zero_guid]
         self.declaration_table = b''
         self.indirect_table = b''
         self.object_table = b''
@@ -89,11 +91,15 @@ class ModuleCache():
 
     def guid_section(self) -> bytes:
         ca = struct.pack("<hhhH", -1, -1, -1, 0)
-        ca += self.guids1
+        for guid in self.guids1:
+            ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
+        for guid in self.guids_extra:
+            ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[3])
-        ca += self.guids2
+        for guid in self.guids2:
+            ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
         return ca
 
