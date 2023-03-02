@@ -78,7 +78,7 @@ class ModuleCache():
         edo = self.end_offset()
         sdo = self.second_df_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           dfo, rfo, ffo, ito, ado, magic_ofs,
+                           dfo, rfo, ffo, ito, sdo, magic_ofs,
                            edo, 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
