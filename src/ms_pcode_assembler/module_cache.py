@@ -154,7 +154,7 @@ class ModuleCache():
         """
         the offset for the byte that follows the UTF-16 GUiD
         """
-        guid_len = 2 if len(self.guid) == 0 else 4 + len(self.guid)
+        guid_len = 2 if len(self.guid) == 0 else 6 + len(self.guid) * 76
         return (self.object_table_offset() + 4 + len(self.object_table)
                 + 8 + guid_len)
 
