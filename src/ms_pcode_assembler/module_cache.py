@@ -83,14 +83,14 @@ class ModuleCache():
 
     def guid_section() -> bytes:
         ca = (0).to_bytes(2, "little")
-        for guid in self.guids1
+        for guid in self.guids1:
             ca += guid.bytes_le
         ca += (len(self.guids_extra)).to_bytes(4, "little")
-        for guid in self.guids_extra
+        for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[4])
-        for guid in self.guids2
+        for guid in self.guids2:
             ca += guid.bytes_le
         return ca
 
