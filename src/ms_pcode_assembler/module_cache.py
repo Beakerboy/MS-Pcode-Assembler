@@ -34,7 +34,7 @@ class ModuleCache():
         self.indirect_table = b''
         self.object_table = b''
         self.df_data = []
-        self.pcode = b''
+        self.pcode = struct.pack("<iI", -1, 0x78)
         self.rfff_data = []
 
     def to_bytes(self) -> bytes:
@@ -153,15 +153,15 @@ class ModuleCache():
             return self.rfff_offset() + 7
 
     def end_offset(self) -> int:
-        return self.magic_offset() + 0x3C + 6 + len(self.pcode) + 10 + 12
+        return self.magic_offset() + 0x3C + 16 + len(self.pcode)
 
     def _create_pcode(self) -> bytes:
         num = 0
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
         for i in range(num):
             pass
-        pcode += struct.pack("<iHI", -1, 0x0101, 8)
-        # Pcode Table
-        # Footer?
-        pcode += struct.pack("<iIiH", -1, 0x78, -1, 0)
+        pcode += struct.pack("<iH", -1, 0x0101)
+        pcode += len(self.pcode).to_bytes(4, "little")
+        pcode += self.pcode
+        pcode += struct.pack("iH", -1, 0)
         return pcode
