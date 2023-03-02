@@ -46,7 +46,7 @@ def test_full_cache():
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
-                      "0A 00 00 00 00 00 00 00 58 00 00 00 0C 00 FF FF",,
+                      "0A 00 00 00 00 00 00 00 58 00 00 00 0C 00 FF FF",
                       "38 00 00 00 05 00 05 00 05 00 00 00 00 00 00 00",
                       "BC 01 00 03 00 00 00 00 69 83 FE FF FF FF FF FF",
                       "FF FF FF FF FF FF FF FF 0C 01 FF FF 00 00 00 00",
