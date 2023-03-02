@@ -36,7 +36,7 @@ class ModuleCache():
         self.rfff_data = []
 
     def to_bytes(self) -> bytes:
-        ca = header_section()
+        ca = self.header_section()
         ca += self.guids1
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[4])
