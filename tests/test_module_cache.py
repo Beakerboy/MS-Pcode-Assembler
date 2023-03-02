@@ -19,7 +19,6 @@ def test_doc_cache():
                     "FF FF 00 00 01 00 53 94 FF FF FF FF 00 00 00 00",
                     "02 3C FF FF FF FF 00 00")
     cache.object_table = bytes.fromhex(" ".join(object_table))
-    cache.pcode = b''
 
     f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x0800)
