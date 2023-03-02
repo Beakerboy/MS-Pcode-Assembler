@@ -109,7 +109,7 @@ class ModuleCache():
         if len(self.guid) > 0:
             guid_str = "0"
             for guid in self.guid:
-                guid_str += "{" + str(guid) + "}"
+                guid_str += "{" + str(guid).upper() + "}"
             guid_str_bytes = bytes(guid_str, "utf_16_le")
             ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
