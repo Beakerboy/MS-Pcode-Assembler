@@ -1,6 +1,4 @@
-# MS-Pcode-Assembler
-Create the VBA performance cache from source code.
-
+# Performance Cache
 The performance cache precedes the compressed source container within a vbaProject.bin Module Stream.
 <table class="tg">
 <thead>
