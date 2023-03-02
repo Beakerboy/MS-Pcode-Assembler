@@ -46,12 +46,9 @@ class ModuleCache():
         magic_ofs = self.magic_offset() - 0x3C
         rff_ofs = self.rff_offset()
         guid_end_ofs = 0xD4 + len(self.guids_extra) * 16
-        if len(df_data):
-            df_offset =
-        else:
-            df_offset = -1
+        df_ofs = self.df_offset()
         ca = struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
-                         oto, rff_ofs, guid_end_ofs, ito, -1, magic_ofs,
+                         oto, rff_ofs, guid_end_ofs, ito, df_ofs, magic_ofs,
                          self.misc[1], 0, 1, self.project_cookie,
                          self.module_cookie, 0, -1, self.misc[2],
                          self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
@@ -134,6 +131,14 @@ class ModuleCache():
     def rff_offset(self):
         return self.id_table_offset() + len(self.indirect_table) + 4
 
+    def df_offset(self) -> int:
+        if len(self.df_data):
+            length = 0
+            for rff in self.rfff_data
+                length += 2 + len(rff) * 2
+            return self.rff + 6 + length
+        else:
+            return -1
     def _create_pcode(self) -> bytes:
         num = 0
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
