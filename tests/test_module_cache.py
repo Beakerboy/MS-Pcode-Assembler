@@ -43,7 +43,16 @@ def test_full_cache():
     cache.misc = [0x0316, 0x0123, 0x88, 8, 0x18, "00000000", 1]
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
-
+    
+    guid1 = uuid.UUID(bytes_le=b'\xA6\xB1\x2C\xB6\x36\x4E\x61\x47' +
+                               b'\xB9\xB2\xB7\x24\x66\x0C\x9F\xA6')
+    guid2 = uuid.UUID(bytes_le=b'\x2A\x3D\xFB\xFC\xFA\xA0\x68\x10' +
+                               b'\xA7\x38\x08\x00\x2B\x33\x71\xB5')
+    guid3 = uuid.UUID(int=0x0)
+    cache.guids1 = [guid1, guid2, guid3]
+    guid4 = uuid.UUID(bytes_le=b'\xAA\x36\x92\xBE\x96\xC1\xA5\x47' +
+                               b'\x81\xD2\xCF\xA6\x4F\x5A\x18\xE2')
+    cache.guids_extra = [guid4]
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
