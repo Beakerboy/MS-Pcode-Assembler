@@ -27,8 +27,10 @@ class ModuleCache():
         self.misc = []
         # utf-16 encoded guid with opening "0{" and closing bracket.
         self.guid = b''
-        self.guids1 = b'\xff' * 4 + b'\x00' * 54
+        self.guids1 = b'\x00' * 48
+        self.guids_extra = []
         self.guids2 = b'\x00' * 32
+        self.declaration_table = b''
         self.indirect_table = b''
         self.object_table = b''
         self.df_data = []
@@ -37,7 +39,10 @@ class ModuleCache():
 
     def to_bytes(self) -> bytes:
         ca = self.header_section()
+        ca += self.declaration_table_section()
+        ca += struct.pack("<hhhH", -1, -1, -1, 0)
         ca += self.guids1
+        ca += len(guids_extra).to_bytes(4, "little")
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
                           8, -1, 0x78, self.misc[4])
         ca += self.guids2
@@ -74,11 +79,14 @@ class ModuleCache():
         ito = self.id_table_offset() - 10
         magic_ofs = self.magic_offset() - 0x3C
         myo = self.mystery_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
+        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
                            oto, myo, 0xD4, ito, -1, magic_ofs,
                            self.misc[1], 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
-                           self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+                           self.misc[3], 0xB6, -1, 0x0101)
+    def declaration_table_section(self) -> bytes:
+        ca = len().to_bytes(4, "little") + self.declaration_table
+        return ca + struct.pack("<iI", -1, 0)
 
     def rff_section(self) -> bytes:
         rfff_string = b''
