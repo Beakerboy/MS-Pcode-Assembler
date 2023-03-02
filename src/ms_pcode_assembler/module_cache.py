@@ -63,7 +63,7 @@ class ModuleCache():
               "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
               "FF FF")
         ca += bytes.fromhex(" ".join(fo))
-        ca += self.rff_section()
+        ca += self.rfff_section()
         ca += self.df_section()
         ca += b'\x00' * 58
         ca += self._create_pcode()
@@ -72,12 +72,13 @@ class ModuleCache():
     def header_section(self) -> bytes:
         dfo = self.df_offset()
         ito = self.id_table_offset() - 10
-        magic_ofs = self.magic_offset() - 0x3C
+        rfo = self.rfff_offset() - 0x3C
         myo = self.mystery_offset()
         ffo = self.four_five_offset()
+        edo = self.end_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           dfo, myo, ffo, ito, -1, magic_ofs,
-                           self.misc[1], 0, 1, self.project_cookie,
+                           dfo, rfo, ffo, ito, -1, magic_ofs,
+                           edo, 0, 1, self.project_cookie,
                            self.module_cookie, 0, -1, self.misc[2],
                            self.misc[3], 0xB6, -1, 0x0101)
 
@@ -132,12 +133,15 @@ class ModuleCache():
         ob_len = len(self.object_table) + 4
         return self.object_table_offset() + ob_len + guid_len + 0x12
 
+    def rfff_offset(self):
+        return self.id_table_offset() + 4 + len(self.indirect_table)
+
     def magic_offset(self):
         in_len = len(self.indirect_table) + 4
         return self.id_table_offset() + 0xC7 + in_len
 
-    def mystery_offset(self):
-        return self.magic_offset() - 0x43
+    def end_offset(self) -> int:
+        return self.magic_offset() + 6 + len(self.pcode) + 10 + 12
 
     def _create_pcode(self) -> bytes:
         num = 0
