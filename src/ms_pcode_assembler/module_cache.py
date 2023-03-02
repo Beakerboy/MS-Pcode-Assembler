@@ -75,10 +75,10 @@ class ModuleCache():
         magic_ofs = self.magic_offset() - 0x3C
         myo = self.mystery_offset()
         return struct.pack("<BIIIIIiIIIIHHHhIIHhHIiIh", 1, self.misc[0],
-                         oto, myo, 0xD4, ito, -1, magic_ofs,
-                         self.misc[1], 0, 1, self.project_cookie,
-                         self.module_cookie, 0, -1, self.misc[2],
-                         self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
+                           oto, myo, 0xD4, ito, -1, magic_ofs,
+                           self.misc[1], 0, 1, self.project_cookie,
+                           self.module_cookie, 0, -1, self.misc[2],
+                           self.misc[3], 0xB6, -1, 0x0101, 0, -1, 0, -1)
     
     def rff_section(self) -> bytes:
         rfff_string = b''
