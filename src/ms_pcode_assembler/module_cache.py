@@ -40,13 +40,8 @@ class ModuleCache():
     def to_bytes(self) -> bytes:
         ca = self.header_section()
         ca += self.declaration_table_section()
-        ca += struct.pack("<hhhH", -1, -1, -1, 0)
-        ca += self.guids1
-        ca += len(self.guids_extra).to_bytes(4, "little")
-        ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[4])
-        ca += self.guids2
-        ca += struct.pack("<hIIihIhIhHIHhIH", -1, 0, 0x454D, -1, -1, 0, -1,
+        ca += guid_section()
+        ca += struct.pack("<hIIihIhIhHIHhIH" 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
         ca += b'\xFF' * 0x80
         ca += struct.pack("<I", len(self.object_table)) + self.object_table
@@ -89,6 +84,16 @@ class ModuleCache():
         ca = len(self.declaration_table).to_bytes(4, "little")
         ca += self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
+
+    def guid_section(self) -> bytes:
+        ca = struct.pack("<hhhH", -1, -1, -1, 0)
+        ca += self.guids1
+        ca += len(self.guids_extra).to_bytes(4, "little")
+        ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
+                          8, -1, 0x78, self.misc[4])
+        ca += self.guids2
+        ca += struct.pack("<hI", -1, 0)
+        return ca
 
     def rff_section(self) -> bytes:
         rfff_string = b''
