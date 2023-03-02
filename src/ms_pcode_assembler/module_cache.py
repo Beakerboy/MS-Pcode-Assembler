@@ -40,7 +40,7 @@ class ModuleCache():
     def to_bytes(self) -> bytes:
         ca = self.header_section()
         ca += self.declaration_table_section()
-        ca += guid_section()
+        ca += self.guid_section()
         ca += struct.pack("<hIIihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
                           0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
         ca += b'\xFF' * 0x80
