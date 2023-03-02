@@ -111,7 +111,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">Header</td>
     <td class="tg-0pky" colspan="4">ObjectTableOffset</td>
     <td class="tg-0pky" colspan="4">RFFFF Offset</td>
-    <td class="tg-0pky" colspan="4">? Offset 2</td>
+    <td class="tg-0pky" colspan="4">45 Offset</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">IndirectTableOffset</td>
@@ -143,7 +143,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>RFFFF Offset (4 bytes):</b > Offset to the RFFFFs
 
-<b>? Offset2 (4 bytes):</b > The offset to 0x454D.
+<b>45 Offset (4 bytes):</b > The offset to 0x454D.
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
