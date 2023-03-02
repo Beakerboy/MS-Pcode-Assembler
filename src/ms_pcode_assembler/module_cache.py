@@ -52,7 +52,7 @@ class ModuleCache():
             ca += struct.pack("<H", 0)
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
         ca += struct.pack("<I", len(self.indirect_table)) + self.indirect_table
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
+        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
         fo = ("00 00 00 00 00 00 00 00"
               "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
               "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
