@@ -103,7 +103,8 @@ class ModuleCache():
         return ca
 
     def indirect_table_section(self) -> bytes:
-        return struct.pack("<I", len(self.indirect_table)) + self.indirect_table
+        return (struct.pack("<I", len(self.indirect_table))
+                + self.indirect_table)
 
     def rff_section(self) -> bytes:
         rfff_string = b''
