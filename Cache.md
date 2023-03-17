@@ -314,12 +314,12 @@ Several Guids in binary form are packed together
   <tr>
     <td class="tg-0pky" colspan="4">0</td>
     <td class="tg-0pky" colspan="2">?</td>
-  </tr>
-  <tr>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
     <td class="tg-0pky" colspan="4">0</td>
     <td class="tg-0pky" colspan="2">-1</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" colspan="2">80</td>
   </tr>
 </tbody>
