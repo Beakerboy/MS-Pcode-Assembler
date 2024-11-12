@@ -91,14 +91,14 @@ class ModuleCache():
         return ca + struct.pack("<iI", -1, 0)
 
     def guid_section(self: T) -> bytes:
-        ca = struct.pack("<hhhH", -1, -1, -1, 0)
+        ca = struct.pack("<hhhH", -1, self.misc[8], -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
         for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[3])
+                          8, -1, 0x78, self.misc[4])
         for guid in self.guids2:
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
