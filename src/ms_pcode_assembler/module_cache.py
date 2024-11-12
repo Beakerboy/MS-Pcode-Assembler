@@ -1,17 +1,21 @@
 import struct
+from typing import TypeVar
 from uuid import UUID
+
+
+T = TypeVar('T', bound='ModuleCache')
 
 
 class ModuleCache():
 
-    def __init__(self, version, project_cookie, syskind=2):
+    def __init__(self: T, version, project_cookie, syskind=2):
         self.version = version
         self.syskind = syskind
         self.project_cookie = project_cookie
         self.rfff_value = b'\x00' * 5
         self.clear_variables()
 
-    def get_vba_version(self):
+    def get_vba_version(self: T):
         if self.version >= 0x6B:
             if self.version >= 0x97:
                 return 7
@@ -20,10 +24,10 @@ class ModuleCache():
         else:
             return 5
 
-    def is_64bit(self):
+    def is_64bit(self: T):
         return self.syskind == 3
 
-    def clear_variables(self):
+    def clear_variables(self: T):
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
@@ -39,7 +43,7 @@ class ModuleCache():
         self.pcode = struct.pack("<iI", -1, 0x78)
         self.rfff_data = []
 
-    def to_bytes(self) -> bytes:
+    def to_bytes(self: T) -> bytes:
         ca = self.header_section()
         ca += self.declaration_table_section()
         ca += self.guid_section()
@@ -66,7 +70,7 @@ class ModuleCache():
         ca += self._create_pcode()
         return ca
 
-    def header_section(self) -> bytes:
+    def header_section(self: T) -> bytes:
         dfo = self.df_offset()
         ito = self.id_table_offset()
         magic_ofs = self.magic_offset()
@@ -80,12 +84,12 @@ class ModuleCache():
                            self.module_cookie, 0, -1, self.misc[1],
                            self.misc[2], 0xB6, -1, 0x0101)
 
-    def declaration_table_section(self) -> bytes:
+    def declaration_table_section(self: T) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
         ca += self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
 
-    def guid_section(self) -> bytes:
+    def guid_section(self: T) -> bytes:
         ca = struct.pack("<hhhH", -1, -1, -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
@@ -99,12 +103,12 @@ class ModuleCache():
         ca += struct.pack("<hI", -1, 0)
         return ca
 
-    def object_table_section(self) -> bytes:
+    def object_table_section(self: T) -> bytes:
         ca = struct.pack("<I", len(self.object_table)) + self.object_table
         ca += struct.pack("<hHI", -1, 0x0101, 0)
         return ca
 
-    def utf16_guid_section(self) -> bytes:
+    def utf16_guid_section(self: T) -> bytes:
         ca = len(self.guid).to_bytes(2, "little")
         if len(self.guid) > 0:
             guid_str = "0"
@@ -115,11 +119,11 @@ class ModuleCache():
         ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
         return ca
 
-    def indirect_table_section(self) -> bytes:
+    def indirect_table_section(self: T) -> bytes:
         return (struct.pack("<I", len(self.indirect_table))
                 + self.indirect_table)
 
-    def rff_section(self) -> bytes:
+    def rff_section(self: T) -> bytes:
         rfff_string = b''
         for rfff in self.rfff_data:
             str16 = bytes(rfff, "utf_16_le")
@@ -127,7 +131,7 @@ class ModuleCache():
             rfff_string += size + str16
         return self.rfff_value + b'\x00' + rfff_string + b'\xDF'
 
-    def df_section(self) -> bytes:
+    def df_section(self: T) -> bytes:
         df_count = len(self.df_data)
         df_string = b''
         if df_count > 0:
@@ -136,13 +140,13 @@ class ModuleCache():
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2], df[3])
         return df_count .to_bytes(2, "little") + df_string
 
-    def four_five_offset(self) -> int:
+    def four_five_offset(self: T) -> int:
         return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
 
-    def df_offset(self) -> int:
+    def df_offset(self: T) -> int:
         return self.four_five_offset() + 28
 
-    def object_table_offset(self) -> int:
+    def object_table_offset(self: T) -> int:
         """
         The object table offset is 8A less than the position.
         The object table is between the block of F's and the
@@ -150,7 +154,7 @@ class ModuleCache():
         """
         return 0x017A + len(self.guids_extra) * 16
 
-    def id_table_offset(self) -> int:
+    def id_table_offset(self: T) -> int:
         """
         the offset for the byte that follows the UTF-16 GUiD
         """
@@ -158,13 +162,13 @@ class ModuleCache():
         return (self.object_table_offset() + 4 + len(self.object_table)
                 + 8 + guid_len)
 
-    def rfff_offset(self):
+    def rfff_offset(self: T):
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
-    def second_df_offset(self) -> int:
+    def second_df_offset(self: T) -> int:
         return -1
 
-    def magic_offset(self):
+    def magic_offset(self: T):
         """
         0x3C before the 0xCAFE tag
         """
@@ -173,10 +177,10 @@ class ModuleCache():
         else:
             return self.rfff_offset() + 7
 
-    def end_offset(self) -> int:
+    def end_offset(self: T) -> int:
         return self.magic_offset() + 0x3C + 16 + len(self.pcode)
 
-    def _create_pcode(self) -> bytes:
+    def _create_pcode(self: T) -> bytes:
         num = 0
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
         for i in range(num):
