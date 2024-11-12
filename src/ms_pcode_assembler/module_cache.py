@@ -53,7 +53,7 @@ class ModuleCache():
         ca += self.object_table_section()
         ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
-        ca += self.F_section()
+        ca += self.f_section()
         ca += self.rff_section()
         ca += self.df_section()
         ca += b'\x00' * 58
@@ -118,7 +118,7 @@ class ModuleCache():
         return (struct.pack("<I", len(self.indirect_table))
                 + self.indirect_table)
 
-    def F_section(self: T) -> bytes:
+    def f_section(self: T) -> bytes:
         ca = struct.pack("<HhHH", 0, -1, 0, self.misc[7])
         fo = ("00 00 00 00 00 00 00 00"
               "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
