@@ -42,6 +42,12 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
+    <td class="tg-0pky" colspan="16">454D Section</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" colspan="16">ObjectTable</td>
   </tr>
   <tr>
@@ -270,6 +276,33 @@ Several Guids in binary form are packed together
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="4">0</td>
   </tr>
+</tbody>
+</table>
+
+## 454D Section
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  
 </tbody>
 </table>
 
