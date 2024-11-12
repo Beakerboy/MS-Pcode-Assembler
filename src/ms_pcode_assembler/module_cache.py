@@ -147,7 +147,7 @@ class ModuleCache():
             df_string = (0).to_bytes(4, "little")
             for df in self.df_data:
                 df_string += struct.pack("<iIHH", df[0], df[1], df[2], df[3])
-        return df_count .to_bytes(2, "little") + df_string
+        return df_count.to_bytes(2, "little") + df_string
 
     def four_five_offset(self: T) -> int:
         return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
