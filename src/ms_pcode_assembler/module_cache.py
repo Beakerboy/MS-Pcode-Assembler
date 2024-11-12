@@ -53,17 +53,7 @@ class ModuleCache():
         ca += self.object_table_section()
         ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[7])
-        fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
-              "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
-              "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
-              "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
-              "FF FF")
-        ca += bytes.fromhex(" ".join(fo))
+        ca += self.F_section()
         ca += self.rff_section()
         ca += self.df_section()
         ca += b'\x00' * 58
@@ -127,6 +117,20 @@ class ModuleCache():
     def indirect_table_section(self: T) -> bytes:
         return (struct.pack("<I", len(self.indirect_table))
                 + self.indirect_table)
+
+    def F_section(self: T) -> bytes:
+        ca = struct.pack("<HhHH", 0, -1, 0, self.misc[7])
+        fo = ("00 00 00 00 00 00 00 00"
+              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
+              "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
+              "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
+              "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+              "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
+              "FF FF")
+        ca += bytes.fromhex(" ".join(fo))
+        return ca
 
     def rff_section(self: T) -> bytes:
         rfff_string = b''
