@@ -190,9 +190,9 @@ class ModuleCache():
         0x3C before the 0xCAFE tag
         """
         if self.second_df_offset() > 0:
-            return self.second_df_offset() + 12
+            return self.second_df_offset() + 12 + 58 - self.zeroes
         else:
-            return self.rfff_offset() + 7 + 58 - self.zeroes
+            return self.rfff_offset() + 7
 
     def end_offset(self: T) -> int:
         return (self.magic_offset() + 0x3C + 16 + len(self.pcode)
