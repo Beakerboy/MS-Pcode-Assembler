@@ -137,7 +137,7 @@ class ModuleCache():
         for rfff in self.rfff_data:
             str16 = bytes(rfff, "utf_16_le")
             size = len(str16).to_bytes(2, "little")
-            rfff_string += b'\x00' + size + str16
+            rfff_string += b'\x01' + size + str16
         return self.rfff_value + b'\x00' + rfff_string + b'\xDF'
 
     def df_section(self: T) -> bytes:
