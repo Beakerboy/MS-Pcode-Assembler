@@ -154,7 +154,7 @@ class ModuleCache():
         return 0xD4 + len(self.declaration_table) + len(self.guids_extra) * 16
 
     def df_offset(self: T) -> int:
-        return self.four_five_offset() + 28
+        return self.four_five_offset() + 28 + 58 - self.zeroes
 
     def object_table_offset(self: T) -> int:
         """
