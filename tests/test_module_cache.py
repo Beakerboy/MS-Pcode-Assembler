@@ -197,7 +197,7 @@ def test_full_cache() -> None:
     file_data = f.read(len(df))
     assert df == file_data
     file_data = f.read(58)
-    assert b'\x00' * 58 = file_data
+    assert b'\x00' * 58 == file_data
     # file_data = f.read(0x08C4)
     # f.seek(0x1200)
     # file_data = f.read(0x08C4)
