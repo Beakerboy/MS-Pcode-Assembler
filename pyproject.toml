@@ -16,7 +16,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-
+[project.optional-dependencies]
+tests = [
+  'coveralls',
+  'pytest',
+  'pytest-cov',
+]
 [project.urls]
 "Homepage" = "https://github.com/Beakerboy/MS-Pcode-Assembler"
 "Bug Tracker" = "https://github.com/Beakerboy/MS-Pcode-Assembler/issues"
