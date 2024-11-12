@@ -8,14 +8,15 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    def __init__(self: T, version, project_cookie, syskind=2):
+    def __init__(self: T, version: int, project_cookie: int, syskind: int = 2
+                 ) -> None:
         self.version = version
         self.syskind = syskind
         self.project_cookie = project_cookie
         self.rfff_value = b'\x00' * 5
         self.clear_variables()
 
-    def get_vba_version(self: T):
+    def get_vba_version(self: T) -> int:
         if self.version >= 0x6B:
             if self.version >= 0x97:
                 return 7
@@ -24,10 +25,10 @@ class ModuleCache():
         else:
             return 5
 
-    def is_64bit(self: T):
+    def is_64bit(self: T) -> bool:
         return self.syskind == 3
 
-    def clear_variables(self: T):
+    def clear_variables(self: T) -> None:
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
@@ -162,13 +163,13 @@ class ModuleCache():
         return (self.object_table_offset() + 4 + len(self.object_table)
                 + 8 + guid_len)
 
-    def rfff_offset(self: T):
+    def rfff_offset(self: T) -> int:
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
     def second_df_offset(self: T) -> int:
         return -1
 
-    def magic_offset(self: T):
+    def magic_offset(self: T) -> int:
         """
         0x3C before the 0xCAFE tag
         """
