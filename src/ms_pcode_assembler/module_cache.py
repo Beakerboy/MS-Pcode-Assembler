@@ -186,11 +186,11 @@ class ModuleCache():
         else:
             return self.rfff_offset() + 7
 
-    def end_offset(self) -> int:
+    def end_offset(self: T) -> int:
         return (self.magic_offset() + 0x3C + 16 + len(self.pcode)
                 + len(self.pcode_dir))
 
-    def _create_pcode(self) -> bytes:
+    def _create_pcode(self: T) -> bytes:
         num = len(self.pcode_dir) // 12
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
         for i in range(num):
