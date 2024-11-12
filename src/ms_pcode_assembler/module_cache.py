@@ -162,13 +162,13 @@ class ModuleCache():
         return (self.object_table_offset() + 4 + len(self.object_table)
                 + 8 + guid_len)
 
-    def rfff_offset(self: T):
+    def rfff_offset(self: T) -> int:
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
     def second_df_offset(self: T) -> int:
         return -1
 
-    def magic_offset(self: T):
+    def magic_offset(self: T) -> int:
         """
         0x3C before the 0xCAFE tag
         """
