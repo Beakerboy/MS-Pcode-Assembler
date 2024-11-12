@@ -189,7 +189,7 @@ def test_full_cache() -> None:
     fs = cache.f_section()
     file_data = f.read(len(fs))
     # fails
-    #assert fs == file_data
+    # assert fs == file_data
     rf = cache.rff_section()
     file_data = f.read(len(rf))
     assert rf == file_data
