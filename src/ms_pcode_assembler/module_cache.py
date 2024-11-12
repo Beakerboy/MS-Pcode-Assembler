@@ -14,6 +14,7 @@ class ModuleCache():
         self.syskind = syskind
         self.project_cookie = project_cookie
         self.rfff_value = b'\x00' * 5
+        self.zeroes = 58
         self.clear_variables()
 
     def get_vba_version(self: T) -> int:
@@ -56,7 +57,7 @@ class ModuleCache():
         ca += self.f_section()
         ca += self.rff_section()
         ca += self.df_section()
-        ca += b'\x00' * 58
+        ca += b'\x00' * self.zeroes
         ca += self._create_pcode()
         return ca
 
