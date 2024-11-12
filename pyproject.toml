@@ -19,8 +19,11 @@ classifiers = [
 [project.optional-dependencies]
 tests = [
   'coveralls',
+  'flake8-annotations',
+  'mypy',
   'pytest',
   'pytest-cov',
+  'pep8-naming'
 ]
 [project.urls]
 "Homepage" = "https://github.com/Beakerboy/MS-Pcode-Assembler"
