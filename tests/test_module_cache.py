@@ -179,6 +179,15 @@ def test_full_cache() -> None:
                + b'\xFF' * 0x80)
     file_data = f.read(len(new_sec))
     assert new_sec == file_data
+    ob = cache.object_table_section()
+    file_data = f.read(len(ob))
+    assert b == file_data
+    gu16 = cache.utf16_guid_section()
+    file_data = f.read(len(gu16))
+    assert gu16 == file_data
+    id = cache.indirect_table_section()
+    file_data = f.read(len(id))
+    assert id == file_data
     file_data = f.read(0x08C4)
     f.seek(0x1200)
     file_data = f.read(0x08C4)
