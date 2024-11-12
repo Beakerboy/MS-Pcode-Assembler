@@ -183,7 +183,7 @@ class ModuleCache():
         for rf in self.rfff_data:
             rf_len += len(rf) * 2 + 3
 
-        return self.rfff_offset() + rf_len + 1
+        return self.rfff_offset() + rf_len + 1 + 58 - self.zeroes
 
     def magic_offset(self: T) -> int:
         """
