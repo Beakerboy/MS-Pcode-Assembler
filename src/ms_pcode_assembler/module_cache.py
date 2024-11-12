@@ -49,9 +49,7 @@ class ModuleCache():
         ca = self.header_section()
         ca += self.declaration_table_section()
         ca += self.guid_section()
-        ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
-        ca += b'\xFF' * 0x80
+        ca += self.four_five_section()
         ca += self.object_table_section()
         ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
@@ -104,6 +102,11 @@ class ModuleCache():
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
         return ca
+
+    def four_five_section(self: T) -> bytes:
+        return (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
+                            0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
+                + b'\xFF' * 0x80)
 
     def object_table_section(self: T) -> bytes:
         ca = struct.pack("<I", len(self.object_table)) + self.object_table
