@@ -186,9 +186,9 @@ def test_full_cache() -> None:
     id = cache.indirect_table_section()
     file_data = f.read(len(id))
     assert id == file_data
-    Fs = cache.F_section()
-    file_data = f.read(len(Fs))
-    assert Fs == file_data
+    fs = cache.f_section()
+    file_data = f.read(len(fs))
+    assert fs == file_data
     # file_data = f.read(0x08C4)
     # f.seek(0x1200)
     # file_data = f.read(0x08C4)
