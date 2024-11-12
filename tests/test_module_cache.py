@@ -170,6 +170,9 @@ def test_full_cache() -> None:
     dt = cache.declaration_table_section()
     file_data = f.read(len(dt))
     assert dt == file_data
+    gu = self.guid_section()
+    file_data = f.read(len(gu))
+    assert gu == file_data
     file_data = f.read(0x08C4)
     f.seek(0x1200)
     file_data = f.read(0x08C4)
