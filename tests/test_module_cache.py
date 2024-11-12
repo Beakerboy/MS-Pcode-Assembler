@@ -193,6 +193,9 @@ def test_full_cache() -> None:
     rf = cache.rff_section()
     file_data = f.read(len(rf))
     assert rf == file_data
+    df = cache.df_section()
+    file_data = f.read(len(df))
+    assert df == file_data
     # file_data = f.read(0x08C4)
     # f.seek(0x1200)
     # file_data = f.read(0x08C4)
