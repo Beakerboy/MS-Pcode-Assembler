@@ -8,7 +8,8 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    def __init__(self: T, version: int, project_cookie: int, syskind=2) -> None:
+    def __init__(self: T, version: int, project_cookie: int, syskind:int=2
+                ) -> None:
         self.version = version
         self.syskind = syskind
         self.project_cookie = project_cookie
