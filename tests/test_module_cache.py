@@ -6,9 +6,6 @@ from ms_pcode_assembler.module_cache import ModuleCache
 def test_doc_cache() -> None:
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB81C
-    def test_doc_cache():
-    cache = ModuleCache(0xB5, 0x08F3)
-    cache.module_cookie = 0xB81C
     cache.misc = [0x0316, 0, 0x0123, 0x88, 8, 0x18, "00000000", 1, -1]
     guid = uuid.UUID('0002081900000000C000000000000046')
     cache.guid = [guid]
@@ -29,7 +26,7 @@ def test_doc_cache() -> None:
     assert cache.to_bytes() == file_data
 
 
-def test_module_cache():
+def test_module_cache() -> None:
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB241
     cache.misc = [0x0316, 0, 3, 0, 2, 0xFFFF, "FFFFFFFF", 0, -1]
