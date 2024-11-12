@@ -199,7 +199,8 @@ def test_full_cache() -> None:
     assert df == file_data
     file_data = f.read(56)
     assert b'\x00' * 56 == file_data
-    # file_data = f.read(0x08C4)
-    # f.seek(0x1200)
-    # file_data = f.read(0x08C4)
-    # assert cache.to_bytes() == file_data
+    f.close()
+    f = open('tests/SQL-vbaProject.bin', 'rb')
+    f.seek(0x1200)
+    file_data = f.read(0x08C4)
+    assert cache.to_bytes() == file_data
