@@ -312,7 +312,7 @@ Several Guids in binary form are packed together
 </table>
 
 ## UTF-16 Guid
-If the module has a GUID, it's UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
+If the module has a GUID, its UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
 
 <table class="tg">
 <thead>
