@@ -72,7 +72,7 @@ class ModuleCache():
         return ca
 
     def header_section(self: T) -> bytes:
-       dfo = self.df_offset()
+        dfo = self.df_offset()
         ito = self.id_table_offset()
         magic_ofs = self.magic_offset()
         rfo = self.rfff_offset()
