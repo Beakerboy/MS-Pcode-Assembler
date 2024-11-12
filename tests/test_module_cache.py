@@ -174,11 +174,9 @@ def test_full_cache() -> None:
     gu = cache.guid_section()
     file_data = f.read(len(gu))
     assert gu == file_data
-    new_sec = (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                           0, -1, 0x0101, 0, 0xDF, -1, 0, misc[5])
-               + b'\xFF' * 0x80)
-    file_data = f.read(len(new_sec))
-    assert new_sec == file_data
+    four_five = cache.four_five_section()
+    file_data = f.read(len(four_five))
+    assert four_five == file_data
     ob = cache.object_table_section()
     file_data = f.read(len(ob))
     assert ob == file_data
