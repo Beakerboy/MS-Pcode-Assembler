@@ -41,7 +41,8 @@ def test_full_cache() -> None:
     cache = ModuleCache(0xB2, 0x78B9)
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
-    cache.misc = [0x6000316, 5, 3, 0x80, 8, 0xFFFF, "00000000", 1, 0x70]
+    misc = [0x6000316, 5, 3, 0x80, 8, 0xFFFF, "00000000", 1, 0x70]
+    cache.misc = misc
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
 
@@ -174,7 +175,7 @@ def test_full_cache() -> None:
     file_data = f.read(len(gu))
     assert gu == file_data
     new_sec = (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
+                          0, -1, 0x0101, 0, 0xDF, -1, 0, misc[5])
               + b'\xFF' * 0x80)
     file_data = f.read(len(new_sec))
     assert new_sec == file_data
