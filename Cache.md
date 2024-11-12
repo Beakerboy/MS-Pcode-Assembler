@@ -344,7 +344,7 @@ If the module has a GUID, its UTF-16 representation, with brackets and a leading
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="4">varies</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="4">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
