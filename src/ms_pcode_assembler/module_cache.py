@@ -192,7 +192,7 @@ class ModuleCache():
         if self.second_df_offset() > 0:
             return self.second_df_offset() + 12
         else:
-            return self.rfff_offset() + 7 + 58 = self.zeroes
+            return self.rfff_offset() + 7 + 58 - self.zeroes
 
     def end_offset(self: T) -> int:
         return (self.magic_offset() + 0x3C + 16 + len(self.pcode)
