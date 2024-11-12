@@ -181,7 +181,7 @@ def test_full_cache() -> None:
     assert new_sec == file_data
     ob = cache.object_table_section()
     file_data = f.read(len(ob))
-    assert b == file_data
+    assert ob == file_data
     gu16 = cache.utf16_guid_section()
     file_data = f.read(len(gu16))
     assert gu16 == file_data
