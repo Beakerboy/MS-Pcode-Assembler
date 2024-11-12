@@ -42,6 +42,7 @@ class ModuleCache():
         self.object_table = b''
         self.df_data = []
         self.pcode = struct.pack("<iI", -1, 0x78)
+        self.pcode_dir = b''
         self.rfff_data = []
 
     def to_bytes(self: T) -> bytes:
