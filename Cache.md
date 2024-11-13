@@ -130,7 +130,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">End Offset</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="4">1</td>
     <td class="tg-0pky" colspan="2">ProjectCookie</td>
     <td class="tg-0pky" colspan="2">ModuleCookie</td>
@@ -138,8 +138,8 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="2">-1</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">???</td>
-    <td class="tg-0pky" colspan="4">???</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="2">0xB6</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
@@ -159,15 +159,19 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset after the DF.
 
-<b>-1 (4 bytes):</b>All Fs.
-
 <b>PcodeDirectoryOffset (4 bytes):</b> Points to the bytes after the 0xDF that follows the DF section 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
 
 <b>End Offset (4 bytes):</b> Marks the end of the Pcode data. The compressed source container is 6 bytes after this.
 
+<b>Data1 (2 bytes):</b>
+
 <b>ProjectCookie (2 bytes):</b> The value from the Project stream.
 
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
+
+<b>Data2 (4 bytes):</b>
+
+<b>Data3 (4 bytes):</b>
 
  ## Declaration Table
 <table class="tg">
