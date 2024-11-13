@@ -42,7 +42,7 @@ def test_full_cache() -> None:
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
     cache.zeroes = 56
-    misc = [0x6000316, 5, 3, 0x80, 8, 0xFFFF, "00000000", 1, 0x70, 0x07]
+    misc = [0x6000316, 5, 3, 0x80, 8, 0xFFFF, "18020000", 1, 0x70, 0x07]
     cache.misc = misc
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
@@ -58,15 +58,15 @@ def test_full_cache() -> None:
     cache.rfff_data = ['*\\Rffff*2363c69a74']
     cache.df_data = [[-1, 0x60, 5, 0]]
     f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
-              "00 00 00 00 FF FF FF FF FF FF FF FF 18 02 00 00",
+              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[6],
               "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
-              "FF FF FF FF 18 02 00 00 FF FF FF FF FF FF FF FF",
+              "FF FF FF FF" + misc[6] + "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF 70 02 00 00 00 00 00 00",
               "00 00 00 00 78 00 00 00 08 00 00 00 00 00 60 00",
               "38 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF 10 00 00 00 08 00 B0 02",
               "00 00")
-    cache.f_data = bytes.fromhex(" ".join(f_data))
+    # cache.f_data = bytes.fromhex(" ".join(f_data))
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
