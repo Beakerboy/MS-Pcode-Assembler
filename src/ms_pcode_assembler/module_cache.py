@@ -129,7 +129,7 @@ class ModuleCache():
         if self.f_data == b'':
             ca = struct.pack("<HhHH", 0, -1, 0, misc[0])
             fo = ("00 00 00 00 00 00 00 00"
-                  "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[3],
+                  "FF FF FF FF FF FF FF FF FF FF FF FF", misc[0],
                   "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
                   "FF FF FF FF", misc[1], "FF FF FF FF FF FF FF FF",
                   "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
