@@ -45,6 +45,7 @@ class ModuleCache():
         self.pcode = struct.pack("<iI", -1, 0x78)
         self.pcode_dir = b''
         self.rfff_data = []
+        self.f_data = b''
 
     def to_bytes(self: T) -> bytes:
         ca = self.header_section()
@@ -120,17 +121,20 @@ class ModuleCache():
                 + self.indirect_table)
 
     def f_section(self: T) -> bytes:
-        ca = struct.pack("<HhHH", 0, -1, 0, self.misc[7])
-        fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
-              "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
-              "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
-              "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
-              "FF FF")
-        ca += bytes.fromhex(" ".join(fo))
+        if self.f_data == b''
+            ca = struct.pack("<HhHH", 0, -1, 0, self.misc[7])
+            fo = ("00 00 00 00 00 00 00 00"
+                  "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
+                  "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
+                  "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
+                  "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
+                  "FF FF")
+            ca += bytes.fromhex(" ".join(fo))
+        else
+            ca = self.f_data
         return ca
 
     def rff_section(self: T) -> bytes:
