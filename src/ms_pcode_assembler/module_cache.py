@@ -114,7 +114,7 @@ class ModuleCache():
                 guid_str += "{" + str(guid).upper() + "}"
             guid_str_bytes = bytes(guid_str, "utf_16_le")
             ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
-        ca += struct.pack("<IHiH", self.misc[9], 0, -1, 0x0101)
+        ca += struct.pack("<IHiH", self.misc[6], 0, -1, 0x0101)
         return ca
 
     def indirect_table_section(self: T) -> bytes:
