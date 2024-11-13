@@ -61,7 +61,7 @@ def test_full_cache() -> None:
     cache.rfff_data = ['*\\Rffff*2363c69a74']
     cache.df_data = [[-1, 0x60, 5, 0]]
     f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
-              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[4][0],
+              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[4][1],
               "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
               "FF FF FF FF" + misc[4][1] + "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF 70 02 00 00 00 00 00 00",
