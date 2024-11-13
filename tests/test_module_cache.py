@@ -6,7 +6,8 @@ from ms_pcode_assembler.module_cache import ModuleCache
 def test_doc_cache() -> None:
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB81C
-    cache.misc = [[0x0316, 0, 0x0123, 0x88], [-1, 8], 0x18, "00000000", 1, 0]
+    cache.misc = [[0x0316, 0, 0x0123, 0x88], [-1, 8],
+                  0x18, 0, [1, "00000000"]]
     guid = uuid.UUID('0002081900000000C000000000000046')
     cache.guid = [guid]
 
@@ -29,7 +30,8 @@ def test_doc_cache() -> None:
 def test_module_cache() -> None:
     cache = ModuleCache(0xB5, 0x08F3)
     cache.module_cookie = 0xB241
-    cache.misc = [[0x0316, 0, 3, 0], [-1, 2], 0xFFFF, "FFFFFFFF", 0, 0]
+    cache.misc = [[0x0316, 0, 3, 0], [-1, 2],
+                  0xFFFF, 0, [0, "FFFFFFFF"]]
     cache.indirect_table = struct.pack("<iI", -1, 0x78)
     f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x1200)
@@ -42,7 +44,8 @@ def test_full_cache() -> None:
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
     cache.zeroes = 56
-    misc = [[0x6000316, 5, 3, 0x80], [0x70, 8], 0xFFFF, "18020000", 1, 0x07]
+    misc = [[0x6000316, 5, 3, 0x80], [0x70, 8],
+            0xFFFF, 7, [1, "18020000"]]
     cache.misc = misc
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
     cache.guid = [guid]
