@@ -98,8 +98,9 @@ class ModuleCache():
         return ca
 
     def four_five_section(self: T) -> bytes:
+        misc = self.misc[2]
         return (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                            0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[2])
+                            0, -1, 0x0101, 0, 0xDF, -1, 0, misc)
                 + b'\xFF' * 0x80)
 
     def object_table_section(self: T) -> bytes:
@@ -108,6 +109,7 @@ class ModuleCache():
         return ca
 
     def utf16_guid_section(self: T) -> bytes:
+        misc = self.misc[3]
         ca = len(self.guid).to_bytes(2, "little")
         if len(self.guid) > 0:
             guid_str = "0"
@@ -115,7 +117,7 @@ class ModuleCache():
                 guid_str += "{" + str(guid).upper() + "}"
             guid_str_bytes = bytes(guid_str, "utf_16_le")
             ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
-        ca += struct.pack("<IHiH", self.misc[5], 0, -1, 0x0101)
+        ca += struct.pack("<IHiH", misc, 0, -1, 0x0101)
         return ca
 
     def indirect_table_section(self: T) -> bytes:
@@ -123,12 +125,13 @@ class ModuleCache():
                 + self.indirect_table)
 
     def f_section(self: T) -> bytes:
+        misc = self.misc[4]
         if self.f_data == b'':
-            ca = struct.pack("<HhHH", 0, -1, 0, self.misc[4])
+            ca = struct.pack("<HhHH", 0, -1, 0, misc[0])
             fo = ("00 00 00 00 00 00 00 00"
                   "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[3],
                   "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-                  "FF FF FF FF", self.misc[3], "FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF", misc[1], "FF FF FF FF FF FF FF FF",
                   "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
                   "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
                   "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
