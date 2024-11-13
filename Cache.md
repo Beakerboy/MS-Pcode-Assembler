@@ -468,6 +468,9 @@ A standard size/data record. There may be multiple guids. Identical to the modul
 </tbody>
 </table>
 
+## F Section
+130 bytes
+
 ## RFFFF
 <table class="tg">
 <thead>
