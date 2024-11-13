@@ -309,7 +309,7 @@ Several Guids in binary form are packed together
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="4">Signature</td>
+    <td class="tg-0pky" colspan="4">SignatureBytes</td>
     <td class="tg-0pky" colspan="4">-1</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="4">0</td>
@@ -329,6 +329,8 @@ Several Guids in binary form are packed together
   </tr>
 </tbody>
 </table>
+<b>SignatureBytes (2 bytes):</b> Specifies the beginning of the section. MUST be 0x454D.
+
 This structure ends with 64 0xFFFF.
 
 ## Object Table
