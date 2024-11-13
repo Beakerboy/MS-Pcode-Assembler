@@ -83,14 +83,15 @@ class ModuleCache():
         return ca + struct.pack("<iI", -1, 0)
 
     def guid_section(self: T) -> bytes:
-        ca = struct.pack("<hhhH", -1, self.misc[5], -1, 0)
+        misc = self.misc[1]
+        ca = struct.pack("<hhhH", -1, misc[0], -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
         for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[1])
+                          8, -1, 0x78, misc[1])
         for guid in self.guids2:
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
@@ -114,7 +115,7 @@ class ModuleCache():
                 guid_str += "{" + str(guid).upper() + "}"
             guid_str_bytes = bytes(guid_str, "utf_16_le")
             ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
-        ca += struct.pack("<IHiH", self.misc[6], 0, -1, 0x0101)
+        ca += struct.pack("<IHiH", self.misc[5], 0, -1, 0x0101)
         return ca
 
     def indirect_table_section(self: T) -> bytes:
