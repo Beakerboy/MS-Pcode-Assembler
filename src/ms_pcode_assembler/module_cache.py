@@ -83,14 +83,14 @@ class ModuleCache():
         return ca + struct.pack("<iI", -1, 0)
 
     def guid_section(self: T) -> bytes:
-        ca = struct.pack("<hhhH", -1, self.misc[8], -1, 0)
+        ca = struct.pack("<hhhH", -1, self.misc[5], -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
         for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[4])
+                          8, -1, 0x78, self.misc[1])
         for guid in self.guids2:
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
@@ -98,7 +98,7 @@ class ModuleCache():
 
     def four_five_section(self: T) -> bytes:
         return (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                            0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[5])
+                            0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[2])
                 + b'\xFF' * 0x80)
 
     def object_table_section(self: T) -> bytes:
@@ -123,11 +123,11 @@ class ModuleCache():
 
     def f_section(self: T) -> bytes:
         if self.f_data == b'':
-            ca = struct.pack("<HhHH", 0, -1, 0, self.misc[7])
+            ca = struct.pack("<HhHH", 0, -1, 0, self.misc[4])
             fo = ("00 00 00 00 00 00 00 00"
-                  "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[6],
+                  "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[3],
                   "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-                  "FF FF FF FF", self.misc[6], "FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF", self.misc[3], "FF FF FF FF FF FF FF FF",
                   "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
                   "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
                   "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
