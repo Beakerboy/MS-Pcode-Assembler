@@ -1,4 +1,5 @@
 import struct
+import ms_pcode_assembler
 from typing import TypeVar
 
 
@@ -37,5 +38,3 @@ class CacheHeader():
                            ito, sdo, magic_ofs, edo,
                            d2, 1, pc, mc, 0, -1,
                            self.data3, self.data4, 0xB6, -1, 0x0101)
-
-import ms_pcode_assembler.module_cache as mc
