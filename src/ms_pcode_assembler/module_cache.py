@@ -19,6 +19,9 @@ class ModuleCache():
         self.clear_variables()
 
     def get_vba_version(self: T) -> int:
+        '''
+        Where is this used?
+        '''
         if self.version >= 0x6B:
             if self.version >= 0x97:
                 return 7
