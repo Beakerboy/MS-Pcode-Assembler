@@ -19,7 +19,6 @@ classifiers = [
 [project.optional-dependencies]
 tests = [
   'coveralls',
-  'flake8-annotations',
   'flake8-modern-annotations',
   'mypy',
   'pytest',
