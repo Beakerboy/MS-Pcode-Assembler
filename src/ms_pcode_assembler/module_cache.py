@@ -1,5 +1,5 @@
 import struct
-import ms_pcode_assembler as mspc
+import ms_pcode_assembler.cache_header as ch
 from typing import TypeVar
 from uuid import UUID
 
@@ -9,8 +9,6 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    import mspc.cache_header as ch
-    from ch import CacheHeader
     def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self.version = version
