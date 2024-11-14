@@ -130,7 +130,7 @@ def test_full_cache() -> None:
     cache.object_table = bytes.fromhex(" ".join(object_table))
     dir_blank = [0x98000, 0, 0, -1]
     dir_blank_str = struct.pack("<IHHi", *dir_blank)
-    pcode_dir = (
+    pcode_dir = [
                   [[0x98000, 32, 0, 0], [0x98000, 68, 0, 32]],
                   [[0x98000, 29, 0, 104], [0xCA142, 6, 16, 136]]
                   [[0x88104, 2, 0, 144]],
@@ -142,7 +142,7 @@ def test_full_cache() -> None:
                   [[0x88104, 2, 0, 296]],
                   [[0x98000, 22, 0, 304], [0xC8142, 6, 16, 328]],
                   [[0x88104, 2, 0, 336]]
-    )
+    ]
     lines = []
     for line in pcode_dir:
         line_bytes = b''
