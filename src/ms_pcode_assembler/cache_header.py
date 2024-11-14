@@ -1,4 +1,4 @@
-from __future__ import ModuleCache
+from __future__ import annotations
 import struct
 from typing import TypeVar
 
