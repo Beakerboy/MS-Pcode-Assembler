@@ -30,9 +30,10 @@ def test_doc_cache() -> None:
 
 
 def test_module_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3)
+    cache = ModuleCache(0xB5, 0x08F3, 3)
     cache.module_cookie = 0xB241
-    cache.misc = [[0x0316, 0, 3, 0], [-1, 2],
+    cache.header.data2 = 3
+    cache.misc = [[-1, 2],
                   0xFFFF, 0, [0, "FFFFFFFF"]]
     cache.indirect_table = struct.pack("<iI", -1, 0x78)
     f = open('tests/vbaProject.bin', 'rb')
