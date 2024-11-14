@@ -4,9 +4,10 @@ from ms_pcode_assembler.module_cache import ModuleCache
 
 
 def test_doc_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3)
+    cache = ModuleCache(0xB5, 0x08F3, 3)
     cache.module_cookie = 0xB81C
-    cache.misc = [[0x0316, 0, 0x0123, 0x88], [-1, 8],
+    cache.header.set_data(data2=0x0123, data3=0x88)
+    cache.misc = [[-1, 8],
                   0x18, 0, [1, "00000000"]]
     guid = uuid.UUID('0002081900000000C000000000000046')
     cache.guid = [guid]
