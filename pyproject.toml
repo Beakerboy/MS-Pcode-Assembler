@@ -20,6 +20,7 @@ classifiers = [
 tests = [
   'coveralls',
   'flake8-annotations',
+  'flake8-modern-annotations',
   'mypy',
   'pytest',
   'pytest-cov',
