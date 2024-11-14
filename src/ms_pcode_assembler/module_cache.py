@@ -1,4 +1,5 @@
 import struct
+import ms_pcode_assembler as mspc
 from typing import TypeVar
 from uuid import UUID
 
