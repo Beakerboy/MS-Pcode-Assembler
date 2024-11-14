@@ -11,14 +11,13 @@ class CacheHeader():
         self._cache = cache
         self._project_cookie = project_cookie
         self._signature = signature
-        self.data1 = 0
-        self.data2 = 0
-        self.data3 = 0
+        self.clear_variables()
 
     def clear_variables(self: T) -> None:
         self.data1 = 0
         self.data2 = 0
         self.data3 = 0
+        self.data4 = 0
 
     def to_bytes(self: T) -> bytes:
         cache = self._cache
@@ -30,8 +29,8 @@ class CacheHeader():
         ffo = cache.four_five_offset()
         edo = cache.end_offset()
         sdo = cache.second_df_offset()
-        return struct.pack("<BHBIIIIiIIIIHHHhIIHhH", 22, self._signature,
-                           self.data1, dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, self.data2, 1, self._project_cookie,
-                           module_cookie, 0, -1, misc[1],
-                           self.data3, 0xB6, -1, 0x0101)
+        return struct.pack("<BHBIII IiII IIHHHh IIHhH",
+                           22, self._signature, self.data1, dfo, rfo, ffo,
+                           ito, sdo, magic_ofs, edo,
+                           self.data2, 1, self._project_cookie, module_cookie, 0, -1, 
+                           self.data3, self.data4, 0xB6, -1, 0x0101)
