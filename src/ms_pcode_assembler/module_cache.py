@@ -1,5 +1,5 @@
 import struct
-from ms_pcode_assembler.cache_header import CacheHeader
+import ms_pcode_assembler.cache_header as ch
 from typing import TypeVar
 from uuid import UUID
 
@@ -12,7 +12,7 @@ class ModuleCache():
     def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self.version = version
-        self.header = CacheHeader(self, project_cookie, syskind, signature)
+        self.header = ch.CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
         self.clear_self()
