@@ -8,10 +8,11 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    def __init__(self: T, version: int, project_cookie: int, syskind: int = 2
-                 ) -> None:
+    def __init__(self: T, version: int, project_cookie: int,
+                 syskind: int = 2, signature: int = 0) -> None:
         self.version = version
         self.syskind = syskind
+        self.signature = signature * 256 + 22
         self.project_cookie = project_cookie
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
@@ -71,11 +72,11 @@ class ModuleCache():
         ffo = self.four_five_offset()
         edo = self.end_offset()
         sdo = self.second_df_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, misc[0],
+        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.signature,
                            dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, misc[1], 1, self.project_cookie,
-                           self.module_cookie, 0, -1, misc[2],
-                           misc[3], 0xB6, -1, 0x0101)
+                           edo, misc[0], 1, self.project_cookie,
+                           self.module_cookie, 0, -1, misc[1],
+                           misc[2], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self: T) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
