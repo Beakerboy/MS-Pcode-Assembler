@@ -9,7 +9,7 @@ T = TypeVar('T', bound='CacheHeader')
 
 class CacheHeader():
 
-    def __init__(self: T, cache: "mc.ModuleCache", project_cookie: int,
+    def __init__(self: T, cache: mc.ModuleCache, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self._cache = cache
         self._project_cookie = project_cookie
