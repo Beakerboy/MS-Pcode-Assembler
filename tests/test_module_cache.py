@@ -22,7 +22,8 @@ def test_doc_cache() -> None:
     object_table = [[2, 0x4C53], [1, 0x1053], [1, 0x9453], [0, 0x3C02]]
     object_table_bytes = b''
     for entry in object_table:
-        object_table_bytes += struct.pack("<HHiH", *object_table, -1, 0)
+        entry.extend([-1, 0])
+        object_table_bytes += struct.pack("<HHiH", *entry)
     cache.object_table = object_table_bytes
 
     f = open('tests/vbaProject.bin', 'rb')
