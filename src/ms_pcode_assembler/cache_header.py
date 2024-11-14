@@ -1,5 +1,5 @@
-import struct
 from __future__ import ModuleCache
+import struct
 from typing import TypeVar
 
 
