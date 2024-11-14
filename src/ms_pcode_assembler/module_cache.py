@@ -1,5 +1,5 @@
 import struct
-import ms_pcode_assembler.cache_header as ch
+from ms_pcode_assembler.cache_header import CacheHeader
 from typing import TypeVar
 from uuid import UUID
 
