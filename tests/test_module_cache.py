@@ -132,7 +132,7 @@ def test_full_cache() -> None:
     for entry in object_table:
         object_table_bytes += struct.pack("<HHiH", *entry, -1, 0)
     cache.object_table = object_table_bytes
-    
+
     dir_blank = [0x98000, 0, 0, -1]
     dir_blank_str = struct.pack("<IHHi", *dir_blank)
     pcode_dir = [
