@@ -55,7 +55,8 @@ class ModuleCache():
         self.f_data = b''
 
     def to_bytes(self: T) -> bytes:
-        ca = self.header.to_bytes()
+        ca = b'\x01'
+        ca += self.header.to_bytes()
         ca += self.declaration_table_section()
         ca += self.guid_section()
         ca += self.four_five_section()
