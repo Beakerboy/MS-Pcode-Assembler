@@ -4,9 +4,11 @@ from ms_pcode_assembler.module_cache import ModuleCache
 
 
 def test_doc_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3)
+    cache = ModuleCache(0xB5, 0x08F3, signature=3)
     cache.module_cookie = 0xB81C
-    cache.misc = [[0x0316, 0, 0x0123, 0x88], [-1, 8],
+    cache.header.data3 = 0x0123
+    cache.header.data4 = 0x88
+    cache.misc = [[-1, 8],
                   0x18, 0, [1, "00000000"]]
     guid = uuid.UUID('0002081900000000C000000000000046')
     cache.guid = [guid]
@@ -28,9 +30,10 @@ def test_doc_cache() -> None:
 
 
 def test_module_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3)
+    cache = ModuleCache(0xB5, 0x08F3, signature=3)
     cache.module_cookie = 0xB241
-    cache.misc = [[0x0316, 0, 3, 0], [-1, 2],
+    cache.header.data3 = 3
+    cache.misc = [[-1, 2],
                   0xFFFF, 0, [0, "FFFFFFFF"]]
     cache.indirect_table = struct.pack("<iI", -1, 0x78)
     f = open('tests/vbaProject.bin', 'rb')
@@ -40,11 +43,15 @@ def test_module_cache() -> None:
 
 
 def test_full_cache() -> None:
-    cache = ModuleCache(0xB2, 0x78B9)
+    cache = ModuleCache(0xB2, 0x78B9, signature=3)
+    cache.header.data1 = 6
+    cache.header.data2 = 5
+    cache.header.data3 = 3
+    cache.header.data4 = 128
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
     cache.zeroes = 56
-    misc = [[0x6000316, 5, 3, 0x80], [0x70, 8],
+    misc = [[0x70, 8],
             0xFFFF, 7, [1, "18020000"]]
     cache.misc = misc
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
@@ -61,9 +68,9 @@ def test_full_cache() -> None:
     cache.rfff_data = ['*\\Rffff*2363c69a74']
     cache.df_data = [[-1, 0x60, 5, 0]]
     f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
-              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[4][1],
+              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[3][1],
               "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
-              "FF FF FF FF" + misc[4][1] + "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF" + misc[3][1] + "FF FF FF FF FF FF FF FF",
               "FF FF FF FF FF FF FF FF 70 02 00 00 00 00 00 00",
               "00 00 00 00 78 00 00 00 08 00 00 00 00 00 60 00",
               "38 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
@@ -121,36 +128,29 @@ def test_full_cache() -> None:
                     "FF FF 00 00 01 00 53 94 FF FF FF FF 00 00 00 00",
                     "36 22 FF FF FF FF 00 00")
     cache.object_table = bytes.fromhex(" ".join(object_table))
-    pcode_dir = ("00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 20 00 00 00 00 00 00 00",
-                 "00 80 09 00 44 00 00 00 20 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 1C 00 00 00 68 00 00 00",
-                 "42 A1 0C 00 06 00 10 00 88 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "04 81 08 00 02 00 00 00 90 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 22 00 00 00 98 00 00 00",
-                 "22 A1 0C 00 06 00 10 00 C0 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "04 81 08 00 02 00 00 00 C8 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 1A 00 00 00 D0 00 00 00",
-                 "22 81 08 00 06 00 10 00 F0 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "04 81 08 00 02 00 00 00 F8 00 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 1C 00 00 00 00 01 00 00",
-                 "22 81 08 00 06 00 10 00 20 01 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "04 81 08 00 02 00 00 00 28 01 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "00 80 09 00 16 00 00 00 30 01 00 00",
-                 "42 81 0C 00 06 00 10 00 48 01 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF",
-                 "04 81 08 00 02 00 00 00 50 01 00 00",
-                 "00 80 09 00 00 00 00 00 FF FF FF FF")
-    cache.pcode_dir = bytes.fromhex(" ".join(pcode_dir))
+    dir_blank = [0x98000, 0, 0, -1]
+    dir_blank_str = struct.pack("<IHHi", *dir_blank)
+    pcode_dir = [
+                  [[0x98000, 32, 0, 0], [0x98000, 68, 0, 32]],
+                  [[0x98000, 28, 0, 104], [0xCA142, 6, 16, 136]],
+                  [[0x88104, 2, 0, 144]],
+                  [[0x98000, 34, 0, 152], [0xCA122, 6, 16, 192]],
+                  [[0x088104, 2, 0, 200]],
+                  [[0x98000, 26, 0, 208], [0x88122, 6, 16, 240]],
+                  [[0x88104, 2, 0, 248]],
+                  [[0x98000, 28, 0, 256], [0x88122, 6, 16, 288]],
+                  [[0x88104, 2, 0, 296]],
+                  [[0x98000, 22, 0, 304], [0xC8142, 6, 16, 328]],
+                  [[0x88104, 2, 0, 336]]
+    ]
+    lines = []
+    for line in pcode_dir:
+        line_bytes = b''
+        for ins in line:
+            line_bytes += struct.pack("<IHHi", *ins)
+        lines.append(line_bytes)
+
+    cache.pcode_dir = dir_blank_str + dir_blank_str.join(lines) + dir_blank_str
 
     pcode = ("E3 00 00 00 1A 00 20 49 6E 74 65 72 66 61 63 65",
              "3A 20 69 53 51 4C 43 6F 6E 6E 65 63 74 69 6F 6E",
@@ -182,7 +182,9 @@ def test_full_cache() -> None:
     cache.pcode = bytes.fromhex(" ".join(pcode))
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x1200)
-    he = cache.header_section()
+    file_data = f.read(1)
+    assert b'\x01' == file_data
+    he = cache.header.to_bytes()
     file_data = f.read(len(he))
     assert he == file_data
     dt = cache.declaration_table_section()

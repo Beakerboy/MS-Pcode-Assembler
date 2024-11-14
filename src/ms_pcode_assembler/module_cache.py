@@ -1,4 +1,5 @@
 import struct
+from ms_pcode_assembler.cache_header import CacheHeader
 from typing import TypeVar
 from uuid import UUID
 
@@ -8,16 +9,18 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    def __init__(self: T, version: int, project_cookie: int, syskind: int = 2
-                 ) -> None:
+    def __init__(self: T, version: int, project_cookie: int,
+                 syskind: int = 2, signature: int = 0) -> None:
         self.version = version
-        self.syskind = syskind
-        self.project_cookie = project_cookie
+        self.header = CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
-        self.clear_variables()
+        self.clear_self()
 
     def get_vba_version(self: T) -> int:
+        '''
+        Where is this used?
+        '''
         if self.version >= 0x6B:
             if self.version >= 0x97:
                 return 7
@@ -30,6 +33,10 @@ class ModuleCache():
         return self.syskind == 3
 
     def clear_variables(self: T) -> None:
+        self.header.clear_variables()
+        self.clear_self()
+
+    def clear_self(self: T) -> None:
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
@@ -48,7 +55,8 @@ class ModuleCache():
         self.f_data = b''
 
     def to_bytes(self: T) -> bytes:
-        ca = self.header_section()
+        ca = b'\x01'
+        ca += self.header.to_bytes()
         ca += self.declaration_table_section()
         ca += self.guid_section()
         ca += self.four_five_section()
@@ -62,28 +70,13 @@ class ModuleCache():
         ca += self._create_pcode()
         return ca
 
-    def header_section(self: T) -> bytes:
-        misc = self.misc[0]
-        dfo = self.df_offset()
-        ito = self.id_table_offset()
-        magic_ofs = self.magic_offset()
-        rfo = self.rfff_offset()
-        ffo = self.four_five_offset()
-        edo = self.end_offset()
-        sdo = self.second_df_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, misc[0],
-                           dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, misc[1], 1, self.project_cookie,
-                           self.module_cookie, 0, -1, misc[2],
-                           misc[3], 0xB6, -1, 0x0101)
-
     def declaration_table_section(self: T) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
         ca += self.declaration_table
         return ca + struct.pack("<iI", -1, 0)
 
     def guid_section(self: T) -> bytes:
-        misc = self.misc[1]
+        misc = self.misc[0]
         ca = struct.pack("<hhhH", -1, misc[0], -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
@@ -98,7 +91,7 @@ class ModuleCache():
         return ca
 
     def four_five_section(self: T) -> bytes:
-        misc = self.misc[2]
+        misc = self.misc[1]
         return (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
                             0, -1, 0x0101, 0, 0xDF, -1, 0, misc)
                 + b'\xFF' * 0x80)
@@ -109,7 +102,7 @@ class ModuleCache():
         return ca
 
     def utf16_guid_section(self: T) -> bytes:
-        misc = self.misc[3]
+        misc = self.misc[2]
         ca = len(self.guid).to_bytes(2, "little")
         if len(self.guid) > 0:
             guid_str = "0"
@@ -125,7 +118,7 @@ class ModuleCache():
                 + self.indirect_table)
 
     def f_section(self: T) -> bytes:
-        misc = self.misc[4]
+        misc = self.misc[3]
         if self.f_data == b'':
             ca = struct.pack("<HhHH", 0, -1, 0, misc[0])
             fo = ("00 00 00 00 00 00 00 00"
