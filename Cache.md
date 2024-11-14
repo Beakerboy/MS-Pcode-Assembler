@@ -376,6 +376,7 @@ This structure ends with 64 0xFFFF.
 </table>
 
 <b>Length (4 byte):</b> The number of bytes of data.
+
 <b>Object Table Entries (10 bytes each):</b> 
 
 #### Object Table Entry
