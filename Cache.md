@@ -728,8 +728,9 @@ Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table<
 </tbody>
 </table>
 
-    Example Data
-    42 A1 0C 00 06 00 0C 00 20 00 00 00
+    Example Data:
+    00 80 09 00 00 00 00 00 FF FF FF FF  .?..........
+    42 A1 08 00 06 00 0C 00 10 00 00 00  B¡..........
 
 ### Pcode Data
 <table class="tg">
