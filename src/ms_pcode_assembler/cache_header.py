@@ -10,7 +10,7 @@ class CacheHeader():
                  syskind: int = 2, siganture = 0) -> None:
         self._cache = cache
         self._project_cookie = project_cookie
-        self._signature = signature * 256 + 22
+        self._signature = signature
         self.data1 = 0
         self.data2 = 0
         self.data3 = 0
@@ -22,7 +22,7 @@ class CacheHeader():
 
     def to_bytes(self: T) -> bytes:
         cache = self._cache
-        misc = cache.misc[0]
+        module_cookie = cache.module_cookie
         dfo = cache.df_offset()
         ito = cache.id_table_offset()
         magic_ofs = cache.magic_offset()
@@ -30,8 +30,8 @@ class CacheHeader():
         ffo = cache.four_five_offset()
         edo = cache.end_offset()
         sdo = cache.second_df_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.signature,
-                           dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, misc[0], 1, self._project_cookie,
-                           self._module_cookie, 0, -1, misc[1],
-                           misc[2], 0xB6, -1, 0x0101)
+        return struct.pack("<BHBIIIIiIIIIHHHhIIHhH", 22, self._signature,
+                           self.data1, dfo, rfo, ffo, ito, sdo, magic_ofs,
+                           edo, self.data2, 1, self._project_cookie,
+                           module_cookie, 0, -1, misc[1],
+                           self.data3, 0xB6, -1, 0x0101)
