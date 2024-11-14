@@ -375,6 +375,45 @@ This structure ends with 64 0xFFFF.
 </tbody>
 </table>
 
+<b>Length (4 byte):</b> The number of bytes of data.
+<b>Object Table Entries (10 bytes each):</b> 
+
+#### Object Table Entry
+Each <b>Object Table Entry</b> is 10 bytes in length
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="2">0</td>
+  </tr>
+</tbody>
+</table>
+
+    Example Data:
+    02 00 53 4C FF FF FF FF 00 00  ..SL......
+
 ## UTF-16 Guid
 If the module has a GUID, its UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
 
