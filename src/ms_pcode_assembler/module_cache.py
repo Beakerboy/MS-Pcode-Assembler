@@ -1,4 +1,5 @@
 import struct
+from cache_header import CacheHeader
 from typing import TypeVar
 from uuid import UUID
 
@@ -11,9 +12,7 @@ class ModuleCache():
     def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self.version = version
-        self.syskind = syskind
-        self.signature = signature * 256 + 22
-        self.project_cookie = project_cookie
+        self.header = CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
         self.clear_variables()
@@ -34,6 +33,7 @@ class ModuleCache():
         return self.syskind == 3
 
     def clear_variables(self: T) -> None:
+        self.header.clear_variables()
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
@@ -52,7 +52,7 @@ class ModuleCache():
         self.f_data = b''
 
     def to_bytes(self: T) -> bytes:
-        ca = self.header_section()
+        ca = self.header.to_bytes()
         ca += self.declaration_table_section()
         ca += self.guid_section()
         ca += self.four_five_section()
@@ -65,21 +65,6 @@ class ModuleCache():
         ca += b'\x00' * self.zeroes
         ca += self._create_pcode()
         return ca
-
-    def header_section(self: T) -> bytes:
-        misc = self.misc[0]
-        dfo = self.df_offset()
-        ito = self.id_table_offset()
-        magic_ofs = self.magic_offset()
-        rfo = self.rfff_offset()
-        ffo = self.four_five_offset()
-        edo = self.end_offset()
-        sdo = self.second_df_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.signature,
-                           dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, misc[0], 1, self.project_cookie,
-                           self.module_cookie, 0, -1, misc[1],
-                           misc[2], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self: T) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
