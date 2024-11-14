@@ -1,5 +1,5 @@
 import struct
-from module_cache import ModuleCache
+from ms_pcode_assembler.module_cache import ModuleCache
 from typing import TypeVar
 
 
