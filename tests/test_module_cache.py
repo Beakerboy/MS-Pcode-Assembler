@@ -6,8 +6,8 @@ from ms_pcode_assembler.module_cache import ModuleCache
 def test_doc_cache() -> None:
     cache = ModuleCache(0xB5, 0x08F3, 3)
     cache.module_cookie = 0xB81C
-    cache.header.data2 = 0x0123
-    cache.header.data3 = 0x88
+    cache.header.data3 = 0x0123
+    cache.header.data4 = 0x88
     cache.misc = [[-1, 8],
                   0x18, 0, [1, "00000000"]]
     guid = uuid.UUID('0002081900000000C000000000000046')
@@ -43,11 +43,15 @@ def test_module_cache() -> None:
 
 
 def test_full_cache() -> None:
-    cache = ModuleCache(0xB2, 0x78B9)
+    cache = ModuleCache(0xB2, 0x78B9, 3)
+    cache.header.data1 = 6
+    cache.header.data2 = 5
+    cache.header.data3 = 3
+    cache.header.data4 = 128
     cache.rfff_value = b'\x73\x62\xC6\x63\x07'
     cache.module_cookie = 0x0399
     cache.zeroes = 56
-    misc = [[0x6000316, 5, 3, 0x80], [0x70, 8],
+    misc = [[0x70, 8],
             0xFFFF, 7, [1, "18020000"]]
     cache.misc = misc
     guid = uuid.UUID('fcfb3d2aa0fa1068a73808002b3371b5')
