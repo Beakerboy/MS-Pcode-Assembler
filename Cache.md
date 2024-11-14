@@ -412,7 +412,7 @@ Each <b>Object Table Entry</b> is 10 bytes in length
 </table>
 
     Example Data:
-    02 00 53 4C FF FF FF FF 00 00
+    02 00 53 4C FF FF FF FF 00 00  ..SL......
 
 ## UTF-16 Guid
 If the module has a GUID, its UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
