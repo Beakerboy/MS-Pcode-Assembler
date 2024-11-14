@@ -32,7 +32,7 @@ class ModuleCache():
     def is_64bit(self: T) -> bool:
         return self.syskind == 3
 
-    def clear_variables(self:T) -> None:
+    def clear_variables(self: T) -> None:
         self.header.clear_variables()
         self.clear_self()
 
