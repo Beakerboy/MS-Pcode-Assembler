@@ -10,7 +10,7 @@ T = TypeVar('T', bound='ModuleCache')
 class ModuleCache():
 
 
-    import ms_pcode_assembler.cache_header as ch
+    import mspc.cache_header as ch
 
     
     def __init__(self: T, version: int, project_cookie: int,
