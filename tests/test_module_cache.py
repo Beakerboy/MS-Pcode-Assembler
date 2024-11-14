@@ -189,6 +189,8 @@ def test_full_cache() -> None:
     cache.pcode = bytes.fromhex(" ".join(pcode))
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x1200)
+    file_data = f.read(1)
+    assert b'\x01' == file_data
     he = cache.header.to_bytes()
     file_data = f.read(len(he))
     assert he == file_data
