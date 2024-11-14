@@ -1,5 +1,6 @@
 from __future__ import annotations
 import struct
+import ms_pcode_assembler.cache_header
 from typing import TypeVar
 
 
