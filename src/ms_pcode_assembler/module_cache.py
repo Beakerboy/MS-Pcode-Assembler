@@ -9,10 +9,12 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
+    import mspc.cache_header as ch
+    from ch import CacheHeader
     def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self.version = version
-        self.header = mspc.cache_header.CacheHeader(self, project_cookie, syskind, signature)
+        self.header = CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
         self.clear_self()
