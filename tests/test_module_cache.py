@@ -146,8 +146,8 @@ def test_full_cache() -> None:
     lines = []
     for line in pcode_dir:
         line_bytes = b''
-        foreach ins in line:
-            line_bytes += struct.pack("<IHHi", *line)
+        for ins in line:
+            line_bytes += struct.pack("<IHHi", *ins)
         lines.append(line_bytes)
 
     cache.pcode_dir = dir_blank_str + dir_blank_str.join(lines) + dir_blank_str
