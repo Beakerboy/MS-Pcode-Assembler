@@ -1,3 +1,4 @@
+import struct
 from typing import TypeVar
 
 
@@ -32,5 +33,5 @@ class CacheHeader():
         return struct.pack("<BHBIII IiII IIHHHh IIHhH",
                            22, self._signature, self.data1, dfo, rfo, ffo,
                            ito, sdo, magic_ofs, edo,
-                           self.data2, 1, self._project_cookie, module_cookie, 0, -1, 
+                           self.data2, 1, self._project_cookie, module_cookie, 0, -1,
                            self.data3, self.data4, 0xB6, -1, 0x0101)
