@@ -4,7 +4,7 @@ from ms_pcode_assembler.module_cache import ModuleCache
 
 
 def test_doc_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3, signature = 3)
+    cache = ModuleCache(0xB5, 0x08F3, signature=3)
     cache.module_cookie = 0xB81C
     cache.header.data3 = 0x0123
     cache.header.data4 = 0x88
@@ -30,7 +30,7 @@ def test_doc_cache() -> None:
 
 
 def test_module_cache() -> None:
-    cache = ModuleCache(0xB5, 0x08F3, signature = 3)
+    cache = ModuleCache(0xB5, 0x08F3, signature=3)
     cache.module_cookie = 0xB241
     cache.header.data3 = 3
     cache.misc = [[-1, 2],
@@ -43,7 +43,7 @@ def test_module_cache() -> None:
 
 
 def test_full_cache() -> None:
-    cache = ModuleCache(0xB2, 0x78B9, signature = 3)
+    cache = ModuleCache(0xB2, 0x78B9, signature=3)
     cache.header.data1 = 6
     cache.header.data2 = 5
     cache.header.data3 = 3
