@@ -1,5 +1,5 @@
 import struct
-from ms_pcode_assembler.module_cache import ModuleCache
+import ms_pcode_assembler
 from typing import TypeVar
 
 
@@ -8,7 +8,7 @@ T = TypeVar('T', bound='CacheHeader')
 
 class CacheHeader():
 
-    def __init__(self: T, cache: ModuleCache, project_cookie: int,
+    def __init__(self: T, cache: ms_pcode_assembler.ModuleCache, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self._cache = cache
         self._project_cookie = project_cookie
