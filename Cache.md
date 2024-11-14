@@ -630,6 +630,7 @@ The <b>Pcode Directory</b> is a list of one <b>PcodeDirectoryRecord</b> for each
 
 #### Pcode Directory Record
 Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table</b> that holds the opcodes for the particular line in the source code.
+It seems to begin and end with a particular set of 12 bytes, and this record appears after every one or two entries.
 <table class="tg">
 <thead>
   <tr>
