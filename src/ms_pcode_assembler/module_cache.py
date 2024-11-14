@@ -9,10 +9,6 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-
-    import mspc.cache_header as ch
-
-    
     def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self.version = version
