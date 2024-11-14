@@ -15,7 +15,7 @@ class ModuleCache():
         self.header = CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
         self.zeroes = 58
-        self.clear_variables()
+        self.clear_self()
 
     def get_vba_version(self: T) -> int:
         '''
@@ -32,8 +32,11 @@ class ModuleCache():
     def is_64bit(self: T) -> bool:
         return self.syskind == 3
 
-    def clear_variables(self: T) -> None:
+    def clear_variables(self:T) -> None:
         self.header.clear_variables()
+        self.clear_self()
+
+    def clear_self(self: T) -> None:
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
