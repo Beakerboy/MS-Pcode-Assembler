@@ -18,10 +18,17 @@ def test_doc_cache() -> None:
                       "FF FF FF FF FF FF FF FF 00 00 00 00 2E 00 43 00",
                       "1D 00 00 00 25 00 00 00 FF FF FF FF 40 00 00 00")
     cache.indirect_table = bytes.fromhex(" ".join(indirect_table))
-    object_table = ("02 00 53 4C FF FF FF FF 00 00 01 00 53 10 FF FF",
-                    "FF FF 00 00 01 00 53 94 FF FF FF FF 00 00 00 00",
-                    "02 3C FF FF FF FF 00 00")
-    cache.object_table = bytes.fromhex(" ".join(object_table))
+    
+    object_table = [[2, 0x4C53], [1, 0x1053] [1, 0x9453], [0, 0x3C02]]
+    object_table_bytes = b''
+    for entry in object_table:
+        object_table_bytes += struct.pack("<HHiH", *object_table, -1, 0)
+    cache.object_table = object_table_bytes
+    
+    object_table = ("02 00 53 4C FF FF FF FF 00 00",
+                    "01 00 53 10 FF FF FF FF 00 00",
+                    "01 00 53 94 FF FF FF FF 00 00",
+                    "00 00 02 3C FF FF FF FF 00 00")
 
     f = open('tests/vbaProject.bin', 'rb')
     f.seek(0x0800)
