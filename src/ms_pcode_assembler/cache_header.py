@@ -1,4 +1,5 @@
 import struct
+from module_cache import ModuleCache
 from typing import TypeVar
 
 
@@ -7,7 +8,7 @@ T = TypeVar('T', bound='CacheHeader')
 
 class CacheHeader():
 
-    def __init__(self: T, cache, project_cookie: int,
+    def __init__(self: T, cache: ModuleCache, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self._cache = cache
         self._project_cookie = project_cookie
