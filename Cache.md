@@ -161,7 +161,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>Header (4 bytes):</b> Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file. Should this be split into one byte, two bytes and one byte?
 
-<b>ObjectTableOffset (4 bytes):</b> Offset to the 0xDF that follows the </a>.
+<b>ObjectTableOffset (4 bytes):</b> Offset to the 0xDF that follows the 45 Section</a>.
 
 <b>RFFFF Offset (4 bytes):</b > Offset to the RFFFFs
 
@@ -169,9 +169,9 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
-<b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset after the DF.
+<b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset one after the DF othat starts the DF Section.
 
-<b>PcodeDirectoryOffset (4 bytes):</b> Points to the bytes after the 0xDF that follows the DF section 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+<b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
 
 <b>End Offset (4 bytes):</b> Marks the end of the Pcode data. The compressed source container is 6 bytes after this.
 
@@ -762,7 +762,7 @@ If there is data, we start with "00 00 00 00", then follow with a sequence of DF
 </tbody>
 </table>
 
-After this is 58 0's
+After this is 58 0's...Sometimes 56 zeroes?
 ## Pcode
 
 <table class="tg">
