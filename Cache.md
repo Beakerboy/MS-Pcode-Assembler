@@ -46,6 +46,12 @@ The performance cache precedes the compressed source container within a vbaProje
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
+  </tr>0xFF
+  <tr>
+    <td class="tg-0pky" colspan="16">128 bytes of 0xFF</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">ObjectTable</td>
@@ -78,7 +84,13 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="16">Mystery</td>
+    <td class="tg-0pky" colspan="16">DF Section</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">58 bytes of zeroes</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -678,8 +690,12 @@ This is a 130 byte bock which is mostly -1 data elements. The four bytes at offs
 </tbody>
 </table>
 
+Example Data:
+    DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00 06  ß..........x....
+    00 10 00                                         ...
+
 ### DF Data
-If there is data, we start with "00 00 00 00", then follow with a secuence of DF records.
+If there is data, we start with "00 00 00 00", then follow with a sequence of DF records.
 <table class="tg">
 <thead>
   <tr>
@@ -704,7 +720,7 @@ If there is data, we start with "00 00 00 00", then follow with a secuence of DF
 <tbody>
   <tr>
     <td class="tg-0pky" colspan="4">0</td>
-    <td class="tg-0pky" colspan="12">DF Record (varies)</td>
+    <td class="tg-0pky" colspan="12">DF Records (varies)</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -712,9 +728,7 @@ If there is data, we start with "00 00 00 00", then follow with a secuence of DF
 </tbody>
 </table>
 
-    Example Data:
-    DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00 06  ß..........x....
-    00 10 00                                         ...
+<b>DF Records (12 bytes each):</b>
 
 #### DF Record
 <table class="tg">
