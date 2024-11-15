@@ -695,7 +695,7 @@ A collection of Rfff records...whatever they are. Are there bytes that indicate 
 </tbody>
 </table>
 
-Example Data:
+    Example Data:
     DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00 06  ß..........x....
     00 10 00                                         ...
 
