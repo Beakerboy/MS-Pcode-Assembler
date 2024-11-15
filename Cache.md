@@ -681,7 +681,8 @@ This is a 130 byte bock which is mostly -1 data elements. The four bytes at offs
 If there is data, we start with "00 00 00 00". each entry is 4-4-2-2
 
     Example Data:
-    DF 01 00 00 00 00 00 FF FF FF FF 60 00 00 00  ß..........`...
+    DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00  ß..........x...
+    06 00 10 00                                   ....
     
 After this is 58 0's
 ## Pcode
