@@ -539,7 +539,7 @@ A collection of two or two and four byte data values.
     Example Data:
     
 ## F Section
-This is a 130 byte bock which is mostly -1 data elements. The four bytes at offset 0x1C matches he value at 0x34.
+This is a 130 byte bock which is mostly -1 data elements. The four bytes at offset 0x1C matches the value at 0x34.
 
     Example Data:
     00 00 FF FF 00 00 01 00 00 00 00 00 00 00 00 00  ................
