@@ -121,7 +121,7 @@ def test_full_cache() -> None:
                       "FF FF FF FF 78 00 00 00 F0 00 00 00 48 01 00 00",
                       "FF FF FF FF 88 02 00 00 ")
     cache.indirect_table = bytes.fromhex(" ".join(indirect_table))
-    
+
     f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
               "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[3][1],
               "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
