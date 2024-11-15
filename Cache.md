@@ -501,6 +501,7 @@ A standard size/data record. There may be multiple guids. Identical to the modul
     30 00 30 00 30 00 30 00 30 00 34 00 36 00 7D 00  0.0.0.0.0.4.6.}.
 
 ## Indirect Table
+A collection of two or two and four byte data values.
 <table class="tg">
 <thead>
   <tr>
@@ -533,9 +534,24 @@ A standard size/data record. There may be multiple guids. Identical to the modul
 </tbody>
 </table>
 
-## F Section
-130 bytes
+<b>Length (4 byte):</b> The number of bytes of data.
 
+    Example Data:
+    
+## F Section
+This is a 130 byte bock which is mostly -1 data elements. The four bytes at offset 0x1C matches he value at 0x34.
+
+    Example Data:
+    00 00 FF FF 00 00 01 00 00 00 00 00 00 00 00 00  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF 00 00 00 00 FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00  ................
+    00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00  ................
+    00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF  ................
+    FF FF  ..
+    
 ## RFFFF
 <table class="tg">
 <thead>
