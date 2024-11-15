@@ -298,6 +298,19 @@ Several Guids in binary form are packed together
 </tbody>
 </table>
 
+    Example Data:
+    FF FF 90 00 FF  
+    FF FF 90 00 FF FF 00 00 5B F4 8B 2D 59 F3 79 41  ..?.....[ô?-YóyA
+    BC 8C EA 13 9C 57 77 5F 2A 3D FB FC FA A0 68 10  ¼?ê.?Ww_*=ûüú h.
+    A7 38 08 00 2B 33 71 B5 00 00 00 00 00 00 00 00  §8..+3qµ........
+    00 00 00 00 00 00 00 00 01 00 00 00 3F 65 3E ED  ............?e>í
+    E0 D3 F8 41 89 D4 7A 21 2D 16 D1 12 10 00 00 00  àOoA?Oz!-.Ñ.....
+    03 00 00 00 05 00 00 00 07 00 00 00 FF FF FF FF  ................
+    FF FF FF FF 01 01 08 00 00 00 FF FF FF FF 78 00  ..............x.
+    00 00 08 3F 65 3E ED E0 D3 F8 41 89 D4 7A 21 2D  ...?e>íàOoA?Oz!-
+    16 D1 12 5B F4 8B 2D 59 F3 79 41 BC 8C EA 13 9C  .Ñ.[ô?-YóyA¼?ê.?
+    57 77 5F FF FF 00 00 00 00                       Ww_.......
+
 ## 454D Section
 <table class="tg">
 <thead>
