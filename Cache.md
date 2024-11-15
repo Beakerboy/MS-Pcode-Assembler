@@ -767,7 +767,7 @@ If there is data, we start with "00 00 00 00", then follow with a sequence of DF
 </tbody>
 </table>
 
-After this is 58 0's...Sometimes 56 zeroes?
+After this is 58 0's...Sometimes 56 zeroes? It seems like if there is DF data, there are 56 additional zeroes, but if not, there are 58. If this is correct, maybe two of the 4 zeroes are always there, nad it's 56 additional?
 ## Pcode
 
 <table class="tg">
