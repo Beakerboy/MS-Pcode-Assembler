@@ -585,7 +585,9 @@ This is a 130 byte bock which is mostly -1 data elements. The four bytes at offs
     FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF  ................
     FF FF  ..
     
-## RFFFF
+## RFFFF Section
+A collection of Rfff records...whatever they are. Are there bytes that indicate how many records there are besides the RFFF offset?
+
 <table class="tg">
 <thead>
   <tr>
@@ -619,6 +621,9 @@ This is a 130 byte bock which is mostly -1 data elements. The four bytes at offs
 </tbody>
 </table>
 <b> RFFFFs :</b> one or more RFFFF records
+
+    Example Data:
+    73 62 C6 63 07 00  sbÆc..
 
 ### RFFFF Record
 <table class="tg">
