@@ -299,7 +299,6 @@ Several Guids in binary form are packed together
 </table>
 
     Example Data:
-    FF FF 90 00 FF  
     FF FF 90 00 FF FF 00 00 5B F4 8B 2D 59 F3 79 41  ..?.....[ô?-YóyA
     BC 8C EA 13 9C 57 77 5F 2A 3D FB FC FA A0 68 10  ¼?ê.?Ww_*=ûüú h.
     A7 38 08 00 2B 33 71 B5 00 00 00 00 00 00 00 00  §8..+3qµ........
