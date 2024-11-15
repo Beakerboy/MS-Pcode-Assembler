@@ -920,7 +920,7 @@ Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table<
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="4">Size</td>
+    <td class="tg-0pky" colspan="4">Length</td>
     <td class="tg-0pky" colspan="12">Data</td>
   </tr>
   <tr>
@@ -932,5 +932,25 @@ Each <b>Pcode Directory Record</b> Points to the location in the <b>Pcode Table<
   </tr>
 </tbody>
 </table>
+
+<b>Length (4 byte):</b> The number of bytes of data.
+
+    Example Data:
+    D8 00 00 00 5D 40 F5 04 68 02 00 00 5D 40 F5 04  O...]@o.h...]@o.
+    98 02 00 00 5D 40 F5 04 00 00 00 00 96 08 48 00  ?...]@o.....?.H.
+    00 00 00 00 20 00 5A 02 27 00 5C 02 6D 00 FF FF  .... .Z.'.\.m...
+    50 00 00 00 FA 00 B9 00 01 00 3D 00 96 18 C0 00  P...ú.1...=.?.A.
+    00 00 78 6C 20 00 60 02 27 00 56 02 20 00 62 02  ..xl .`.'.V. .b.
+    27 00 58 02 20 00 5C 02 27 00 5A 02 69 00 FF FF  '.X. .\.'.Z.i...
+    20 00 00 00 96 18 A0 01 00 00 00 00 5D 00 F5 04   ...?. .....].o.
+    18 02 00 00 20 00 5A 02 B9 00 02 00 49 53 05 00  .... .Z.1...IS..
+    9C 00 00 00 B9 00 01 00 20 00 20 00 5A 02 11 00  ?...1... . .Z...
+    B9 00 01 00 20 00 11 00 27 00 64 02 64 00 FF FF  1... ...'.d.d...
+    60 00 00 00 20 00 5A 02 27 00 64 02 6B 00 FF FF  `... .Z.'.d.k...
+    50 00 00 00 20 00 56 02 20 00 64 02 11 00 20 00  P... .V. .d... .
+    58 02 11 00 27 00 40 02 00 00 00 00 69 00 FF FF  X...'.@.....i...
+    30 00 00 00 FF FF FF FF 28 00 00 00 FF FF FF FF  0.......(.......
+    00 00                                            ..
+
 Insert format of data. Each data element is padded to fill 8 byte increments.
 
