@@ -246,7 +246,7 @@ Several Guids in binary form are packed together
 <tbody>
   <tr>
     <td class="tg-0pky" colspan="2">-1</td>
-    <td class="tg-0pky" colspan="2">unknown</td>
+    <td class="tg-0pky" colspan="2">Data</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="8">Guid</td>
