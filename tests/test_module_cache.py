@@ -67,18 +67,13 @@ def test_full_cache() -> None:
                                b'\x81\xD2\xCF\xA6\x4F\x5A\x18\xE2')
     cache.guids_extra = [guid2]
     cache.guids2 = [guid2, guid1]
-    cache.rfff_data = ['*\\Rffff*2363c69a74']
-    f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
-              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[3][1],
-              "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
-              "FF FF FF FF" + misc[3][1] + "FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF 70 02 00 00 00 00 00 00",
-              "00 00 00 00 78 00 00 00 08 00 00 00 00 00 60 00",
-              "38 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF 10 00 00 00 08 00 B0 02",
-              "00 00")
-    cache.f_data = bytes.fromhex(" ".join(f_data))
-    cache.df_data = [[-1, 0x60, 5, 0]]
+
+    object_table = [[2, 0x1053], [1, 0x0C53], [1, 0x9453], [0, 0x2236]]
+    object_table_bytes = b''
+    for entry in object_table:
+        object_table_bytes += struct.pack("<HHiH", *entry, -1, 0)
+    cache.object_table = object_table_bytes
+    
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
@@ -126,12 +121,21 @@ def test_full_cache() -> None:
                       "FF FF FF FF 78 00 00 00 F0 00 00 00 48 01 00 00",
                       "FF FF FF FF 88 02 00 00 ")
     cache.indirect_table = bytes.fromhex(" ".join(indirect_table))
+    
+    f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
+              "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[3][1],
+              "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
+              "FF FF FF FF" + misc[3][1] + "FF FF FF FF FF FF FF FF",
+              "FF FF FF FF FF FF FF FF 70 02 00 00 00 00 00 00",
+              "00 00 00 00 78 00 00 00 08 00 00 00 00 00 60 00",
+              "38 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+              "FF FF FF FF FF FF FF FF 10 00 00 00 08 00 B0 02",
+              "00 00")
+    cache.f_data = bytes.fromhex(" ".join(f_data))
 
-    object_table = [[2, 0x1053], [1, 0x0C53], [1, 0x9453], [0, 0x2236]]
-    object_table_bytes = b''
-    for entry in object_table:
-        object_table_bytes += struct.pack("<HHiH", *entry, -1, 0)
-    cache.object_table = object_table_bytes
+    cache.rfff_data = ['*\\Rffff*2363c69a74']
+
+    cache.df_data = [[-1, 0x60, 5, 0]]
 
     dir_blank = [0x98000, 0, 0, -1]
     dir_blank_str = struct.pack("<IHHi", *dir_blank)
