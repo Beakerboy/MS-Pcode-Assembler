@@ -73,7 +73,7 @@ def test_full_cache() -> None:
     for entry in object_table:
         object_table_bytes += struct.pack("<HHiH", *entry, -1, 0)
     cache.object_table = object_table_bytes
-    
+
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
