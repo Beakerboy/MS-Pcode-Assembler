@@ -678,12 +678,76 @@ This is a 130 byte bock which is mostly -1 data elements. The four bytes at offs
 </tbody>
 </table>
 
-If there is data, we start with "00 00 00 00". each entry is 4-4-2-2
+### DF Data
+If there is data, we start with "00 00 00 00", then follow with a secuence of DF records.
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="12">DF Record (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
 
     Example Data:
     DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00 06  ß..........x....
     00 10 00                                         ...
-    
+
+#### DF Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+  </tr>
+</tbody>
+</table>
+
 After this is 58 0's
 ## Pcode
 
