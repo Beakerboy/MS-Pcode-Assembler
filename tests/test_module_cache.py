@@ -68,7 +68,6 @@ def test_full_cache() -> None:
     cache.guids_extra = [guid2]
     cache.guids2 = [guid2, guid1]
     cache.rfff_data = ['*\\Rffff*2363c69a74']
-    cache.df_data = [[-1, 0x60, 5, 0]]
     f_data = ("05 00 05 00 00 00 01 00 00 00 00 00 00 00 00 00",
               "00 00 00 00 FF FF FF FF FF FF FF FF" + misc[3][1],
               "FF FF FF FF FF FF FF FF A0 01 00 00 FF FF FF FF",
@@ -79,6 +78,7 @@ def test_full_cache() -> None:
               "FF FF FF FF FF FF FF FF 10 00 00 00 08 00 B0 02",
               "00 00")
     cache.f_data = bytes.fromhex(" ".join(f_data))
+    cache.df_data = [[-1, 0x60, 5, 0]]
     indirect_table = ("0C 21 32 02 78 00 00 00 01 00 03 68 00 00 00 00",
                       "FF FF FF FF FF FF FF FF 00 00 00 00 00 00 00 00",
                       "00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00",
@@ -212,8 +212,7 @@ def test_full_cache() -> None:
     assert id == file_data
     fs = cache.f_section()
     file_data = f.read(len(fs))
-    # fails
-    # assert fs == file_data
+    assert fs == file_data
     rf = cache.rff_section()
     file_data = f.read(len(rf))
     assert rf == file_data
