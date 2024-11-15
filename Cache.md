@@ -173,7 +173,13 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>Data3 (4 bytes):</b>
 
- ## Declaration Table
+    Example Data:
+    16 03 00 01 F0 00 00 00 DA 02 00 00 D4 00 00 00  ....d...U...O...
+    00 02 00 00 FF FF FF FF E1 02 00 00 35 03 00 00  ........á...5...
+    00 00 00 00 01 00 00 00 B9 78 72 C4 00 00 FF FF  .......1xrÄ....
+    23 00 00 00 88 00 00 00 B6 00 FF FF 01 01         #...?...¶.....
+
+## Declaration Table
 <table class="tg">
 <thead>
   <tr>
