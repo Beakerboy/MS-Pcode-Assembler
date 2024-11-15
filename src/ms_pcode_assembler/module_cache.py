@@ -1,4 +1,5 @@
 import struct
+from ms_pcode_assembler.cache_header import CacheHeader
 from typing import TypeVar
 from uuid import UUID
 
@@ -8,15 +9,18 @@ T = TypeVar('T', bound='ModuleCache')
 
 class ModuleCache():
 
-    def __init__(self: T, version: int, project_cookie: int, syskind: int = 2
-                 ) -> None:
+    def __init__(self: T, version: int, project_cookie: int,
+                 syskind: int = 2, signature: int = 0) -> None:
         self.version = version
-        self.syskind = syskind
-        self.project_cookie = project_cookie
+        self.header = CacheHeader(self, project_cookie, syskind, signature)
         self.rfff_value = b'\x00' * 5
-        self.clear_variables()
+        self.zeroes = 58
+        self.clear_self()
 
     def get_vba_version(self: T) -> int:
+        '''
+        Where is this used?
+        '''
         if self.version >= 0x6B:
             if self.version >= 0x97:
                 return 7
@@ -29,6 +33,10 @@ class ModuleCache():
         return self.syskind == 3
 
     def clear_variables(self: T) -> None:
+        self.header.clear_variables()
+        self.clear_self()
+
+    def clear_self(self: T) -> None:
         self.module_cookie = 0
         self.misc = []
         zero_guid = UUID(int=0x0)
@@ -42,48 +50,25 @@ class ModuleCache():
         self.object_table = b''
         self.df_data = []
         self.pcode = struct.pack("<iI", -1, 0x78)
+        self.pcode_dir = b''
         self.rfff_data = []
+        self.f_data = b''
 
     def to_bytes(self: T) -> bytes:
-        ca = self.header_section()
+        ca = b'\x01'
+        ca += self.header.to_bytes()
         ca += self.declaration_table_section()
         ca += self.guid_section()
-        ca += struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
-                          0, -1, 0x0101, 0, 0xDF, -1, 0, self.misc[4])
-        ca += b'\xFF' * 0x80
+        ca += self.four_five_section()
         ca += self.object_table_section()
         ca += self.utf16_guid_section()
         ca += self.indirect_table_section()
-        ca += struct.pack("<HhHH", 0, -1, 0, self.misc[6])
-        fo = ("00 00 00 00 00 00 00 00"
-              "FF FF FF FF FF FF FF FF FF FF FF FF", self.misc[5],
-              "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF", self.misc[5], "FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
-              "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
-              "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
-              "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
-              "FF FF")
-        ca += bytes.fromhex(" ".join(fo))
+        ca += self.f_section()
         ca += self.rff_section()
         ca += self.df_section()
-        ca += b'\x00' * 58
+        ca += b'\x00' * self.zeroes
         ca += self._create_pcode()
         return ca
-
-    def header_section(self: T) -> bytes:
-        dfo = self.df_offset()
-        ito = self.id_table_offset()
-        magic_ofs = self.magic_offset()
-        rfo = self.rfff_offset()
-        ffo = self.four_five_offset()
-        edo = self.end_offset()
-        sdo = self.second_df_offset()
-        return struct.pack("<BIIIIIiIIIIHHHhIIHhH", 1, self.misc[0],
-                           dfo, rfo, ffo, ito, sdo, magic_ofs,
-                           edo, 0, 1, self.project_cookie,
-                           self.module_cookie, 0, -1, self.misc[1],
-                           self.misc[2], 0xB6, -1, 0x0101)
 
     def declaration_table_section(self: T) -> bytes:
         ca = len(self.declaration_table).to_bytes(4, "little")
@@ -91,18 +76,25 @@ class ModuleCache():
         return ca + struct.pack("<iI", -1, 0)
 
     def guid_section(self: T) -> bytes:
-        ca = struct.pack("<hhhH", -1, -1, -1, 0)
+        misc = self.misc[0]
+        ca = struct.pack("<hhhH", -1, misc[0], -1, 0)
         for guid in self.guids1:
             ca += guid.bytes_le
         ca += len(self.guids_extra).to_bytes(4, "little")
         for guid in self.guids_extra:
             ca += guid.bytes_le
         ca += struct.pack("<IIIIiiHIiIB", 0x10, 3, 5, 7, -1, -1, 0x0101,
-                          8, -1, 0x78, self.misc[3])
+                          8, -1, 0x78, misc[1])
         for guid in self.guids2:
             ca += guid.bytes_le
         ca += struct.pack("<hI", -1, 0)
         return ca
+
+    def four_five_section(self: T) -> bytes:
+        misc = self.misc[1]
+        return (struct.pack("<IihIhIhHIHhIH", 0x454D, -1, -1, 0, -1,
+                            0, -1, 0x0101, 0, 0xDF, -1, 0, misc)
+                + b'\xFF' * 0x80)
 
     def object_table_section(self: T) -> bytes:
         ca = struct.pack("<I", len(self.object_table)) + self.object_table
@@ -110,6 +102,7 @@ class ModuleCache():
         return ca
 
     def utf16_guid_section(self: T) -> bytes:
+        misc = self.misc[2]
         ca = len(self.guid).to_bytes(2, "little")
         if len(self.guid) > 0:
             guid_str = "0"
@@ -117,19 +110,37 @@ class ModuleCache():
                 guid_str += "{" + str(guid).upper() + "}"
             guid_str_bytes = bytes(guid_str, "utf_16_le")
             ca += len(guid_str_bytes).to_bytes(2, "little") + guid_str_bytes
-        ca += struct.pack("<IHiH", 0, 0, -1, 0x0101)
+        ca += struct.pack("<IHiH", misc, 0, -1, 0x0101)
         return ca
 
     def indirect_table_section(self: T) -> bytes:
         return (struct.pack("<I", len(self.indirect_table))
                 + self.indirect_table)
 
+    def f_section(self: T) -> bytes:
+        misc = self.misc[3]
+        if self.f_data == b'':
+            ca = struct.pack("<HhHH", 0, -1, 0, misc[0])
+            fo = ("00 00 00 00 00 00 00 00"
+                  "FF FF FF FF FF FF FF FF FF FF FF FF", misc[1],
+                  "FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF", misc[1], "FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00",
+                  "00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00",
+                  "00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF",
+                  "FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF",
+                  "FF FF")
+            ca += bytes.fromhex(" ".join(fo))
+        else:
+            ca = self.f_data
+        return ca
+
     def rff_section(self: T) -> bytes:
         rfff_string = b''
         for rfff in self.rfff_data:
             str16 = bytes(rfff, "utf_16_le")
             size = len(str16).to_bytes(2, "little")
-            rfff_string += size + str16
+            rfff_string += b'\x01' + size + str16
         return self.rfff_value + b'\x00' + rfff_string + b'\xDF'
 
     def df_section(self: T) -> bytes:
@@ -167,25 +178,34 @@ class ModuleCache():
         return self.id_table_offset() + 4 + len(self.indirect_table) + 0x8E
 
     def second_df_offset(self: T) -> int:
-        return -1
+        df_data_len = len(self.df_data)
+        if df_data_len == 0:
+            return -1
+        rf_len = 6
+        for rf in self.rfff_data:
+            rf_len += len(rf) * 2 + 3
+
+        return self.rfff_offset() + rf_len + 1
 
     def magic_offset(self: T) -> int:
         """
         0x3C before the 0xCAFE tag
         """
         if self.second_df_offset() > 0:
-            return self.second_df_offset() + 12
+            return self.second_df_offset() + 12 + 58 - self.zeroes
         else:
             return self.rfff_offset() + 7
 
     def end_offset(self: T) -> int:
-        return self.magic_offset() + 0x3C + 16 + len(self.pcode)
+        return (self.magic_offset() + 0x3C + 16 + len(self.pcode)
+                + len(self.pcode_dir))
 
     def _create_pcode(self: T) -> bytes:
-        num = 0
+        num = len(self.pcode_dir) // 12
         pcode = struct.pack("<HHH", 0xCAFE, 1, num)
         for i in range(num):
             pass
+        pcode += self.pcode_dir
         pcode += struct.pack("<iH", -1, 0x0101)
         pcode += len(self.pcode).to_bytes(4, "little")
         pcode += self.pcode

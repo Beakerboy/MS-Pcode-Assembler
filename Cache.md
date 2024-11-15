@@ -42,6 +42,18 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
+    <td class="tg-0pky" colspan="16">454D Section</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>0xFF
+  <tr>
+    <td class="tg-0pky" colspan="16">128 bytes of 0xFF</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" colspan="16">ObjectTable</td>
   </tr>
   <tr>
@@ -66,7 +78,19 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="16">Mystery</td>
+    <td class="tg-0pky" colspan="16">Rffff Section</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">DF Section</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">58 bytes of zeroes</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="16">...</td>
@@ -118,7 +142,7 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="4">End Offset</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="4">Data1</td>
     <td class="tg-0pky" colspan="4">1</td>
     <td class="tg-0pky" colspan="2">ProjectCookie</td>
     <td class="tg-0pky" colspan="2">ModuleCookie</td>
@@ -126,8 +150,8 @@ The performance cache precedes the compressed source container within a vbaProje
     <td class="tg-0pky" colspan="2">-1</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">???</td>
-    <td class="tg-0pky" colspan="4">???</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="2">0xB6</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
@@ -137,7 +161,7 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>Header (4 bytes):</b> Final byte MUST be 0x16. The second to the last byte is the same on every module stream within a particular file. Should this be split into one byte, two bytes and one byte?
 
-<b>ObjectTableOffset (4 bytes):</b> Offset to the 0xDF that follows the </a>.
+<b>ObjectTableOffset (4 bytes):</b> Offset to the 0xDF that follows the 45 Section</a>.
 
 <b>RFFFF Offset (4 bytes):</b > Offset to the RFFFFs
 
@@ -145,19 +169,29 @@ The performance cache precedes the compressed source container within a vbaProje
 
 <b>IndirectTableOffset (4 bytes):</b> 10 less than the offset to the <a href="#indirect-table"><b>IndirectTable</b></a>.
 
-<b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset after the DF.
+<b>? Offset3 (4 bytes):</b > If there is no RFFF data, then -1, otherwise it's the offset one after the DF othat starts the DF Section.
 
-<b>-1 (4 bytes):</b>All Fs.
-
-<b>PcodeDirectoryOffset (4 bytes):</b> Points to the bytes after the 0xDF that follows the DF section 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
+<b>PcodeDirectoryOffset (4 bytes):</b> 60 less than the offset to the <a href="pcode"><b>Pcode</b></a>.
 
 <b>End Offset (4 bytes):</b> Marks the end of the Pcode data. The compressed source container is 6 bytes after this.
+
+<b>Data1 (4 bytes):</b>
 
 <b>ProjectCookie (2 bytes):</b> The value from the Project stream.
 
 <b>ModuleCookie (2 bytes):</b> The value from the Project stream.
 
- ## Declaration Table
+<b>Data2 (4 bytes):</b>
+
+<b>Data3 (4 bytes):</b>
+
+    Example Data:
+    16 03 00 01 F0 00 00 00 DA 02 00 00 D4 00 00 00  ....d...U...O...
+    00 02 00 00 FF FF FF FF E1 02 00 00 35 03 00 00  ........á...5...
+    00 00 00 00 01 00 00 00 B9 78 72 C4 00 00 FF FF  ........1xrÄ....
+    23 00 00 00 88 00 00 00 B6 00 FF FF 01 01        #...?...¶.....
+
+## Declaration Table
 <table class="tg">
 <thead>
   <tr>
@@ -195,6 +229,9 @@ The performance cache precedes the compressed source container within a vbaProje
 </table>
 <b>DeclarationTableSize (4 bytes):</b> The value from the Project stream.
 
+    Example Data:
+    00 00 00 00 FF FF FF FF 00 00 00 00  ............
+
 ## Guids
 Several Guids in binary form are packed together
 <table class="tg">
@@ -221,7 +258,7 @@ Several Guids in binary form are packed together
 <tbody>
   <tr>
     <td class="tg-0pky" colspan="2">-1</td>
-    <td class="tg-0pky" colspan="2">unknown</td>
+    <td class="tg-0pky" colspan="2">Data</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="8">Guid</td>
@@ -273,6 +310,66 @@ Several Guids in binary form are packed together
 </tbody>
 </table>
 
+    Example Data:
+    FF FF 90 00 FF FF 00 00 5B F4 8B 2D 59 F3 79 41  ..?.....[ô?-YóyA
+    BC 8C EA 13 9C 57 77 5F 2A 3D FB FC FA A0 68 10  ¼?ê.?Ww_*=ûüú h.
+    A7 38 08 00 2B 33 71 B5 00 00 00 00 00 00 00 00  §8..+3qµ........
+    00 00 00 00 00 00 00 00 01 00 00 00 3F 65 3E ED  ............?e>í
+    E0 D3 F8 41 89 D4 7A 21 2D 16 D1 12 10 00 00 00  àOoA?Oz!-.Ñ.....
+    03 00 00 00 05 00 00 00 07 00 00 00 FF FF FF FF  ................
+    FF FF FF FF 01 01 08 00 00 00 FF FF FF FF 78 00  ..............x.
+    00 00 08 3F 65 3E ED E0 D3 F8 41 89 D4 7A 21 2D  ...?e>íàOoA?Oz!-
+    16 D1 12 5B F4 8B 2D 59 F3 79 41 BC 8C EA 13 9C  .Ñ.[ô?-YóyA¼?ê.?
+    57 77 5F FF FF 00 00 00 00                       Ww_.......
+
+## 454D Section
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">SignatureBytes</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">0x0101</td>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">0xDF</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+  </tr>
+</tbody>
+</table>
+<b>SignatureBytes (2 bytes):</b> Specifies the beginning of the section. MUST be 0x454D.
+
+This structure ends with 64 0xFFFF.
+
 ## Object Table
 <table class="tg">
 <thead>
@@ -311,8 +408,48 @@ Several Guids in binary form are packed together
 </tbody>
 </table>
 
+<b>Length (4 byte):</b> The number of bytes of data.
+
+<b>Object Table Entries (10 bytes each):</b> 
+
+#### Object Table Entry
+Each <b>Object Table Entry</b> is 10 bytes in length
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="4">-1</td>
+    <td class="tg-0pky" colspan="2">0</td>
+  </tr>
+</tbody>
+</table>
+
+    Example Data:
+    02 00 53 4C FF FF FF FF 00 00  ..SL......
+
 ## UTF-16 Guid
-If the module has a GUID, it's UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
+If the module has a GUID, its UTF-16 representation, with brackets and a leading "0" character, is included in the cache.
 
 <table class="tg">
 <thead>
@@ -344,7 +481,7 @@ If the module has a GUID, it's UTF-16 representation, with brackets and a leadin
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="4">varies</td>
     <td class="tg-0pky" colspan="2">0</td>
     <td class="tg-0pky" colspan="4">-1</td>
     <td class="tg-0pky" colspan="2">0x0101</td>
@@ -397,6 +534,7 @@ A standard size/data record. There may be multiple guids. Identical to the modul
     30 00 30 00 30 00 30 00 30 00 34 00 36 00 7D 00  0.0.0.0.0.4.6.}.
 
 ## Indirect Table
+A collection of two or two and four byte data values.
 <table class="tg">
 <thead>
   <tr>
@@ -429,7 +567,27 @@ A standard size/data record. There may be multiple guids. Identical to the modul
 </tbody>
 </table>
 
-## RFFFF
+<b>Length (4 byte):</b> The number of bytes of data.
+
+    Example Data:
+    
+## F Section
+This is a 130 byte bock which is mostly -1 data elements. The four bytes at offset 0x1C matches the value at 0x34.
+
+    Example Data:
+    00 00 FF FF 00 00 01 00 00 00 00 00 00 00 00 00  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF 00 00 00 00 FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 00  ................
+    00 00 00 00 FF FF 00 00 FF FF FF FF FF FF 00 00  ................
+    00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF  ................
+    FF FF FF FF FF FF FF FF FF FF 00 00 FF FF FF FF  ................
+    FF FF  ..
+    
+## RFFFF Section
+A collection of Rfff records...whatever they are. Are there bytes that indicate how many records there are besides the RFFF offset?
+
 <table class="tg">
 <thead>
   <tr>
@@ -463,6 +621,9 @@ A standard size/data record. There may be multiple guids. Identical to the modul
 </tbody>
 </table>
 <b> RFFFFs :</b> one or more RFFFF records
+
+    Example Data:
+    73 62 C6 63 07 00  sbÆc..
 
 ### RFFFF Record
 <table class="tg">
@@ -534,9 +695,79 @@ A standard size/data record. There may be multiple guids. Identical to the modul
 </tbody>
 </table>
 
-If there is data, we start with "00 00 00 00". each entry is 4-4-2-2
+    Example Data:
+    DF 01 00 00 00 00 00 FF FF FF FF 78 00 00 00 06  ß..........x....
+    00 10 00                                         ...
 
-After this is 58 0's
+### DF Data
+If there is data, we start with "00 00 00 00", then follow with a sequence of DF records.
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="12">DF Records (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
+
+<b>DF Records (12 bytes each):</b>
+
+#### DF Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+  </tr>
+</tbody>
+</table>
+
+After this is 58 0's...Sometimes 56 zeroes? It seems like if there is DF data, there are 56 additional zeroes, but if not, there are 58. If this is correct, maybe two of the 4 zeroes are always there, nad it's 56 additional?
 ## Pcode
 
 <table class="tg">
@@ -662,8 +893,9 @@ It seems to begin and end with a particular set of 12 bytes, and this record app
 </tbody>
 </table>
 
-    Example Data
-    42 A1 0C 00 06 00 0C 00 20 00 00 00
+    Example Data:
+    00 80 09 00 00 00 00 00 FF FF FF FF  .?..........
+    42 A1 08 00 06 00 0C 00 10 00 00 00  B¡..........
 
 ### Pcode Data
 <table class="tg">
@@ -689,7 +921,7 @@ It seems to begin and end with a particular set of 12 bytes, and this record app
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="4">Size</td>
+    <td class="tg-0pky" colspan="4">Length</td>
     <td class="tg-0pky" colspan="12">Data</td>
   </tr>
   <tr>
@@ -701,5 +933,25 @@ It seems to begin and end with a particular set of 12 bytes, and this record app
   </tr>
 </tbody>
 </table>
+
+<b>Length (4 byte):</b> The number of bytes of data.
+
+    Example Data:
+    D8 00 00 00 5D 40 F5 04 68 02 00 00 5D 40 F5 04  O...]@o.h...]@o.
+    98 02 00 00 5D 40 F5 04 00 00 00 00 96 08 48 00  ?...]@o.....?.H.
+    00 00 00 00 20 00 5A 02 27 00 5C 02 6D 00 FF FF  .... .Z.'.\.m...
+    50 00 00 00 FA 00 B9 00 01 00 3D 00 96 18 C0 00  P...ú.1...=.?.A.
+    00 00 78 6C 20 00 60 02 27 00 56 02 20 00 62 02  ..xl .`.'.V. .b.
+    27 00 58 02 20 00 5C 02 27 00 5A 02 69 00 FF FF  '.X. .\.'.Z.i...
+    20 00 00 00 96 18 A0 01 00 00 00 00 5D 00 F5 04   ...?. .....].o.
+    18 02 00 00 20 00 5A 02 B9 00 02 00 49 53 05 00  .... .Z.1...IS..
+    9C 00 00 00 B9 00 01 00 20 00 20 00 5A 02 11 00  ?...1... . .Z...
+    B9 00 01 00 20 00 11 00 27 00 64 02 64 00 FF FF  1... ...'.d.d...
+    60 00 00 00 20 00 5A 02 27 00 64 02 6B 00 FF FF  `... .Z.'.d.k...
+    50 00 00 00 20 00 56 02 20 00 64 02 11 00 20 00  P... .V. .d... .
+    58 02 11 00 27 00 40 02 00 00 00 00 69 00 FF FF  X...'.@.....i...
+    30 00 00 00 FF FF FF FF 28 00 00 00 FF FF FF FF  0.......(.......
+    00 00                                            ..
+
 Insert format of data. Each data element is padded to fill 8 byte increments.
 
