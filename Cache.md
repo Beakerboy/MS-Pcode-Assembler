@@ -217,6 +217,9 @@ The performance cache precedes the compressed source container within a vbaProje
 </table>
 <b>DeclarationTableSize (4 bytes):</b> The value from the Project stream.
 
+    Example Data:
+    00 00 00 00 FF FF FF FF 00 00 00 00  ............
+
 ## Guids
 Several Guids in binary form are packed together
 <table class="tg">
