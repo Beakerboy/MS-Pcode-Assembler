@@ -93,7 +93,7 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
     00 00 00 00 01 00 07 00 02 00                    ..........
     
 ## Libraries
-Immediately following the header is a series of size/data/zero blocks.
+Immediately following the header is a series of size/data/zero blocks. there are LibIDRecord and ProjectReference structures.
 
 ## Library Record
 Is there something that indicates how many library record are in the stream?
