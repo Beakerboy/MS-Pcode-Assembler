@@ -71,28 +71,32 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="4">0x409</td>
+    <td class="tg-0pky" colspan="4">0x409</td>
+    <td class="tg-0pky" colspan="2">0x4E4</td>
+    <td class="tg-0pky" colspan="2">Data0</td>
+    <td class="tg-0pky" colspan="4">0</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
-    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">Data1</td>
+    <td class="tg-0pky" colspan="2">Data2</td>
+    <td class="tg-0pky" colspan="2">Data3</td>
   </tr>
 </tbody>
 </table>
 
-
+<b>Data1 (2 byte):</b> Data1 plus Data2 seem to sum to the number of library records.
 
     Example Data:
     09 04 00 00 09 04 00 00 E4 04 03 00 00 00 00 00  .........ä.......
     00 00 00 00 01 00 07 00 02 00                    ..........
-
+    
 ## Libraries
-Immediately following the header is a series of size/data blocks, where the data is LibidReference data objects. Is there something that indicates how many libraries?
+Immediately following the header is a series of size/data/zero blocks.
+
+## Library Record
+Is there something that indicates how many library record are in the stream?
 <table class="tg">
 <thead>
   <tr>
