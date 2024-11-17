@@ -176,11 +176,11 @@ Is there something that indicates how many library record are in the stream?
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="2">Count</td>
     <td class="tg-0pky" colspan="14">Module Records</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="16">...)</td>
+    <td class="tg-0pky" colspan="16">...</td>
   </tr>
 </tbody>
 </table>
