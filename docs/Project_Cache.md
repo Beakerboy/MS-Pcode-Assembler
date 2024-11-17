@@ -36,6 +36,42 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
     <td class="tg-0pky" colspan="16">...</td>
   </tr>
   <tr>
+    <td class="tg-0pky" colspan="16">Class/User Forms</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Compile-Time Parameters</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Type Info</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Project Description</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Help File</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Data (0x64 bytes)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" colspan="16">Modules</td>
   </tr>
   <tr>
