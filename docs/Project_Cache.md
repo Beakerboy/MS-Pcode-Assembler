@@ -95,7 +95,7 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 ## Libraries
 Immediately following the header is a series of size/data/zero blocks. there are LibIDRecord and ProjectReference structures.
 
-## Library Record
+### Library Record
 Is there something that indicates how many library record are in the stream?
 <table class="tg">
 <thead>
@@ -150,3 +150,64 @@ Is there something that indicates how many library record are in the stream?
     63 00 20 00 46 00 6F 00 72 00 20 00 41 00 70 00  c. .F.o.r. .A.p.
     70 00 6C 00 69 00 63 00 61 00 74 00 69 00 6F 00  p.l.i.c.a.t.i.o.
     6E 00 73 00 00 00 00 00 00 00 00 00 00 00 00 00  n.s.............
+
+# Data
+## Modules
+### Module Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="14">Name (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">Size (0x14)</td>
+    <td class="tg-0pky" colspan="14">Data</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="6">...</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="2">Name</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="5">...</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">Cookie</td>
+    <td class="tg-0pky" colspan="7">0</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+</tbody>
+</table>
+    Example Data:
+                            18 00 54 00 68 00 69 00          ..T.h.i.
+    73 00 57 00 6F 00 72 00 6B 00 62 00 6F 00 6F 00  s.W.o.r.k.b.o.o.
+    6B 00 14 00 30 00 5B 00 36 00 33 00 63 00 34 00  k...0.[.6.3.c.4.
+    31 00 61 00 31 00 31 00 FF FF 2B 02 18 00 54 00  1.a.1.1...+...T.
+    68 00 69 00 73 00 57 00 6F 00 72 00 6B 00 62 00  h.i.s.W.o.r.k.b.
+    6F 00 6F 00 6B 00 FF FF 72 C4 00 00 00 00 00 00  o.o.k...rÄ......
+    00 02 00 00 00 3B 03 00 00 FF FF                 .....;.....
