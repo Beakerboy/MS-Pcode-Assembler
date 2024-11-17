@@ -79,7 +79,7 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
   <tr>
     <td class="tg-0pky" colspan="4">0x409</td>
     <td class="tg-0pky" colspan="4">0x409</td>
-    <td class="tg-0pky" colspan="2">0x4E4</td>
+    <td class="tg-0pky" colspan="2">Version</td>
     <td class="tg-0pky" colspan="2">Data0</td>
     <td class="tg-0pky" colspan="4">0</td>
   </tr>
