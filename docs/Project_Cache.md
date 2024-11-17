@@ -234,8 +234,11 @@ Is there something that indicates how many library record are in the stream?
     <td class="tg-0pky" colspan="8">Records</td>
     <td class="tg-0pky" colspan="1">Data</td>
     <td class="tg-0pky" colspan="4">Data</td>
-    <td class="tg-0pky" colspan="4">Data</td>
-    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="3">Data</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="1">...</td>
+    <td class="tg-0pky" colspan="2">-1 or 0</td>
   </tr>
 </tbody>
 </table>
