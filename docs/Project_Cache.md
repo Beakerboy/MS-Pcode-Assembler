@@ -192,18 +192,23 @@ Is there something that indicates how many library record are in the stream?
     <td class="tg-0pky" colspan="2">Name</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="5">...</td>
+    <td class="tg-0pky" colspan="6">...</td>
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">Cookie</td>
-    <td class="tg-0pky" colspan="6">0</td>
-    <td class="tg-0pky" colspan="1">Data</td>
+    <td class="tg-0pky" colspan="4">0</td>
+    <td class="tg-0pky" colspan="2">Count</td>
   </tr>
   <tr>
+    <td class="tg-0pky" colspan="8">Records</td>
+    <td class="tg-0pky" colspan="1">Data</td>
     <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="2">-1</td>
 </tbody>
 </table>
+
+<b>Records (8 bytes each):</b> 4 bytes of data and 4 bytes of -1.
+
     Example Data:
                             18 00 54 00 68 00 69 00          ..T.h.i.
     73 00 57 00 6F 00 72 00 6B 00 62 00 6F 00 6F 00  s.W.o.r.k.b.o.o.
