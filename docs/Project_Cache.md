@@ -153,6 +153,38 @@ Is there something that indicates how many library record are in the stream?
 
 # Data
 ## Modules
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="14">Module Records</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...)</td>
+  </tr>
+</tbody>
+</table>
+
 ### Module Record
 <table class="tg">
 <thead>
@@ -189,7 +221,7 @@ Is there something that indicates how many library record are in the stream?
     <td class="tg-0pky" colspan="2">-1</td>
     <td class="tg-0pky" colspan="2">Data</td>
     <td class="tg-0pky" colspan="2">Size</td>
-    <td class="tg-0pky" colspan="2">Name</td>
+    <td class="tg-0pky" colspan="4">Name</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="6">...</td>
@@ -204,6 +236,7 @@ Is there something that indicates how many library record are in the stream?
     <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="4">Data</td>
     <td class="tg-0pky" colspan="2">-1</td>
+  </tr>
 </tbody>
 </table>
 
