@@ -136,6 +136,38 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
     
 ## Libraries
 Immediately following the header is a series of size/data/zero blocks. there are LibIDRecord and ProjectReference structures.
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Count</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="12">Records</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
 
 ### Library Record
 Is there something that indicates how many library record are in the stream?
