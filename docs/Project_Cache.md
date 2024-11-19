@@ -299,6 +299,20 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 
 <b>Data (30 bytes):</b>
 
+## User Class
+A list of two byte data.
+
+    Example Data:
+    09 00 02 00 02 00 02 00 02 00 02 00 02 00 01 00  ....................
+    01 00 02 04                                      ....
+
+## Compile Time Data
+A list of four byte data. followed by 2 mystery bytes.
+
+    Example Data:
+    06 00 0C 02 00 00 0E 02 01 00 10 02 00 00 12 02  ................
+    00 00 14 02 01 00 16 02 01 00 6E 03              ..........n.
+
 ## Data
 0x64 bytes of data.
 
