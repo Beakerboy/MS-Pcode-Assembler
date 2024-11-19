@@ -272,8 +272,11 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 </table>
 
 <b>wLength (2 bytes):</b> the following 2 bytes of data os omitted if wLength is zero.
+
 <b>Data (2 bytes):</b> 
+
 <b>Data (varies):</b> a data steam the size specified by wLength.
+
 <b>Data (30 bytes):</b>
 
 ## Data
