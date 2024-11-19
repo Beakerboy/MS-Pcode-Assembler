@@ -194,10 +194,19 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">...</td>
-    <td class="tg-0pky" colspan="12">0</td>
+    <td class="tg-0pky" colspan="10">0</td>
+    <td class="tg-0pky" colspan="2">Struct</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">Struct Object (optional)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">...</td>
   </tr>
 </tbody>
 </table>
+
+<b>Struct (2 bytes):</b> If this is zero, the following data structure is omitted.
 
     Example Data:
           20 01 2A 00 5C 00 47 00 7B 00 30 00 30 00      *.\.G.{.0.0.
@@ -219,6 +228,53 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
     63 00 20 00 46 00 6F 00 72 00 20 00 41 00 70 00  c. .F.o.r. .A.p.
     70 00 6C 00 69 00 63 00 61 00 74 00 69 00 6F 00  p.l.i.c.a.t.i.o.
     6E 00 73 00 00 00 00 00 00 00 00 00 00 00 00 00  n.s.............
+
+#### Data Structure
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="14">Data(varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">wLength</td>
+    <td class="tg-0pky" colspan="2">Data (optional)</td>
+    <td class="tg-0pky" colspan="12">Data(varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Data</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="14">...</td>
+  </tr>
+</tbody>
+</table>
+
+<b>wLength (2 bytes):</b> the following 2 bytes of data os omitted if wLength is zero.
+<b>Data (2 bytes):</b> 
+<b>Data (varies):</b> a data steam the size specified by wLength.
+<b>Data (30 bytes):</b>
 
 ## Data
 0x64 bytes of data.
