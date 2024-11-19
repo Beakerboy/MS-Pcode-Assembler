@@ -189,8 +189,7 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="2">Size</td>
-    <td class="tg-0pky" colspan="14">Data</td>
+    <td class="tg-0pky" colspan="16">Lib or Project (varies)</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">...</td>
@@ -205,6 +204,8 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
   </tr>
 </tbody>
 </table>
+
+<b>Lib or Project (2 bytes):</b> A Library Ref is a two byte size/data field, while a project reference is a two byte size/data field followed by a second two byte size/data field.
 
 <b>Struct (2 bytes):</b> If this is zero, the following data structure is omitted.
 
@@ -228,6 +229,25 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
     63 00 20 00 46 00 6F 00 72 00 20 00 41 00 70 00  c. .F.o.r. .A.p.
     70 00 6C 00 69 00 63 00 61 00 74 00 69 00 6F 00  p.l.i.c.a.t.i.o.
     6E 00 73 00 00 00 00 00 00 00 00 00 00 00 00 00  n.s.............
+
+    Example Data:
+                      84 00 2A 00 5C 00 43 00 43 00        ?.*.\.C.C.
+    3A 00 5C 00 55 00 73 00 65 00 72 00 73 00 5C 00  :.\.U.s.e.r.s.\.
+    6B 00 6E 00 6F 00 77 00 61 00 63 00 7A 00 79 00  k.n.o.w.a.c.z.y.
+    6B 00 5C 00 41 00 70 00 70 00 44 00 61 00 74 00  k.\.A.p.p.D.a.t.
+    61 00 5C 00 52 00 6F 00 61 00 6D 00 69 00 6E 00  a.\.R.o.a.m.i.n.
+    67 00 5C 00 4D 00 69 00 63 00 72 00 6F 00 73 00  g.\.M.i.c.r.o.s.
+    6F 00 66 00 74 00 5C 00 41 00 64 00 64 00 49 00  o.f.t.\.A.d.d.I.
+    6E 00 73 00 5C 00 53 00 51 00 4C 00 6C 00 69 00  n.s.\.S.Q.L.l.i.
+    62 00 2E 00 78 00 6C 00 61 00 6D 00 6A 00 2A 00  b...x.l.a.m.j.*.
+    5C 00 43 00 2E 00 2E 00 5C 00 2E 00 2E 00 5C 00  \.C.....\.....\.
+    41 00 70 00 70 00 44 00 61 00 74 00 61 00 5C 00  A.p.p.D.a.t.a.\.
+    52 00 6F 00 61 00 6D 00 69 00 6E 00 67 00 5C 00  R.o.a.m.i.n.g.\.
+    4D 00 69 00 63 00 72 00 6F 00 73 00 6F 00 66 00  M.i.c.r.o.s.o.f.
+    74 00 5C 00 41 00 64 00 64 00 49 00 6E 00 73 00  t.\.A.d.d.I.n.s.
+    5C 00 53 00 51 00 4C 00 6C 00 69 00 62 00 2E 00  \.S.Q.L.l.i.b...
+    78 00 6C 00 61 00 6D 00 DE 42 D9 5D 0A 00 00 00  x.l.a.m._BU]....
+    00 00 00 00                                      ....
 
 #### Data Structure
 
