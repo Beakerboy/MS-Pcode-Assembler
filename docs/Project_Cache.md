@@ -427,11 +427,84 @@ A list of four byte data. followed by 2 mystery bytes.
     6F 00 6F 00 6B 00 FF FF 72 C4 00 00 00 00 00 00  o.o.k...rÄ......
     00 02 00 00 00 3B 03 00 00 FF FF                 .....;.....
 
-## Remaining
-* 6 bytes
-* Size / Data
-* W0
-* NumIds
-* W1
-* 4 bytes
-* 
+## Identifiers
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="6">Data</td>
+    <td class="tg-0pky" colspan="4">Size</td>
+    <td class="tg-0pky" colspan="6">Data (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">...</td>
+    <td class="tg-0pky" colspan="6">Data</td>
+    <td class="tg-0pky" colspan="2">W0</td>
+    <td class="tg-0pky" colspan="2">NumIds</td>
+    <td class="tg-0pky" colspan="2">W1</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">Identifier Records</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
+
+### Identifier Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="1">Type</td>
+    <td class="tg-0pky" colspan="1">Len</td>
+    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="1">Type</td>
+    <td class="tg-0pky" colspan="1">Len</td>
+    <td class="tg-0pky" colspan="6">Data (optional)</td>
+    <td class="tg-0pky" colspan="4">Name (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="16">...</td>
+  </tr>
+</tbody>
+</table>
