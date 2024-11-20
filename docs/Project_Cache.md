@@ -426,3 +426,12 @@ A list of four byte data. followed by 2 mystery bytes.
     68 00 69 00 73 00 57 00 6F 00 72 00 6B 00 62 00  h.i.s.W.o.r.k.b.
     6F 00 6F 00 6B 00 FF FF 72 C4 00 00 00 00 00 00  o.o.k...rÄ......
     00 02 00 00 00 3B 03 00 00 FF FF                 .....;.....
+
+## Remaining
+* 6 bytes
+* Size / Data
+* W0
+* NumIds
+* W1
+* 4 bytes
+* 
