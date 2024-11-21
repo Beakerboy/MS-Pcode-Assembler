@@ -515,4 +515,4 @@ A list of four byte data. followed by 2 mystery bytes.
 
     Example Data:
     09 80 00 00 FF 03 01 00 5F 45 76 61 6C 75 61 74 .?......_Evaluat
-    65 18 D9 10 00 06 04 53 68 65 65 74 31          e.U..
+    65 18 D9 10 00                                  e.U..
