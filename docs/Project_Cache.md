@@ -504,7 +504,8 @@ A list of four byte data. followed by 2 mystery bytes.
     <td class="tg-0pky" colspan="4">Name (varies)</td>
   </tr>
   <tr>
-    <td class="tg-0pky" colspan="16">...</td>
+    <td class="tg-0pky" colspan="12">...</td>
+    <td class="tg-0pky" colspan="4">Data (optional)</td>
   </tr>
 </tbody>
 </table>
