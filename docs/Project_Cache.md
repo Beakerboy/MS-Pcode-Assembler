@@ -508,3 +508,10 @@ A list of four byte data. followed by 2 mystery bytes.
   </tr>
 </tbody>
 </table>
+
+    Example Data:
+    00 00 9B 00 05 80 14 00 FF 03 05 00 52 65 44 69  ..?..?......ReDi
+    6D                                               m
+
+    Example Data:
+    
