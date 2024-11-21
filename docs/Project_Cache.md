@@ -495,11 +495,9 @@ A list of four byte data. followed by 2 mystery bytes.
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="1">Type</td>
-    <td class="tg-0pky" colspan="1">Len</td>
+    <td class="tg-0pky" colspan="2">T/L</td>
     <td class="tg-0pky" colspan="2">Data</td>
-    <td class="tg-0pky" colspan="1">Type</td>
-    <td class="tg-0pky" colspan="1">Len</td>
+    <td class="tg-0pky" colspan="2">T/L</td>
     <td class="tg-0pky" colspan="6">Data (optional)</td>
     <td class="tg-0pky" colspan="4">Name (varies)</td>
   </tr>
@@ -509,6 +507,18 @@ A list of four byte data. followed by 2 mystery bytes.
   </tr>
 </tbody>
 </table>
+
+<b>T/L (2 bytes):</b> Type / Length. If this is 0x0000 then the next two byes and following T/L will be present. Otherwise the length and type of the identifier name.
+
+<b>Data (2 bytes):</b> Optional. Only present if the first T/L is 0x0000.
+
+<b>T/L (2 bytes):</b> Optional. The length and type of the identifier name.
+
+<b>Data (6 bytes):</b> Optional. This data is absent if the Type is less than 0x80.
+
+<b>Name (varies):</b> The identifier name.
+
+<b>Data (4 bytes):</b> Optional. This data is absent if the first T/L is 0x0000.
 
     Example Data:
     00 00 9B 00 05 80 14 00 FF 03 05 00 52 65 44 69  ..?..?......ReDi
