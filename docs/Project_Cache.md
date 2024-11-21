@@ -516,3 +516,6 @@ A list of four byte data. followed by 2 mystery bytes.
     Example Data:
     09 80 00 00 FF 03 01 00 5F 45 76 61 6C 75 61 74 .?......_Evaluat
     65 18 D9 10 00                                  e.U..
+
+    Example Data:
+    03 04 4D 61 63 B3 B2 10 00                      ..Mac3²..
