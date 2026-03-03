@@ -314,7 +314,7 @@ A list of four byte data. followed by 2 mystery bytes.
     00 00 14 02 01 00 16 02 01 00 6E 03              ..........n.
 
 ## Data
-0x64 bytes of data.
+A large block of data. The last two bytes are the project cookie.
 
     Example Data:
                                   00 00 00 00 FF FF           .......
