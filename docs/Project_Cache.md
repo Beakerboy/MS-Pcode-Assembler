@@ -345,7 +345,7 @@ A list of four byte data. followed by 2 mystery bytes.
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">0</td>
-    <td class="tg-0pky" colspan="4">Proj Cookie</td>
+    <td class="tg-0pky" colspan="2">Proj Cookie</td>
   </tr>
 </tbody>
 </table>
