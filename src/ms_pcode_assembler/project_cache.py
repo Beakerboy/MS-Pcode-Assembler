@@ -56,7 +56,7 @@ class ProjectCache():
             if isinstance(lib, tuple):
                 text = lib[0]
                 num = 1
-                extra = struct.pack("<H", len(lib[1]) + 50)
+                extra = struct.pack("<H", len(lib[1]) + 135)
                 extra += bytearray(lib[1], "utf_16_le")
                 extra += (struct.pack("<IIHHH", 0, 0, 0, num, 0) + lib[2] +
                           b'\x00\x00')
