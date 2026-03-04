@@ -41,7 +41,7 @@ def test_doc_cache() -> None:
         "Microsoft ActiveX Data Objects 6.1 Library"
     )
     cache.add_library(
-        "*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#" +
+        "*\\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#" +
         "C:\\Windows\\System32\\scrrun.dll#Microsoft Scripting Runtime"
     )
     f = open('tests/SQL-vbaProject.bin', 'rb')
