@@ -54,3 +54,6 @@ def test_doc_cache() -> None:
     li = cache._library_section()
     file_data = f.read(len(li))
     assert li == file_data
+    uc = cache._user_class_section()
+    file_data = f.read(len(uc))
+    assert uc == file_data
