@@ -32,12 +32,17 @@ def test_doc_cache() -> None:
         "Microsoft Forms 2.0 Object Library"
     )
 
-    cache.add_library(
-        "*\\G{3AF3885D-1EAB-4BD6-A2CF-8C849267EC75}#2.0#0#" +
-        "C:\\Users\\KNOWAC~1\\AppData\\Local\\Temp\\VBE\\MSForms.exd#" +
-        "Microsoft Forms 2.0 Object Library"
-    )
+    # cache.add_library(
+    #     "*\\G{3AF3885D-1EAB-4BD6-A2CF-8C849267EC75}#2.0#0#" +
+    #     "C:\\Users\\KNOWAC~1\\AppData\\Local\\Temp\\VBE\\MSForms.exd#" +
+    #     "Microsoft Forms 2.0 Object Library"
+    @ )
 
+    cache.add_library(
+        "*\\G{B691E011-1797-432E-907A-4D8C69339129}#6.1#0#" +
+        "C:\\Program Files\\Common Files\\System\\ado\\msado15.dll#" +
+        "Microsoft ActiveX Data Objects 6.1 Library"
+    )
     cache.add_library("")
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
