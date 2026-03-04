@@ -52,7 +52,7 @@ class ProjectCache():
         ca = struct.pack("<HH", len(self._libraries), 2)
 
         for lib in self._libraries:
-            lib_str = bytearray(str(lib), "utf_16_le")
+            lib_str = bytearray(lib, "utf_16_le")
             ca += struct.pack("<H", len(lib_str))
             ca += lib_str
             ca += struct.pack("<III", 0, 0, 0)
