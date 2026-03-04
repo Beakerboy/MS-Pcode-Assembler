@@ -20,12 +20,12 @@ class ProjectCache():
     The project cache resides in the _VBA_PROJECT_ stream.
     """
     def __init__(self: T, version: int, project_cookie: int,
-                 syskind: int = 2, signature: int = 0) -> None:
-        self._version = 0x04E4
-        self._hex = 0x65be0257
+                 hex: int) -> None:
+        self._version = version
+        self._hex = hex
         self._libraries = []
         self._modules = []
-        self._project_cookie = 0
+        self._project_cookie = project_cookie
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
