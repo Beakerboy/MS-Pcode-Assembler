@@ -124,8 +124,8 @@ class ProjectCache():
         for name in names:
             if len(name) == 2:
                 ca += struct.pack(
-                    "<BB" + str(len(name[1])) + "sHH", len(name[1]), 4, name[1],
-                    name[0], 16
+                    "<BB" + str(len(name[1])) + "sHH", len(name[1]), 4,
+                    name[1], name[0], 16
                 )
             else:
                 ca += struct.pack("<BBHI" + str(len(name[1])) + "sHH",
