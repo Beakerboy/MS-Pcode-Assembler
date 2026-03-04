@@ -26,6 +26,7 @@ class ProjectCache():
         self._libraries = []
         self._modules = []
         self._project_cookie = project_cookie
+        self._user = [3, 1, 6]
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
