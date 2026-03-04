@@ -21,4 +21,3 @@ def test_doc_cache() -> None:
     li = cache._library_section()
     file_data = f.read(len(he))
     assert li == file_data
-    
