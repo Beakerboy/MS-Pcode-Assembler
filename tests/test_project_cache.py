@@ -22,7 +22,8 @@ def test_doc_cache() -> None:
     )
     cache.add_library(
         "*\\G{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}#2.8#0#" +
-        "C:\\Program Files\\Common Files\\Microsoft Shared\\OFFICE16\\MSO.DLL" +
+        "C:\\Program Files\\Common Files\\Microsoft Shared" +
+        "\\OFFICE16\\MSO.DLL" +
         "#Microsoft Office 16.0 Object Library"
     )
     cache.add_library("")
