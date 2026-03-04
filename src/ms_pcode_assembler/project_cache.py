@@ -6,6 +6,11 @@ from typing import TypeVar
 T = TypeVar('T', bound='ProjectCache')
 
 
+class ModuleBase:
+    name = ""
+    cookie = 0
+
+
 class ProjectCache():
     """
     The project cache resides in the _VBA_PROJECT_ stream.
@@ -18,7 +23,7 @@ class ProjectCache():
         self._modules = []
         self._project_cookie = 0
 
-    def add_module(self: T, module) -> None:
+    def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
 
     def add_library(self: T, library: str) -> None:
@@ -80,14 +85,14 @@ class ProjectCache():
         data1 = [0, 0x18, 0x30]
         data2 = [0x0333, 0x0333, 0x0283]
         for module in self._modules:
-            name = module.modName.value.encode("utf_16_le")
+            name = module.name.encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
                 "2" + chr(70 + i) + hex((self._hex + data_str[i]))[2:]
             ).encode("utf_16_le")
             ca += struct.pack("<H", len(txt)) + txt
             ca += struct.pack("<HHH", 0xFFFF, data[i], len(name)) + name
-            ca += struct.pack("<HHIH", 0xFFFF, module.cookie.value, 0, 0)
+            ca += struct.pack("<HHIH", 0xFFFF, module.cookie, 0, 0)
             ca += struct.pack("<BIIH", data1[i], 2, data2[i], 0xFFFF)
             i += 1
         return ca
