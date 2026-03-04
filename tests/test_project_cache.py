@@ -11,6 +11,12 @@ def test_doc_cache() -> None:
         "\\VBA\\VBA7.1\\VBE7.DLL#" +
         "Visual Basic For Applications)"
     )
+    cache.add_library("")
+    cache.add_library("")
+    cache.add_library("")
+    cache.add_library("")
+    cache.add_library("")
+    cache.add_library("")
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
