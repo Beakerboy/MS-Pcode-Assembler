@@ -3,13 +3,16 @@ import struct
 from typing import TypeVar
 
 
-T = TypeVar('T', bound='ProjectCache')
+S = TypeVar('S', bound='ModuleBase')
 
 
 class ModuleBase:
-    def __init(self) -> None:
+    def __init__(self: S) -> None:
         self.name = ""
         self.cookie = 0
+
+
+T = TypeVar('T', bound='ProjectCache')
 
 
 class ProjectCache():
