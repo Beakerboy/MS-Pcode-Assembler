@@ -38,7 +38,7 @@ class ProjectCache():
         ca = b'\xff'
         ca += self._header()
         ca += self._library_section()
-        ca += self._user_clas_section()
+        ca += self._user_clas_section(self._user)
         ca += self._compile_time_data()
         ca += self._data_section()
         ca += self._module_section()
@@ -73,8 +73,8 @@ class ProjectCache():
             ca += struct.pack("<IIHH", 0, 0, 0, num) + extra
         return ca
 
-    def _user_class_section(self: T) -> bytes:
-        return struct.pack("<5H", 3, 2, 2, 1, 6)
+    def _user_class_section(self: T, user: list) -> bytes:
+        return struct.pack("<5H", user[0], 2, 2, user[1], user[2])
 
     def _compile_time_data(self: T) -> bytes:
         return struct.pack("<6IH", 0x0212,  0x010214, 0x010216, 0x0218,
