@@ -9,9 +9,13 @@ def test_doc_cache() -> None:
         "*\\G{000204EF-0000-0000-C000-000000000046}#4.2#9#" +
         "C:\\Program Files\\Common Files\\Microsoft Shared" +
         "\\VBA\\VBA7.1\\VBE7.DLL#" +
-        "Visual Basic For Applications)"
+        "Visual Basic For Applications"
     )
-    cache.add_library("")
+    cache.add_library(
+        "*\G{00020813-0000-0000-C000-000000000046}#1.9#0#" +
+        "C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" +
+        "#Microsoft Excel 16.0 Object Library"
+    )
     cache.add_library("")
     cache.add_library("")
     cache.add_library("")
