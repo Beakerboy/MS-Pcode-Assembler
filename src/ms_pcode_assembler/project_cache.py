@@ -11,7 +11,7 @@ class ProjectCache():
     """
     The project cache resides in the _VBA_PROJECT_ stream.
     """
-     def __init__(self: T, version: int, project_cookie: int,
+    def __init__(self: T, version: int, project_cookie: int,
                  syskind: int = 2, signature: int = 0) -> None:
         self._version = 0x04E4
         self._hex = 0x65be0257
