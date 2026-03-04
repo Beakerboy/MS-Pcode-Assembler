@@ -21,7 +21,7 @@ class ProjectCache():
     def add_module(self: T, module) -> None:
         self._modules.append(module)
 
-    def add_library(self: T, library) -> None:
+    def add_library(self: T, library: str) -> None:
         self._libraries.append(library)
 
     def to_bytes(self: T) -> bytes:
@@ -83,7 +83,7 @@ class ProjectCache():
             name = module.modName.value.encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
-                "2" + chr(70 + i) + hex((0x65be0257 + data_str[i]))[2:]
+                "2" + chr(70 + i) + hex((self._hex + data_str[i]))[2:]
             ).encode("utf_16_le")
             ca += struct.pack("<H", len(txt)) + txt
             ca += struct.pack("<HHH", 0xFFFF, data[i], len(name)) + name
