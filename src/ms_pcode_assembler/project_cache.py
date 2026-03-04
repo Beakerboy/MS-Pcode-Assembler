@@ -18,6 +18,12 @@ class ProjectCache():
         self._modules = []
         self._project_cookie = 0
 
+    def add_module(self: T, module) -> None:
+        self._modules.append(module)
+
+    def add_library(self: T, library) -> None:
+        self._libraries.append(library)
+
     def to_bytes(self: T) -> bytes:
         ca = b'\xff'
         ca += self._header()
