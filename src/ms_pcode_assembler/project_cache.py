@@ -51,7 +51,7 @@ class ProjectCache():
         return struct.pack("<6IH", 0x0212,  0x010214, 0x010216, 0x0218,
                       0x01021a, 0x01021c, 0x0222)
 
-    def _data_section)self: T) -> bytes:
+    def _data_section(self: T) -> bytes:
         # Data
         ca = b'\xFF' * 6 + b'\x00' * 4 + b'\xFF' * 2 + b'\x00' * 2
         ca += struct.pack("<IH", self._hex, 0x11)
