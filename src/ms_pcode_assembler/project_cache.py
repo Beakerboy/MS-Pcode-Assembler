@@ -53,16 +53,18 @@ class ProjectCache():
 
         for lib in self._libraries:
             if isinstance(lib, tuple):
-                text = lib[1]
+                text = lib[0]
                 num = 1
+                extra = struct.pack("<H", len(lib[1])) + bytearray(lib[1], "utf_16_le")
             else:
                 text = lib
                 num = 0
+                extra = b''
                 
             lib_str = bytearray(text, "utf_16_le")
             ca += struct.pack("<H", len(lib_str))
             ca += lib_str
-            ca += struct.pack("<III", 0, 0, num)
+            ca += struct.pack("<III", 0, 0, num) + extra
         return ca
 
     def _user_class_section(self: T) -> bytes:
