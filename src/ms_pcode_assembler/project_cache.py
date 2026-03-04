@@ -52,6 +52,7 @@ class ProjectCache():
         ca = struct.pack("<HH", len(self._libraries), 2)
 
         for lib in self._libraries:
+            extra = b''
             if isinstance(lib, tuple):
                 text = lib[0]
                 num = 1
