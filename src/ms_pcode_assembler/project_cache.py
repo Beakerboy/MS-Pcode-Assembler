@@ -57,7 +57,7 @@ class ProjectCache():
                 num = 1
                 extra = struct.pack("<H", len(lib[1]))
                 extra += bytearray(lib[1], "utf_16_le")
-                extra += struct.pack("<III", 0, 0, num)
+                extra += struct.pack("<IIHH", 0, 0, 0, num)
             else:
                 text = lib
                 num = 0
@@ -66,7 +66,7 @@ class ProjectCache():
             lib_str = bytearray(text, "utf_16_le")
             ca += struct.pack("<H", len(lib_str))
             ca += lib_str
-            ca += struct.pack("<III", 0, 0, num) + extra
+            ca += struct.pack("<IIHH", 0, 0, 0, num) + extra
         return ca
 
     def _user_class_section(self: T) -> bytes:
