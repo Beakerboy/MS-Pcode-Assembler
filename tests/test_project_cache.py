@@ -16,7 +16,10 @@ def test_doc_cache() -> None:
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE" +
         "#Microsoft Excel 16.0 Object Library"
     )
-    cache.add_library("")
+    cache.add_library(
+        "*\G{00020430-0000-0000-C000-000000000046}#2.0#0#" +
+        "C:\Windows\System32\stdole2.tlb#OLE Automation"
+    )
     cache.add_library("")
     cache.add_library("")
     cache.add_library("")
