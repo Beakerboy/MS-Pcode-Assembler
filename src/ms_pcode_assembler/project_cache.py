@@ -56,7 +56,7 @@ class ProjectCache():
                 text = lib[1]
                 num = 1
             else:
-                test = lib
+                text = lib
                 num = 0
                 
             lib_str = bytearray(text, "utf_16_le")
