@@ -75,7 +75,7 @@ class ProjectCache():
 
     def _user_class_section(self: T) -> bytes:
         user = self._user
-        ca = b''
+        ca = struct.pack("<H", len(user))
         for num in user:
             ca += struct.pack("<H", num)
         return ca
