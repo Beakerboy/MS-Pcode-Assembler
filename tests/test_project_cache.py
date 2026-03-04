@@ -1,5 +1,5 @@
-import struct
-import uuid
+# import struct
+# import uuid
 from ms_pcode_assembler.project_cache import ProjectCache
 
 
