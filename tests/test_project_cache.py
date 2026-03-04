@@ -12,3 +12,7 @@ def test_doc_cache() -> None:
     he = cache._header()
     file_data = f.read(len(he))
     assert he == file_data
+    li = cache._library_section()
+    file_data = f.read(len(he))
+    assert li == file_data
+    
