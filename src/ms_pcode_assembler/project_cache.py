@@ -57,7 +57,7 @@ class ProjectCache():
                 num = 1
                 extra = struct.pack("<H", len(lib[1]))
                 extra += bytearray(lib[1], "utf_16_le")
-                extra += struct.pack("<IIHH", 0, 0, 0, num)
+                extra += struct.pack("<IIHH", 0, 0, 0, num) + lib[2]
             else:
                 text = lib
                 num = 0
