@@ -32,7 +32,7 @@ def test_doc_cache() -> None:
     child = ("*\\G{3AF3885D-1EAB-4BD6-A2CF-8C849267EC75}#2.0#0#" +
              "C:\\Users\\KNOWAC~1\\AppData\\Local\\Temp\\VBE\\MSForms.exd#" +
              "Microsoft Forms 2.0 Object Library")
-    ex = b'\xe1\x2EE\x0D\x8F\xE0\x1A\x10\x85\x2E\x02\x60\x8CM\x0B\xB4\x00\x00'
+    ex = b'\xe1\x2EE\x0D\x8F\xE0\x1A\x10\x85\x2E\x02\x60\x8CM\x0B\xB4'
     cache.add_library((lib, child, ex))
     # cache.add_library(child)
     cache.add_library(
