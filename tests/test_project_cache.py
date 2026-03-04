@@ -34,13 +34,16 @@ def test_doc_cache() -> None:
              "Microsoft Forms 2.0 Object Library")
     ex = b'\xe1\x2EE\x0D\x8F\xE0\x1A\x10\x85\x2E\x02\x60\x8CM\x0B\xB4'
     cache.add_library((lib, child, ex))
-    # cache.add_library(child)
+
     cache.add_library(
         "*\\G{B691E011-1797-432E-907A-4D8C69339129}#6.1#0#" +
         "C:\\Program Files\\Common Files\\System\\ado\\msado15.dll#" +
         "Microsoft ActiveX Data Objects 6.1 Library"
     )
-    cache.add_library("")
+    cache.add_library(
+        "*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#" +
+        "C:\\Windows\\System32\\scrrun.dll#Microsoft Scripting Runtime"
+    )
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
