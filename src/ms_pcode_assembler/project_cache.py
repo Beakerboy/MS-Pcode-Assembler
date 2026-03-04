@@ -7,8 +7,9 @@ T = TypeVar('T', bound='ProjectCache')
 
 
 class ModuleBase:
-    name = ""
-    cookie = 0
+    def __init(self) -> None:
+        self.name = ""
+        self.cookie = 0
 
 
 class ProjectCache():
