@@ -1,7 +1,6 @@
 import struct
 
 from typing import TypeVar
-from uuid import UUID
 
 
 T = TypeVar('T', bound='ProjectCache')
@@ -49,7 +48,7 @@ class ProjectCache():
 
     def _compile_time_data(self: T) -> bytes:
         return struct.pack("<6IH", 0x0212,  0x010214, 0x010216, 0x0218,
-                      0x01021a, 0x01021c, 0x0222)
+                           0x01021a, 0x01021c, 0x0222)
 
     def _data_section(self: T) -> bytes:
         # Data
@@ -66,7 +65,7 @@ class ProjectCache():
         return ca
 
     def _module_section(self: T) -> bytes:
-        ca = struct.pack("<H", len(modules))
+        ca = struct.pack("<H", len(self._modules))
         i = 0
 
         data_str = [0, 0, 6]
@@ -74,7 +73,7 @@ class ProjectCache():
         # data1 = i*24
         data1 = [0, 0x18, 0x30]
         data2 = [0x0333, 0x0333, 0x0283]
-        for module in modules:
+        for module in self._modules:
             name = module.modName.value.encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
