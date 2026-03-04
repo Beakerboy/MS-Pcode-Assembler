@@ -60,7 +60,7 @@ class ProjectCache():
                 text = lib
                 num = 0
                 extra = b''
-                
+
             lib_str = bytearray(text, "utf_16_le")
             ca += struct.pack("<H", len(lib_str))
             ca += lib_str
