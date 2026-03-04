@@ -35,10 +35,6 @@ def test_doc_cache() -> None:
     cache.add_library((lib, child))
 
     cache.add_library(
-        
-    )
-
-    cache.add_library(
         "*\\G{B691E011-1797-432E-907A-4D8C69339129}#6.1#0#" +
         "C:\\Program Files\\Common Files\\System\\ado\\msado15.dll#" +
         "Microsoft ActiveX Data Objects 6.1 Library"
