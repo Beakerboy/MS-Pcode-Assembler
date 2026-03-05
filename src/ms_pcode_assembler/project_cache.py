@@ -91,15 +91,17 @@ class ProjectCache():
 
     def _data_section(self: T) -> bytes:
         data = self._data
-        ca = struct.pack("<HihIHH", data[0], -1, -1, 0, data[1], 0)
-        ca += struct.pack("<IH", self._hex)
+        # Header?
+        ca = struct.pack("<HihIHHI", data[0], -1, -1, 0, data[1], 0, self._hex)
+
+        # 66 bytes of data
         for num in data[2:6]:
             ca += struct.pack("<h", num)
         ca += struct.pack("<Ii", data[7], -1)
         for num in data[8:20]:
             ca += struct.pack("<h", num)
 
-        # Footer?
+        # Footer 22 bytes
         ca += struct.pack("<5IH", 1, 0, 0, 0, 0, self._project_cookie)
         return ca
 
