@@ -45,7 +45,7 @@ def test_doc_cache() -> None:
         "C:\\Windows\\System32\\scrrun.dll#Microsoft Scripting Runtime"
     )
     cache._user = [2, 2, 2, 2, 2, 0x402, 0x402, 0x402, 2, 2, 2,
-                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                   0x402, 0x402, 0x402, 2, 2, 0x402, 2, 0, 0, 0, 0]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
