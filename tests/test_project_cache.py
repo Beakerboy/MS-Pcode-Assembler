@@ -52,7 +52,7 @@ def test_doc_cache() -> None:
     hex1 = 0x63c41a11
     hex2 = 0x63c66273
     cache._hex = hex2
-    cache._modules = [("ThisWorkbook", 48, 91, hex1, 0x22b, 0xc472, 0x33b, 0),
+    cache._modules = [("ThisWorkbook", 48, 91, hex1, 0x22b, 0xc472, 0, 0x33b),
                       ("Sheet1", 48, 93, hex1, 0), (), (),
                       (), (), (), (), (), (), (), (),
                       (), (), (), (), (), (), (), (), (), ()]
