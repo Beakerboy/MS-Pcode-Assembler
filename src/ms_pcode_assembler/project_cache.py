@@ -117,10 +117,10 @@ class ProjectCache():
                 chr(module[1]) + chr(module[2]) + hex(module[3])[2:]
             ).encode("utf_16_le")
             ca += struct.pack("<H", len(txt)) + txt
-            cookie = module[4]
+            cookie = module[5]
             ca += struct.pack("<HHH", 0xFFFF, module[4], len(name)) + name
             ca += struct.pack("<HHIH", 0xFFFF, cookie, 0, 0)
-            ca += struct.pack("<BIIH", module[5], 2, module[6], 0xFFFF)
+            ca += struct.pack("<BIIH", module[6], 2, module[7], 0xFFFF)
         return ca
 
     def _identifier_section(self: T) -> bytes:
