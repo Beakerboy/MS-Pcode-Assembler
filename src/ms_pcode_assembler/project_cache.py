@@ -108,7 +108,7 @@ class ProjectCache():
         return ca
 
     def _module_section(self: T) -> bytes:
-        i = 0 
+        i = 0
         ca = struct.pack("<H", len(self._modules))
 
         for module in self._modules[:4]:
