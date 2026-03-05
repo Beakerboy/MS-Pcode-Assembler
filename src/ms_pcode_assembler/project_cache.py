@@ -116,8 +116,8 @@ class ProjectCache():
         # data1 = i*24
         data1 = [0, 0x18, 0x30]
         data2 = [0x0333, 0x0333, 0x0283]
-        for module in self._modules:
-            name = module.name.encode("utf_16_le")
+        for module in self._modules[:1]:
+            name = module[0].encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
                 "2" + chr(70 + i) + hex((self._hex + data_str[i]))[2:]
