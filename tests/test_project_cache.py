@@ -47,7 +47,7 @@ def test_doc_cache() -> None:
     cache._user = [2, 2, 2, 2, 2, 0x402, 0x402, 0x402, 2, 2, 2,
                    0x402, 0x402, 0x402, 2, 2, 0x402, 2, 2, 1, 1, 0x402]
     cache._compile = [0x0212, 0x10214, 0x10216, 0x218, 0x1021a, 0x1021c]
-    cache._data =[0x21e]
+    cache._data = [0x21e]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
