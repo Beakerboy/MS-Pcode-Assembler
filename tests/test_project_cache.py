@@ -57,10 +57,11 @@ def test_doc_cache() -> None:
         ("Sheet1", 48, 93, hex1, 0x22f, 0xd62a, 0x33b),
         ("iSQLConnection", 50, 51, hex2, 0x231, 0x0399, 0x8c4),
         ("iSQLQuery", 50, 53, hex2, 0x23f, 0x65b5, 0x55c),
-        ("iSQLRecordset", 50, 51, hex2, 0x255, 0xccb4, 0x33b),
-        ("SQLCondition", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
-        ("SQLConnection", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
-        ("SQLDatabase", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
+        ("iSQLRecordset", 50, 52, hex2, 0x255, 0xccb4, 0x9f8),
+        ("SQLCondition", 50, 51, hex2, 0x22b, 0xc472, 0xbc8),
+        ("SQLConnection", 50, 51, hex2, 0x22b, 0xc472, 0xbed),
+        ("SQLCreate", 50, 51, hex2, 0x22b, 0xc472, 0x7b6)
+        ("SQLDatabase", 50, 51, hex2, 0x22b, 0xc472, 0x279b),
         ("SQLDelete", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
         ("SQLInsert", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
         ("SQLQuery", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
@@ -74,7 +75,6 @@ def test_doc_cache() -> None:
         ("SQLFactory", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
         ("SQLHelperFunctions", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
         ("Login", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
-        ("SQLCreate", 50, 51, hex2, 0x22b, 0xc472, 0x33b)
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
