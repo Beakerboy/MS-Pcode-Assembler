@@ -91,14 +91,13 @@ class ProjectCache():
 
     def _data_section(self: T) -> bytes:
         data = self._data
-        ca = struct.pack("<HihIH", data[0], -1, -1, 0, data[1])
-        ca += b'\x00' * 2
-        ca += struct.pack("<IH", self._hex, 0x11)
-
-        # 64 bytes?
-        ca += b'\xFF' * 8
-        ca += struct.pack("<I", 1)
-        ca += b'\xFF' * 36 + struct.pack("<H", 2) + b'\xFF' * 14
+        ca = struct.pack("<HihIHH", data[0], -1, -1, 0, data[1], 0)
+        ca += struct.pack("<IH", self._hex)
+        for num in data[2:6]:
+            ca += struct.pack("<h", num)
+        ca += struct.pack("<Ii", data[7], -1)
+        for num in data[8:20]:
+            ca += struct.pack("<h", num)
 
         # Footer?
         ca += struct.pack("<5IH", 1, 0, 0, 0, 0, self._project_cookie)
