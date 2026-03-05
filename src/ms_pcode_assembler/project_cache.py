@@ -91,8 +91,7 @@ class ProjectCache():
 
     def _data_section(self: T) -> bytes:
         data = self._data
-        ca = struct.pack("<H", data[0])
-        ca += b'\xFF' * 6 + b'\x00' * 4
+        ca = struct.pack("<HihI", data[0], -1, -1, 0)
         ca += b'\xFF' * 2 + b'\x00' * 2
         ca += struct.pack("<IH", self._hex, 0x11)
 
