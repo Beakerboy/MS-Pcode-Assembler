@@ -95,7 +95,7 @@ class ProjectCache():
         ca = struct.pack("<HihIHHI", data[0], -1, -1, 0, data[1], 0, self._hex)
 
         # 66 bytes of data
-        for num in data[2:6]:
+        for num in data[2:7]:
             ca += struct.pack("<h", num)
         ca += struct.pack("<ii", data[7], -1)
         for num in data[8:20]:
