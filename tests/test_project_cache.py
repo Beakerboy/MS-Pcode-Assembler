@@ -60,7 +60,7 @@ def test_doc_cache() -> None:
         ("iSQLRecordset", 50, 52, hex2, 0x255, 0xccb4, 0x9f8, []),
         ("SQLCondition", 50, 51, hex2, 0x22b, 0xc472, 0xbc8, []),
         ("SQLConnection", 50, 51, hex2, 0x22b, 0xc472, 0xbed, []),
-        ("SQLCreate", 50, 51, hex2, 0x22b, 0xc472, 0x7b6, [])
+        ("SQLCreate", 50, 51, hex2, 0x22b, 0xc472, 0x7b6, []),
         ("SQLDatabase", 50, 51, hex2, 0x22b, 0xc472, 0x279b, []),
         ("SQLDelete", 50, 51, hex2, 0x22b, 0xc472, 0x33b, []),
         ("SQLInsert", 50, 51, hex2, 0x22b, 0xc472, 0x33b, []),
