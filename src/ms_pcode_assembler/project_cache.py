@@ -26,7 +26,8 @@ class ProjectCache():
         self._libraries = []
         self._modules = []
         self._project_cookie = project_cookie
-        self._user = [3, 1, 6]
+        self._user = []
+        self._compile = []
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
@@ -81,8 +82,11 @@ class ProjectCache():
         return ca
 
     def _compile_time_data(self: T) -> bytes:
-        return struct.pack("<6IH", 0x0212,  0x010214, 0x010216, 0x0218,
-                           0x01021a, 0x01021c, 0x0222)
+        compile = self._compile
+        ca = struct.pack("<H", len(compile))
+        for num in compile:
+            ca += struct.pack("<H", num)
+        return ca
 
     def _data_section(self: T) -> bytes:
         # Data
