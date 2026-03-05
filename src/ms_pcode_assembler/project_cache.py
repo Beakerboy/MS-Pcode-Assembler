@@ -28,6 +28,7 @@ class ProjectCache():
         self._project_cookie = project_cookie
         self._user = []
         self._compile = []
+        self._data = []
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
@@ -89,8 +90,9 @@ class ProjectCache():
         return ca
 
     def _data_section(self: T) -> bytes:
-        # Data
-        ca = b'\x1e' + b'\x02' + b'\xFF' * 6 + b'\x00' * 4
+        data = self._data
+        ca = struct.pack("<H", data[0])
+        ca += b'\xFF' * 6 + b'\x00' * 4
         ca += b'\xFF' * 2 + b'\x00' * 2
         ca += struct.pack("<IH", self._hex, 0x11)
 
