@@ -455,6 +455,7 @@ A large block of data. The last two bytes are the project cookie.
 </table>
 
 <b>Records (8 bytes each):</b> 4 bytes of data and 4 bytes of -1.
+
 <b>Index (4 bytes):</b> Incremented by 0x18 from the previous module.
 
     Example Data:
