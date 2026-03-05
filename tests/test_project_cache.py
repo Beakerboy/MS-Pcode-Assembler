@@ -50,12 +50,12 @@ def test_doc_cache() -> None:
     cache._data = [0x21e, 0, 7, 14, 18, -1, 5, -1, 4, 2, 8, -1, 11, 16,
                    10, 3, 20, 12, 6, 13, 15, 17, 7, 9, 19]
     hex1 = 0x63c41a11
-    hex2 = 0x63c66273
+    hex2 = 0x63c69a74
     cache._hex = hex2
     cache._modules = [
         ("ThisWorkbook", 48, 91, hex1, 0x22b, 0xc472, 0x33b),
         ("Sheet1", 48, 93, hex1, 0x22f, 0xd62a, 0x33b),
-        ("iSQLConnection", 50, 39, hex2, 0x231, 0x0399, 0x33b),
+        ("iSQLConnection", 50, 51, hex2, 0x231, 0x0399, 0x33b),
         ("iSQLQuery", 50, 51, hex2, 0x23f, 0x65b5, 0x33b),
         ("iSQLRecordset", 50, 51, hex2, 0x255, 0xccb4, 0x33b),
         ("SQLCondition", 50, 51, hex2, 0x22b, 0xc472, 0x33b),
