@@ -110,7 +110,7 @@ class ProjectCache():
     def _module_section(self: T) -> bytes:
         ca = struct.pack("<H", len(self._modules))
 
-        for module in self._modules[:2]:
+        for module in self._modules[:4]:
             name = module[0].encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
