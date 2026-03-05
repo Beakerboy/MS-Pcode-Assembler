@@ -99,7 +99,7 @@ class ProjectCache():
         ca += b'\xFF' * 36 + struct.pack("<H", 2) + b'\xFF' * 14
 
         # Footer?
-        ca += struct.pack("<5IH", 1, 0, 0, 0, 0, self._proj_cookie)
+        ca += struct.pack("<5IH", 1, 0, 0, 0, 0, self._project_cookie)
         return ca
 
     def _module_section(self: T) -> bytes:
