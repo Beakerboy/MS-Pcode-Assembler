@@ -120,7 +120,7 @@ class ProjectCache():
             cookie = module[4]
             ca += struct.pack("<HHH", 0xFFFF, module[4], len(name)) + name
             ca += struct.pack("<HHIH", 0xFFFF, cookie, 0, 0)
-            ca += struct.pack("<BIIH", module[4], 2, module[4], 0xFFFF)
+            ca += struct.pack("<BIIH", module[5], 2, module[4], 0xFFFF)
         return ca
 
     def _identifier_section(self: T) -> bytes:
