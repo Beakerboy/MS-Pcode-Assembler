@@ -110,9 +110,6 @@ class ProjectCache():
     def _module_section(self: T) -> bytes:
         ca = struct.pack("<H", len(self._modules))
 
-        # data1 = i*24
-        data1 = [0, 0x18, 0x30]
-        data2 = [0x0333, 0x0333, 0x0283]
         for module in self._modules[:1]:
             name = module[0].encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
@@ -123,7 +120,7 @@ class ProjectCache():
             cookie = module[4]
             ca += struct.pack("<HHH", 0xFFFF, module[4], len(name)) + name
             ca += struct.pack("<HHIH", 0xFFFF, cookie, 0, 0)
-            ca += struct.pack("<BIIH", data1[i], 2, data2[i], 0xFFFF)
+            ca += struct.pack("<BIIH", module[4], 2, module[4], 0xFFFF)
         return ca
 
     def _identifier_section(self: T) -> bytes:
