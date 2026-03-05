@@ -120,10 +120,10 @@ class ProjectCache():
             name = module[0].encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
-                "2" + chr(70 + i) + hex((self._hex + data_str[i]))[2:]
+                chr(module[1]) + chr(module[2]) + hex(module[3])[2:]
             ).encode("utf_16_le")
             ca += struct.pack("<H", len(txt)) + txt
-            cookie = module[1]
+            cookie = module[4]
             ca += struct.pack("<HHH", 0xFFFF, data[i], len(name)) + name
             ca += struct.pack("<HHIH", 0xFFFF, cookie, 0, 0)
             ca += struct.pack("<BIIH", data1[i], 2, data2[i], 0xFFFF)
