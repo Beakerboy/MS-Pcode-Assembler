@@ -4,7 +4,7 @@ from ms_pcode_assembler.project_cache import ProjectCache
 
 
 def test_doc_cache() -> None:
-    cache = ProjectCache(0x04e4, 0, 0)
+    cache = ProjectCache(0x04e4, 0x78b9, 0)
     cache.add_library(
         "*\\G{000204EF-0000-0000-C000-000000000046}#4.2#9#" +
         "C:\\Program Files\\Common Files\\Microsoft Shared" +
