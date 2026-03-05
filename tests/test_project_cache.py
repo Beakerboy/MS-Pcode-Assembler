@@ -54,7 +54,7 @@ def test_doc_cache() -> None:
     cache._hex = hex2
     cache._modules = [
         ("ThisWorkbook", 48, 91, hex1, 0x22b, 0xc472, 0, 0x33b),
-        ("Sheet1", 48, 93, hex1, 0x22f, 0xc472, 0, 0x33b),
+        ("Sheet1", 48, 93, hex1, 0x22f, 0xd62a, 24, 0x33b),
         ("iSQLConnection", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("iSQLQuery", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("iSQLRecordset", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
