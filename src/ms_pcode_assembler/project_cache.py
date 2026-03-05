@@ -101,7 +101,7 @@ class ProjectCache():
         for num in data[8:20]:
             ca += struct.pack("<h", num)
         ca += struct.pack("<iihhi", -1, -1, -1, data[20], -1)
-        for num in data[21:24]:
+        for num in data[21:25]:
             ca += struct.pack("<h", num)
         # Footer 22 bytes
         ca += struct.pack("<5IH", 1, 0, 0, 0, 0, self._project_cookie)
