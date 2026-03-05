@@ -121,7 +121,7 @@ class ProjectCache():
             cookie = module[5]
             ca += struct.pack("<HHH", 0xFFFF, module[4], len(name)) + name
             ca += struct.pack("<HHIH", 0xFFFF, cookie, 0, 0)
-            ca += struct.pack("<BIIH", i * 24, 2, module[6], 0xFFFF)
+            ca += struct.pack("<IBIH", 0x0200 + i * 24, 0, module[6], 0xFFFF)
             i += 1
         return ca
 
