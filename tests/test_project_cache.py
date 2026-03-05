@@ -49,9 +49,11 @@ def test_doc_cache() -> None:
     cache._compile = [0x0212, 0x10214, 0x10216, 0x218, 0x1021a, 0x1021c]
     cache._data = [0x21e, 0, 7, 14, 18, -1, 5, -1, 4, 2, 8, -1, 11, 16,
                    10, 3, 20, 12, 6, 13, 15, 17, 7, 9, 19]
-    cache._hex = 0x63c66273
-    cache._modules = [("ThisWorkbook", 48, 91, 0x63c41a11, 0x22b, 0xc472, 0, 0),
-                      ("Sheet1", 48, 93, 0x63c41a11, 0), (), (),
+    hex1 = 0x63c41a11
+    hex2 = 0x63c66273
+    cache._hex = hex2
+    cache._modules = [("ThisWorkbook", 48, 91, hex1, 0x22b, 0xc472, 0, 0),
+                      ("Sheet1", 48, 93, hex1, 0), (), (),
                       (), (), (), (), (), (), (), (),
                       (), (), (), (), (), (), (), (), (), ()]
     f = open('tests/SQL-vbaProject.bin', 'rb')
