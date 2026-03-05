@@ -85,7 +85,7 @@ class ProjectCache():
         compile = self._compile
         ca = struct.pack("<H", len(compile))
         for num in compile:
-            ca += struct.pack("<H", num)
+            ca += struct.pack("<I", num)
         return ca
 
     def _data_section(self: T) -> bytes:
