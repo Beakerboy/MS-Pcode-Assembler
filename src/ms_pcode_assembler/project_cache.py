@@ -90,7 +90,8 @@ class ProjectCache():
 
     def _data_section(self: T) -> bytes:
         # Data
-        ca = b'\xFF' * 6 + b'\x00' * 4 + b'\xFF' * 2 + b'\x00' * 2
+        ca = b'\x1e' + b'\x02' + b'\xFF' * 6 + b'\x00' * 4
+        ca += b'\xFF' * 2 + b'\x00' * 2
         ca += struct.pack("<IH", self._hex, 0x11)
 
         # 64 bytes?
