@@ -69,7 +69,7 @@ def test_doc_cache() -> None:
         ("SQLSelect", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("SQLStaticQuery", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("SQLSubselect", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
-        ("SQLUpdate", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b,
+        ("SQLUpdate", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("SQLWhere", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("SQLFactory", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
         ("SQLHelperFunctions", 50, 51, hex2, 0x22b, 0xc472, 0, 0x33b),
