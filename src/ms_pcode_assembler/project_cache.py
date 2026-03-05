@@ -111,7 +111,7 @@ class ProjectCache():
         i = 0
         ca = struct.pack("<H", len(self._modules))
 
-        for module in self._modules[:4]:
+        for module in self._modules:
             name = module[0].encode("utf_16_le")
             ca += struct.pack("<H", len(name)) + name
             txt = (
