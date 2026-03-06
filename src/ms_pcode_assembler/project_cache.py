@@ -124,7 +124,8 @@ class ProjectCache():
             if len(module[7]) > 0:
                 for num in module[7]:
                     ca += struct.pack("<Ii", num, -1)
-            ca += struct.pack("<IBIh", 0x0200 + i * 24, 0, module[6], module[8])
+            ca += struct.pack("<IBIh", 0x0200 + i * 24, 0,
+                              module[6], module[8])
             i += 1
         return ca
 
