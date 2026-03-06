@@ -99,11 +99,11 @@ def test_doc_cache() -> None:
     file_data = f.read(len(ca))
     assert ca == file_data
 
-    # This sector ends at 31200 and restarts at 2F200
     ca = cache._data_section()
     file_data = f.read(len(ca))
     assert ca == file_data
 
+    # This sector ends at 31200 and restarts at 2F200
     ca = cache._module_section()
     file_data = f.read(0x6A0)
     f.seek(0x2F200)
