@@ -107,7 +107,7 @@ def test_doc_cache() -> None:
 
     # This sector ends at 31200 and restarts at 2F200
     ca = cache._module_section()
-    file_data = f.read(0x6A0)
+    file_data = f.read(0x6AA)
     f.seek(0x2F200)
     file_data += f.read(len(ca) - len(file_data))
     assert ca == file_data
