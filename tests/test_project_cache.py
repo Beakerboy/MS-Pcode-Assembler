@@ -114,3 +114,7 @@ def test_doc_cache() -> None:
     f.seek(0x2F200)
     file_data += f.read(len(ca) - len(file_data))
     assert ca == file_data
+
+    ca = cache._identifier_section()
+    file_data = f.read(len(ca))
+    assert ca == file_data
