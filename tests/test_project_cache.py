@@ -84,7 +84,7 @@ def test_doc_cache() -> None:
         ("SQLFactory", 50, 69, hex2, 0x3c8, 0xb67d, 0x1227,
          [0x2c0, 0x2f0, 0x350, 0x2d8, 0x2a8, 0x398, 0x368], -1),
         ("SQLHelperFunctions", 50, 76, hex2, 0x3d8, 0xac1b, 0x1843, [], -1),
-        ("Login", 48, 113, hex1, 0x403, 0x5c7c, 0x3f8, [], -1),
+        ("Login", 48, 113, hex1, 0x403, 0x5c7c, 0x6d3, [], -1),
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
