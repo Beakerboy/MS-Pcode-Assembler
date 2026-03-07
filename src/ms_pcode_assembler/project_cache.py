@@ -44,6 +44,7 @@ class ProjectCache():
         ca += self._compile_time_data()
         ca += self._data_section()
         ca += self._module_section()
+        ca += self._post_module_section()
         ca += self._identifier_section()
         ca += self._footer_section()
         return ca
@@ -129,7 +130,7 @@ class ProjectCache():
             i += 1
         return ca
 
-    def _identifier_section(self: T) -> bytes:
+    def _post_module_section(self: T) -> bytes:
         ca = struct.pack("<IH", 0xFFFFFFFF, 0x0101)
         neg_one_4b = b'\xFF\xFF\xFF\xFF'
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
@@ -147,6 +148,9 @@ class ProjectCache():
 
         record += neg_one_4b + struct.pack("<I", 0x30)
         ca += struct.pack("<I", len(record)) + record
+        return ca
+
+    def _identifier_section(self: T) -> bytes:
         names = [
             (0x2b80, b"Excel"), (0xe2f7, b"VBA"), (0x7ec1, b"Win16"),
             (0x7f07, b"Win32"), (0x7f78, b"Win64"), (0xb2b3, b"Mac"),
