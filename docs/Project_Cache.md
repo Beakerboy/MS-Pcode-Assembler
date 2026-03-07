@@ -189,7 +189,9 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="16">Lib or Project (varies)</td>
+    <td class="tg-0pky" colspan="2">Size</td>
+    <td class="tg-0pky" colspan="2">Size (optional)</td>
+    <td class="tg-0pky" colspan="12">Reference</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="4">...</td>
@@ -210,25 +212,25 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 <b>Struct (2 bytes):</b> If this is zero, the following data structure is omitted.
 
     Example Data:
-          20 01 2A 00 5C 00 47 00 7B 00 30 00 30 00      *.\.G.{.0.0.
-    30 00 32 00 30 00 34 00 45 00 46 00 2D 00 30 00  0.2.0.4.E.F.-.0.
-    30 00 30 00 30 00 2D 00 30 00 30 00 30 00 30 00  0.0.0.-.0.0.0.0.
-    2D 00 43 00 30 00 30 00 30 00 2D 00 30 00 30 00  -.C.0.0.0.-.0.0.
-    30 00 30 00 30 00 30 00 30 00 30 00 30 00 30 00  0.0.0.0.0.0.0.0.
-    34 00 36 00 7D 00 23 00 34 00 2E 00 32 00 23 00  4.6.}.#.4...2.#.
-    39 00 23 00 43 00 3A 00 5C 00 50 00 72 00 6F 00  9.#.C.:.\.P.r.o.
-    67 00 72 00 61 00 6D 00 20 00 46 00 69 00 6C 00  g.r.a.m. .F.i.l.
-    65 00 73 00 5C 00 43 00 6F 00 6D 00 6D 00 6F 00  e.s.\.C.o.m.m.o.
-    6E 00 20 00 46 00 69 00 6C 00 65 00 73 00 5C 00  n. .F.i.l.e.s.\.
-    4D 00 69 00 63 00 72 00 6F 00 73 00 6F 00 66 00  M.i.c.r.o.s.o.f.
-    74 00 20 00 53 00 68 00 61 00 72 00 65 00 64 00  t. .S.h.a.r.e.d.
-    5C 00 56 00 42 00 41 00 5C 00 56 00 42 00 41 00  \.V.B.A.\.V.B.A.
-    37 00 2E 00 31 00 5C 00 56 00 42 00 45 00 37 00  7...1.\.V.B.E.7.
-    2E 00 44 00 4C 00 4C 00 23 00 56 00 69 00 73 00  ..D.L.L.#.V.i.s.
-    75 00 61 00 6C 00 20 00 42 00 61 00 73 00 69 00  u.a.l. .B.a.s.i.
-    63 00 20 00 46 00 6F 00 72 00 20 00 41 00 70 00  c. .F.o.r. .A.p.
-    70 00 6C 00 69 00 63 00 61 00 74 00 69 00 6F 00  p.l.i.c.a.t.i.o.
-    6E 00 73 00 00 00 00 00 00 00 00 00 00 00 00 00  n.s.............
+    20 01 2A 00 5C 00 47 00 7B 00 30 00 30 00 30 00   .*.\.G.{.0.0.0.
+    32 00 30 00 34 00 45 00 46 00 2D 00 30 00 30 00  2.0.4.E.F.-.0.0.
+    30 00 30 00 2D 00 30 00 30 00 30 00 30 00 2D 00  0.0.-.0.0.0.0.-.
+    43 00 30 00 30 00 30 00 2D 00 30 00 30 00 30 00  C.0.0.0.-.0.0.0.
+    30 00 30 00 30 00 30 00 30 00 30 00 30 00 34 00  0.0.0.0.0.0.0.4.
+    36 00 7D 00 23 00 34 00 2E 00 32 00 23 00 39 00  6.}.#.4...2.#.9.
+    23 00 43 00 3A 00 5C 00 50 00 72 00 6F 00 67 00  #.C.:.\.P.r.o.g.
+    72 00 61 00 6D 00 20 00 46 00 69 00 6C 00 65 00  r.a.m. .F.i.l.e.
+    73 00 5C 00 43 00 6F 00 6D 00 6D 00 6F 00 6E 00  s.\.C.o.m.m.o.n.
+    20 00 46 00 69 00 6C 00 65 00 73 00 5C 00 4D 00   .F.i.l.e.s.\.M.
+    69 00 63 00 72 00 6F 00 73 00 6F 00 66 00 74 00  i.c.r.o.s.o.f.t.
+    20 00 53 00 68 00 61 00 72 00 65 00 64 00 5C 00   .S.h.a.r.e.d.\.
+    56 00 42 00 41 00 5C 00 56 00 42 00 41 00 37 00  V.B.A.\.V.B.A.7.
+    2E 00 31 00 5C 00 56 00 42 00 45 00 37 00 2E 00  ..1.\.V.B.E.7...
+    44 00 4C 00 4C 00 23 00 56 00 69 00 73 00 75 00  D.L.L.#.V.i.s.u.
+    61 00 6C 00 20 00 42 00 61 00 73 00 69 00 63 00  a.l. .B.a.s.i.c.
+    20 00 46 00 6F 00 72 00 20 00 41 00 70 00 70 00   .F.o.r. .A.p.p.
+    6C 00 69 00 63 00 61 00 74 00 69 00 6F 00 6E 00  l.i.c.a.t.i.o.n.
+    73 00 00 00 00 00 00 00 00 00 00 00 00 00        s.............
 
     Example Data:
                       84 00 2A 00 5C 00 43 00 43 00        ?.*.\.C.C.
@@ -300,18 +302,18 @@ The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after t
 <b>Data (30 bytes):</b>
 
 ## User Class
-A list of two byte data.
+A list of two byte data. The first two bytes is a count.
 
     Example Data:
     09 00 02 00 02 00 02 00 02 00 02 00 02 00 01 00  ....................
     01 00 02 04                                      ....
 
 ## Compile Time Data
-A list of four byte data. followed by 2 mystery bytes.
+A list of four byte data. The first two bytes are a count.
 
     Example Data:
     06 00 0C 02 00 00 0E 02 01 00 10 02 00 00 12 02  ................
-    00 00 14 02 01 00 16 02 01 00 6E 03              ..........n.
+    00 00 14 02 01 00 16 02 01 00                    ..........
 
 ## Data
 <table class="tg">
@@ -441,8 +443,8 @@ A large block of data. The last two bytes are the project cookie.
   </tr>
   <tr>
     <td class="tg-0pky" colspan="8">Records</td>
-    <td class="tg-0pky" colspan="1">Data</td>
-    <td class="tg-0pky" colspan="4">Data</td>
+    <td class="tg-0pky" colspan="4">Index</td>
+    <td class="tg-0pky" colspan="1">0</td>
     <td class="tg-0pky" colspan="3">Data</td>
   </tr>
   <tr>
@@ -453,6 +455,8 @@ A large block of data. The last two bytes are the project cookie.
 </table>
 
 <b>Records (8 bytes each):</b> 4 bytes of data and 4 bytes of -1.
+
+<b>Index (4 bytes):</b> Incremented by 0x18 from the previous module.
 
     Example Data:
                             18 00 54 00 68 00 69 00          ..T.h.i.
