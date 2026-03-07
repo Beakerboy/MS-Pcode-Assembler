@@ -86,6 +86,11 @@ def test_doc_cache() -> None:
         ("SQLHelperFunctions", 50, 76, hex2, 0x3d8, 0xac1b, 0x1843, [], -1),
         ("Login", 48, 113, hex1, 0x403, 0x5c7c, 0x6d3, [], -1),
     ]
+    cache._post_data = [
+        "DD FA DE 3C CB 87 03 46 B1 D0 15 F7 17 F5 8C 41",
+        "14 7F B2 B2 AA 9C 5D 4C 9E D7 4C 05 D3 C2 FD 67",
+        "93 92 2D CD"
+    ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
