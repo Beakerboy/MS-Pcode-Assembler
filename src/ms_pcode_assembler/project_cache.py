@@ -134,11 +134,7 @@ class ProjectCache():
         ca = struct.pack("<IH", 0xFFFFFFFF, 0x0101)
         neg_one_4b = b'\xFF\xFF\xFF\xFF'
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
-        bin_array = [
-            b'\xf1q\x9a\xee\xc0\xe0\xc4F\xa2\xf8l|\xf9{s\x06',
-            b'vS\x9e\xe1B\x85\xfeF\xa1\x8b0E\x08tCU',
-            b'"\x93\xba>\xc3\x82\xfcD\x88\xcav\x96\xe5\x061"'
-        ]
+        bin_array = self._post_data
 
         record = (
             neg_one_4b * 13 + struct.pack("<2I", 0x0230, 0x0218) +
@@ -159,7 +155,7 @@ class ProjectCache():
             (0xe37c, b"ThisWorkbook"), (0xd918, b"_Evaluate", 0x103FF),
             (0x1ae8, b"Sheet1"), (0x1162, b"Module1"), (0x186b, b"Workbook")
             ]
-        ca += struct.pack(
+        ca = struct.pack(
             "<IHHHHI", 0x80, 0, 0x0117, len(names), 0x0106, 0x2ba0
         )
         for name in names:
