@@ -89,7 +89,7 @@ def test_doc_cache() -> None:
     cache._post_f_data = [
         (0, 0x0814)
     ]
-    cache._post_data = [
+    cache._post_data1 = [
         "DD FA DE 3C CB 87 03 46 B1 D0 15 F7 17 F5 8C 41",
         "14 7F B2 B2 AA 9C 5D 4C 9E D7 4C 05 D3 C2 FD 67",
         "93 92 2D CD"
