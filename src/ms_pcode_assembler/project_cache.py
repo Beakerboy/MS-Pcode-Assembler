@@ -30,7 +30,7 @@ class ProjectCache():
         self._compile = []
         self._data = []
         self._post_data = []
-        self._post_fs = 0x20
+        self._post_f_data = []
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
@@ -138,9 +138,10 @@ class ProjectCache():
         neg_one_4b = b'\xFF\xFF\xFF\xFF'
         f_section = neg_one_4b * 128
 
-        for (location, value) in self._post_data_one:
-            # put valies in that position of f_section
-            pass
+        for (location, value) in self._post_f_data:
+            f_section[location:location + 4 = value
+
+        ca += f_section
             
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
         bin_array = self._post_data
