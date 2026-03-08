@@ -147,7 +147,8 @@ class ProjectCache():
 
         for byte_string in bin_array:
             if isinstance(byte_string, tuple):
-                record += (byte_string[0] + byte_string[1] +
+                record += (byte_string[0] +
+                           struct.pack("<I", byte_string[1]) +
                            struct.pack("<I", 1))
             else:
                 record += byte_string + neg_one_one
