@@ -119,6 +119,7 @@ def test_doc_cache() -> None:
         (b'\xca\xef\xfa\xd5\x1d\xaf\xe0B\x89\x9e\xdc\xcb\x03U\x91\xa0',
          0x320)
     ]
+    cache._post_footer = 0xe8
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
