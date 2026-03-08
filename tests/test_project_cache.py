@@ -103,7 +103,10 @@ def test_doc_cache() -> None:
         b'\x9d\xde\xe4\xea\x81\x8b\xe7J\xbdxQ\xdf\x16<&\x80',
         b'\xae\x98r\xb4\xa1o\x02I\xb7\x7f\xda\xeb\xdd\x10j\x97',
         b'\x16B\xca`\xdd\xf7\xb1N\x80)\xc0\x83\x921K\x81',
-        fake_data, fake_data, fake_data, fake_data, fake_data,
+        b'\xd9\xf4\x13\xdax\xac\x03C\xb2K\xa3,\xc2\x9d\xc2\x8f',
+        b')\x15\x91\xec\x81\xcc\x01J\x95[$\x04"]\xeb.',
+        b'\x959\xd2\xeb\xbe\xa8TK\x9c\xc1B\x8eC\x85\x85\x87',
+        fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data
     ]
