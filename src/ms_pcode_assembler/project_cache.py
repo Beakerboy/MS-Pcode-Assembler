@@ -140,8 +140,7 @@ class ProjectCache():
 
         for (location, value) in self._post_f_data:
             word = struct.pack("<I", value)
-            record = (f_section[:location] + word +
-                         f_section[location + 4:])
+            record = record[:location] + word + record[location + 4:]
 
         ca += f_section
 
