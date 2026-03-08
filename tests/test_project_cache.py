@@ -87,7 +87,7 @@ def test_doc_cache() -> None:
         ("Login", 48, 113, hex1, 0x403, 0x5c7c, 0x6d3, [], -1),
     ]
     cache._post_f_data = [
-        (0x06, 0x308), (0xa0, 0x3f8)
+        (0x06, 0x308), (0x0a, 0x3f8), (0x0d, 0x368), (0x14, 0x338)
     ]
     cache._post_data1 = [
         "DD FA DE 3C CB 87 03 46 B1 D0 15 F7 17 F5 8C 41",
