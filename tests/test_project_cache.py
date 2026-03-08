@@ -89,10 +89,12 @@ def test_doc_cache() -> None:
     cache._post_f_data = [
         (0x06, 0x308), (0x0a, 0x3f8), (0x0d, 0x368), (0x14, 0x338)
     ]
-    cache._post_data1 = [
-        "DD FA DE 3C CB 87 03 46 B1 D0 15 F7 17 F5 8C 41",
-        "14 7F B2 B2 AA 9C 5D 4C 9E D7 4C 05 D3 C2 FD 67",
-        "93 92 2D CD"
+    fake_data = b'0123456789abcdef'
+    cache._post_data = [
+        fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
+        fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
+        fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
+        fake_data, fake_data, fake_data, fake_data
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
