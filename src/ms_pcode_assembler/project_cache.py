@@ -134,7 +134,7 @@ class ProjectCache():
 
     def _post_module_section(self: T) -> bytes:
         ca = struct.pack("<IH", 0xFFFFFFFF, 0x0101)
-         
+
         neg_one_4b = b'\xFF\xFF\xFF\xFF'
         f_section = neg_one_4b * 128
 
@@ -144,7 +144,7 @@ class ProjectCache():
                          f_section[location + 4:])
 
         ca += f_section
-            
+
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
         bin_array = self._post_data
 
