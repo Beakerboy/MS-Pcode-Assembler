@@ -97,7 +97,7 @@ def test_doc_cache() -> None:
     fake_data = b'\xdd\xfa\xde<\xcb\x87\x03F\xb1\xd0\x15\xf7\x17\xf5\x8cA'
     cache._post_data = [
         b'\xdd\xfa\xde<\xcb\x87\x03F\xb1\xd0\x15\xf7\x17\xf5\x8cA',
-        b'\x14\x7F\xB2\xB2\xAA\x9C]L\x9E\xD7L\x05\xD3\xC2\xFDg'
+        b'\x14\x7F\xB2\xB2\xAA\x9C]L\x9E\xD7L\x05\xD3\xC2\xFDg',
         fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
