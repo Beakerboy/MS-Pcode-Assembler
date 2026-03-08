@@ -153,7 +153,7 @@ class ProjectCache():
             else:
                 record += byte_string + neg_one_one
 
-        record += neg_one_4b + struct.pack("<I", 0x30)
+        record += neg_one_4b + struct.pack("<I", self._post_footer)
         ca += struct.pack("<I", len(record)) + record
         return ca
 
