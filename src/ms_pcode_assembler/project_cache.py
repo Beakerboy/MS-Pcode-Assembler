@@ -136,11 +136,11 @@ class ProjectCache():
         ca = struct.pack("<IH", 0xFFFFFFFF, 0x0101)
 
         neg_one_4b = b'\xFF\xFF\xFF\xFF'
-        f_section = neg_one_4b * 128
+        record = neg_one_4b * 128
 
         for (location, value) in self._post_f_data:
             word = struct.pack("<I", value)
-            f_section = (f_section[:location] + word +
+            record = (f_section[:location] + word +
                          f_section[location + 4:])
 
         ca += f_section
@@ -148,9 +148,6 @@ class ProjectCache():
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
         bin_array = self._post_data
 
-        record = (
-            neg_one_4b * 13 + struct.pack("<2I", 0x0230, 0x0218) +
-            neg_one_4b * 28 + struct.pack("<I", 0x0200) + neg_one_4b * 84)
         for byte_string in bin_array:
             record += byte_string + neg_one_one
 
