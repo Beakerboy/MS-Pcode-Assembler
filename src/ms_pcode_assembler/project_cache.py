@@ -142,8 +142,6 @@ class ProjectCache():
             word = struct.pack("<I", value)
             record = record[:location] + word + record[location + 4:]
 
-        ca += f_section
-
         neg_one_one = neg_one_4b + struct.pack("<I", 1)
         bin_array = self._post_data
 
