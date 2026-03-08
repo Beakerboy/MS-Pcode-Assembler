@@ -139,7 +139,9 @@ class ProjectCache():
         f_section = neg_one_4b * 128
 
         for (location, value) in self._post_f_data:
-            f_section[location:location + 4 = value
+            word = struct.pack("<I", value)
+            f_section = (f_section[:location] + word +
+                         f_section[location + 4:])
 
         ca += f_section
             
