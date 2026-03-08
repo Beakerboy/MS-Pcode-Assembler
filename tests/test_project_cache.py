@@ -109,7 +109,8 @@ def test_doc_cache() -> None:
         b'\xf6\x8c}Ej\xf7\xcfD\xbf)\x9c|B\x9c\xbf\x12',
         b'(W\xa6Ix\xf5\x0bG\x8a\x94u\xfe\x9f(\x1bE',
         b'u\x8bk\xfc\x0e8\x12E\x8a\xa2\xdaEK\xb2\x93C0\x02',
-        fake_data, fake_data, fake_data, fake_data, fake_data,
+        b'\x08\xcb\xbf\xc2\x99K<B\xa9\xf6\xad\xde\xc1vC\xf6',
+        fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
