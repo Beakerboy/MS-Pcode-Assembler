@@ -86,7 +86,7 @@ def test_doc_cache() -> None:
         ("SQLHelperFunctions", 50, 76, hex2, 0x3d8, 0xac1b, 0x1843, [], -1),
         ("Login", 48, 113, hex1, 0x403, 0x5c7c, 0x6d3, [], -1),
     ]
-    cache._post_f_data =[
+    cache._post_f_data = [
         (0, 0x0814)
     ]
     cache._post_data = [
