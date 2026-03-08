@@ -98,7 +98,10 @@ def test_doc_cache() -> None:
     cache._post_data = [
         b'\xdd\xfa\xde<\xcb\x87\x03F\xb1\xd0\x15\xf7\x17\xf5\x8cA',
         b'\x14\x7F\xB2\xB2\xAA\x9C]L\x9E\xD7L\x05\xD3\xC2\xFDg',
-        fake_data, fake_data, fake_data, fake_data,
+        b'\x11\xcfj\x01\xdb?\xd1K\xac\xf2\x182\xb5\xed\xac\x02',
+        b'\x9d\xde\xe4\xea\x81\x8b\xe7J\xbdxQ\xdf\x16<&\x80',
+        b'\xae\x98r\xb4\xa1o\x02I\xb7\x7f\xda\xeb\xdd\x10j\x97',
+        b'\x16B\xca`\xdd\xf7\xb1N\x80)\xc0\x83\x921K\x81',
         fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data, fake_data, fake_data,
         fake_data, fake_data, fake_data, fake_data
