@@ -130,7 +130,9 @@ def test_doc_cache() -> None:
     assert ca == file_data
 
     ca = cache._post_module_section()
-    file_data = f.read(len(ca))
+    file_data = f.read(0x14e)
+    f.seek(0x2f800)
+    file_data += f.read(len(ca) - len(file_data))
     assert ca == file_data
 
     # full _vba_project is 2c2b bytes
