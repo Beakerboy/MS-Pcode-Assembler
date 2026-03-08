@@ -116,7 +116,8 @@ def test_doc_cache() -> None:
         (b'c\x88$\x00\xde;:C\xb4>\xc8\x81\xf2\x0f\x808', 0x218),
         b'fa\xeaz\xb53:K\x8a\xf3\xde*\xeaA\xf8\x91',
         b'\x03T\xb7\xf9\x87H\x98I\xac\xfb\x03%\xf9\xe5\xe5\xe0',
-        fake_data, fake_data
+        b'I<X\x1dYq\xfeI\xbd\x02\xc7\xc2i\xbd]\x94',
+        fake_data
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
