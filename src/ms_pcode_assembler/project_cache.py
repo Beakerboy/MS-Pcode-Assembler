@@ -31,6 +31,8 @@ class ProjectCache():
         self._data = []
         self._post_data = []
         self._post_f_data = []
+        self._identifiers = []
+        self._w0 = 0
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
@@ -158,16 +160,10 @@ class ProjectCache():
         return ca
 
     def _identifier_section(self: T) -> bytes:
-        names = [
-            (0x2b80, b"Excel"), (0xe2f7, b"VBA"), (0x7ec1, b"Win16"),
-            (0x7f07, b"Win32"), (0x7f78, b"Win64"), (0xb2b3, b"Mac"),
-            (0x23ad, b"VBA6"), (0x23ae, b"VBA7"), (0x170a, b"Project1"),
-            (0x6093, b"stdole"), (0xbfbe, b"VBAProject"), (0x7515, b"Office"),
-            (0xe37c, b"ThisWorkbook"), (0xd918, b"_Evaluate", 0x103FF),
-            (0x1ae8, b"Sheet1"), (0x1162, b"Module1"), (0x186b, b"Workbook")
-            ]
+        names = self._identifiers
+        
         ca = struct.pack(
-            "<IHHHHI", 0x80, 0, 0x0117, len(names), 0x0106, 0x2ba0
+            "<IHHHHI", 0x80, 0, self._w0, len(names), 0x0106, 0x2ba0
         )
         for name in names:
             if len(name) == 2:
