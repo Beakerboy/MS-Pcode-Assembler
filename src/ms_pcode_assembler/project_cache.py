@@ -164,7 +164,7 @@ class ProjectCache():
         names = self._identifiers
 
         ca = struct.pack(
-            "<IHHHHIH", 0x80, 0, self._w0, len(names), 0x0106, self._w2, 0
+            "<IHHHHI", 0x80, 0, self._w0, len(names), 0x0106, self._w2
         )
         for name in names:
             if len(name) == 2:
