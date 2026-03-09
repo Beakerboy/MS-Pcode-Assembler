@@ -121,7 +121,7 @@ def test_doc_cache() -> None:
     ]
     cache._post_footer = 0xe8
     cache._w0 = 0x222
-    cache._w0 = 0x59a4
+    cache._w2 = 0x59a4
     cache._identifiers = [
         (0, b'as', 0), (0, b'else', 0), (0, b'ElseIf', 0)
     ]
