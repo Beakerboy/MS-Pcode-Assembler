@@ -124,10 +124,18 @@ def test_doc_cache() -> None:
     cache._w2 = 0x59a4
     cache._identifiers = [
         (9, b'as', 0x03ff), (0x44, b'else', 0x03ff), (0x45, b'Elseif', 0x03ff),
-        (0x5f, b'If', 0x03ff), (0x61, b'Implements', 0x03ff), (b'Line'),
+        (0x5f, b'If', 0x03ff), (0x61, b'Implements', 0x03ff, 0x73), (None, b'Line'),
         (0x95, b'public', 0x03ff), (0xaf, b'Sub', 0x03ff), (0x2b80, b'Excel'),
         (0xe2f7, b'VBA'), (0x7ec1, b'Win16'), (0x7f07, b'Win32'),
-        (0x7f78, b'Win64'), (0xb2b3, b'Mac')
+        (0x7f78, b'Win64'), (0xb2b3, b'Mac'),(0x23ad, b'VBA6'),
+        (0x23ae, b'VBA7'), (0xc7db, b'SQLlib'), (0x6093, b'sdole'),
+        (0x7515, b'Office'), (0x0f43, b'MSForms'), (0xb273, b'ADODB')
+        (0xdf8A, b'Scripting'), (0xe37c, b'ThisWorkbook'),
+        (0xd918, b'_Evaluate'), (0x1ae8, b'Sheet1'),
+        (0xc813, b'iSQLConnection'), (0xd8da, b'Connection')
+        (0xf2bd, b'ConnectionString'), (0x8aa5, b'sConnection')
+        (0xd05, b'OpenConnection'), (0x74e5, b'CloseConnection')
+        (0x6f9, b'State')
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
