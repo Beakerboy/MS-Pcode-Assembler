@@ -120,6 +120,7 @@ def test_doc_cache() -> None:
          0x320)
     ]
     cache._post_footer = 0xe8
+    cache._w0 = 0x222
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
