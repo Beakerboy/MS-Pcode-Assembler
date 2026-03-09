@@ -33,7 +33,7 @@ class ProjectCache():
         self._post_f_data = []
         self._identifiers = []
         self._w0 = 0
-        self._w0 = 0x106
+        self._w1 = 0x106
         self._w2 = 0
 
     def add_module(self: T, module: ModuleBase) -> None:
