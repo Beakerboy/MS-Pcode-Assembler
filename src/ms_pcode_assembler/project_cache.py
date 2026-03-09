@@ -161,7 +161,7 @@ class ProjectCache():
 
     def _identifier_section(self: T) -> bytes:
         names = self._identifiers
-        
+
         ca = struct.pack(
             "<IHHHHI", 0x80, 0, self._w0, len(names), 0x0106, 0x2ba0
         )
