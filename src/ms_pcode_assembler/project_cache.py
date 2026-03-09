@@ -33,6 +33,7 @@ class ProjectCache():
         self._post_f_data = []
         self._identifiers = []
         self._w0 = 0
+        self._w0 = 0x106
         self._w2 = 0
 
     def add_module(self: T, module: ModuleBase) -> None:
@@ -162,22 +163,39 @@ class ProjectCache():
 
     def _identifier_section(self: T) -> bytes:
         names = self._identifiers
-
+        junk_ids = len(names) + self._w1 - self._w0
         ca = struct.pack(
-            "<IHHHHI", 0x80, 0, self._w0, len(names), 0x0106, self._w2
+            "<IHHHHI", 0x80, 0, self._w0, len(names), self._w1, self._w2
         )
+        junk_count = 0
         for name in names:
-            if len(name) == 2:
-                if name[0] is None:
-                    ca += struct.pack("<BB", len(name[1]), 4) + name[1]
+            type = name[1]
+            data = name[2]
+            if junk_count < junk_ids:
+                if type & 0x80:
+                    data1 = name[3]
+                    data2 = name[4]
+                    ca += (struct.pack(
+                        "<HHBBHBHB", 0, data, len(name[0]), type, data1, 0xFF,
+                        data2, 0
+                    ) + name[0])
                 else:
-                    ca += struct.pack(
-                        "<BB" + str(len(name[1])) + "sHH", len(name[1]), 4,
-                        name[1], name[0], 16
-                    )
+                    ca += (struct.pack("<HH", 0, data, len(name[0]), type) +
+                           name[0])
             else:
-                ca += struct.pack("<HHBBHI", 0, name[0], len(name[1]),
-                                  0x80, 20, name[2]) + name[1]
+                if type & 0x80:
+                    data1 = name[3]
+                    data2 = name[4]
+                    ca += (struct.pack(
+                        "<BBHBHB", len(name[0]), type, data1, 0xFF, data2, 0
+                    ) + name[0] + struct.pack("<HH", data, 16))
+                else:
+                    ca += (
+                        struct.pack(
+                            "<BB", len(name[0]), type
+                        ) + name[0] + struct.pack("<HH", data, 16)
+                    )
+            junk_count += 1
         return ca
 
     def _footer_section(self: T) -> bytes:
