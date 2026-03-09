@@ -123,7 +123,7 @@ def test_doc_cache() -> None:
     cache._w0 = 0x222
     cache._w2 = 0x59a4
     cache._identifiers = [
-        (0x440000, b'as', 0x09), (0, b'else', 0), (0, b'ElseIf', 0)
+        (9, b'as', 0x03ff), (0x44, b'else', 0x03ff), (00x45, b'ElseIf', 0x03ff)
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
