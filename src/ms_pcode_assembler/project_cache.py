@@ -173,9 +173,8 @@ class ProjectCache():
                     name[1], name[0], 16
                 )
             else:
-                ca += struct.pack("<BBHI" + str(len(name[1])) + "sHH",
-                                  len(name[1]), 0x80, 0, name[2], name[1],
-                                  name[0], 16)
+                ca += struct.pack("<HHBBHI", 0, name[0], len(name[1]),
+                                  0x80, 20, name[2]) + name[1]
         return ca
 
     def _footer_section(self: T) -> bytes:
