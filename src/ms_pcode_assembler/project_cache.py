@@ -33,6 +33,7 @@ class ProjectCache():
         self._post_f_data = []
         self._identifiers = []
         self._w0 = 0
+        self._w2 = 0
 
     def add_module(self: T, module: ModuleBase) -> None:
         self._modules.append(module)
@@ -163,7 +164,7 @@ class ProjectCache():
         names = self._identifiers
 
         ca = struct.pack(
-            "<IHHHHI", 0x80, 0, self._w0, len(names), 0x0106, 0x2ba0
+            "<IHHHHIH", 0x80, 0, self._w0, len(names), 0x0106, self._w2, 0
         )
         for name in names:
             if len(name) == 2:
