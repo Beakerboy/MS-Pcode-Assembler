@@ -511,7 +511,8 @@ A large block of data. The last two bytes are the project cookie.
 </tbody>
 </table>
 
-<b>Data (6 bytes):</b> 4 bytes set to -1 followed by 0x0101
+<b>Data (6 bytes):</b> 4 bytes set to -1 followed by 0x0101.
+
 <b>Data2 (varies):</b> 128-4 byte integers, folowed by 16 bytes of bonary data, a 4 byte integer that is most often -1, and 4 bytes set to 0x01. is seems that the number of these records mathes the number of modules. The record ends with 2 four byte integers, -1 and a variable.
 ### Identifier Record
 <table class="tg">
