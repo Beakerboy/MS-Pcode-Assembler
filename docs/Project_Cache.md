@@ -507,6 +507,7 @@ A large block of data. The last two bytes are the project cookie.
 </tbody>
 </table>
 
+The first NumIds + W1 - W0 records are preceeded with four bytes of data
 ### Identifier Record
 <table class="tg">
 <thead>
@@ -531,8 +532,7 @@ A large block of data. The last two bytes are the project cookie.
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky" colspan="2">T/L</td>
-    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="4">Junk Data (optional)</td>
     <td class="tg-0pky" colspan="2">T/L</td>
     <td class="tg-0pky" colspan="6">Data (optional)</td>
     <td class="tg-0pky" colspan="4">Name (varies)</td>
@@ -544,25 +544,26 @@ A large block of data. The last two bytes are the project cookie.
 </tbody>
 </table>
 
-<b>T/L (2 bytes):</b> Type / Length. If this is 0x0000 then the next two byes and following T/L will be present. Otherwise the length and type of the identifier name.
-
-<b>Data (2 bytes):</b> Optional. Only present if the first T/L is 0x0000.
+<b>Junk Data (4 bytes):</b> The first NumIds + W1 - W0 records are contain this data. Two two byte ints, the first of which is zero.
 
 <b>T/L (2 bytes):</b> Optional. The length and type of the identifier name.
 
-<b>Data (6 bytes):</b> Optional. This data is absent if the Type is less than 0x80.
+<b>Data (6 bytes):</b> Optional. This data is absent if the Type & 0x80 is false.
 
 <b>Name (varies):</b> The identifier name.
 
-<b>Data (4 bytes):</b> Optional. This data is absent if the first T/L is 0x0000.
+<b>Data (4 bytes):</b> Optional. This data is absent if Junk Data is present
 
     Example Data:
     00 00 9B 00 05 80 14 00 FF 03 05 00 52 65 44 69  ..?..?......ReDi
     6D                                               m
 
     Example Data:
-    09 80 00 00 FF 03 01 00 5F 45 76 61 6C 75 61 74 .?......_Evaluat
-    65 18 D9 10 00                                  e.U..
+    00 00 73 00 04 04 4C 69 6E 65                    s...Line
 
     Example Data:
-    03 04 4D 61 63 B3 B2 10 00                      ..Mac3²..
+    09 80 00 00 FF 03 01 00 5F 45 76 61 6C 75 61 74  .?......_Evaluat
+    65 18 D9 10 00                                   e.U..
+
+    Example Data:
+    03 04 4D 61 63 B3 B2 10 00                       ..Mac3²..
