@@ -125,7 +125,7 @@ def test_doc_cache() -> None:
     cache._identifiers = [
         (b'as', 128, 9, 20, 3), (b'else', 128, 68, 20, 3),
         (b'Elseif', 128, 69, 20, 3), (b'If', 128, 95, 20, 3),
-        (b'Implements', 132, 97, 11, 3), (b'Line', 4, 115),
+        (b'Implements', 132, 97, 12, 3), (b'Line', 4, 115),
         (b'public', 128, 149, 20, 3), (b'Sub', 128, 175, 20, 3),
         (b'Excel', 12, 0x2b80), (b'VBA', 12, 0xe2f7), (b'Win16', 4, 0x7ec1),
         (b'', 4, 0), (b'', 4, 0), (b'', 4, 0), (b'', 4, 0), (b'', 4, 0),
