@@ -180,7 +180,7 @@ class ProjectCache():
                         data2, 0
                     ) + name[0])
                 else:
-                    ca += (struct.pack("<HH", 0, data, len(name[0]), type) +
+                    ca += (struct.pack("<HHBB", 0, data, len(name[0]), type) +
                            name[0])
             else:
                 if type & 0x80:
