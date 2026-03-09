@@ -546,7 +546,7 @@ The first NumIds + W1 - W0 records are preceeded with four bytes of data
 
 <b>Junk Data (4 bytes):</b> The first NumIds + W1 - W0 records are contain this data. Two two byte ints, the first of which is zero.
 
-<b>T/L (2 bytes):</b> Optional. The length and type of the identifier name.
+<b>T/L (2 bytes):</b> The length and type of the identifier name.
 
 <b>Data (6 bytes):</b> Optional. This data is absent if the Type & 0x80 is false.
 
