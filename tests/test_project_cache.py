@@ -132,9 +132,9 @@ def test_doc_cache() -> None:
         (0x6093, b'sdole'), (0x7515, b'Office'), (0x0f43, b'MSForms'),
         (0xb273, b'ADODB'), (0xdf8A, b'Scripting'), (0xe37c, b'ThisWorkbook'),
         (0xd918, b'_Evaluate'), (0x1ae8, b'Sheet1'),
-        (0xc813, b'iSQLConnection'), (0xd8da, b'Connection')
-        (0xf2bd, b'ConnectionString'), (0x8aa5, b'sConnection')
-        (0xd05, b'OpenConnection'), (0x74e5, b'CloseConnection')
+        (0xc813, b'iSQLConnection'), (0xd8da, b'Connection'),
+        (0xf2bd, b'ConnectionString'), (0x8aa5, b'sConnection'),
+        (0xd05, b'OpenConnection'), (0x74e5, b'CloseConnection'),
         (0x6f9, b'State')
     ]
     f = open('tests/SQL-vbaProject.bin', 'rb')
