@@ -176,8 +176,8 @@ class ProjectCache():
                     data1 = name[3]
                     data2 = name[4]
                     ca += (struct.pack(
-                        "<HHBBHBhB", 0, data, len(name[0]), type, data1, 0xFF,
-                        data2, 0 if data2 >=0 else 0xff
+                        "<HHBBHBhb", 0, data, len(name[0]), type, data1, 0xFF,
+                        data2, 0 if data2 >= 0 else -1
                     ) + name[0])
                 else:
                     ca += (struct.pack("<HHBB", 0, data, len(name[0]), type) +
@@ -187,7 +187,8 @@ class ProjectCache():
                     data1 = name[3]
                     data2 = name[4]
                     ca += (struct.pack(
-                        "<BBHBHB", len(name[0]), type, data1, 0xFF, data2, 0
+                        "<BBHBhb", len(name[0]), type, data1, 0xFF, data2,
+                        0 if data2 >= 0 else -1
                     ) + name[0] + struct.pack("<HH", data, 16))
                 else:
                     ca += (
