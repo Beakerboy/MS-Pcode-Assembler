@@ -439,7 +439,7 @@ def test_doc_cache() -> None:
                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
                "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00")
-        cache._footer = bytes.fromhex(" ".join(hex))
+    cache._footer = bytes.fromhex(" ".join(hex))
     f = open('tests/SQL-vbaProject.bin', 'rb')
     f.seek(0x30207)
     file_data = f.read(1)
