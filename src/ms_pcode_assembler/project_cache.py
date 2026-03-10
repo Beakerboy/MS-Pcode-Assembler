@@ -176,8 +176,8 @@ class ProjectCache():
                     data1 = name[3]
                     data2 = name[4]
                     ca += (struct.pack(
-                        "<HHBBHBHB", 0, data, len(name[0]), type, data1, 0xFF,
-                        data2, 0
+                        "<HHBBHBhB", 0, data, len(name[0]), type, data1, 0xFF,
+                        data2, 0 if data2 >=0 else 0xff
                     ) + name[0])
                 else:
                     ca += (struct.pack("<HHBB", 0, data, len(name[0]), type) +
