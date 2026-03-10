@@ -426,7 +426,9 @@ def test_doc_cache() -> None:
     assert ca == file_data
 
     ca = cache._identifier_section()
-    file_data = f.read(len(ca))
+    file_data = f.read(len(0x52c))
+    f.seek(0x31200)
+    file_data += f.read(len(ca) - len(file_data))
     assert ca == file_data
 
     # full _vba_project is 2c2b bytes
