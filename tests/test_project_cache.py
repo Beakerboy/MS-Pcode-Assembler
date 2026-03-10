@@ -242,7 +242,7 @@ def test_doc_cache() -> None:
         (b'ClearArguments', 4, 0x17CB),
         (b'VarType', 0x00, 0x70AF),
         (b'vbString', 0x00, 0x6560),
-        (b'str', 0xAC, 0xD597, 0x00, 0x00),
+        (b'str', 0xAC, 0xD597, 0x1401, 0x00),
         (b'sQuery', 4, 0x96D8),
         (b'dPosition', 4, 0x0D8D),
         (b'aToSort', 4, 0x6111),
