@@ -230,7 +230,7 @@ def test_doc_cache() -> None:
         (b'ImplodeFields', 4, 0xCEE5),
         (b'ImplodeValues', 4, 0x32F0),
         (b'IsArray', 0x00, 0x959C),
-        (b'JoinArrayofArrays', 0xAC, 0xCFC1, 0x128, 0x00),
+        (b'JoinArrayofArrays', 0xAC, 0xCFC1, 0x128, 0x00, 20),
         (b'Join', 0x00, 0x264D),
         (b'dArguments', 4, 0xA448),
         (b'Dictionary', 0x00, 0x81BB),
