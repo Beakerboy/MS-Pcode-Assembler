@@ -46,7 +46,7 @@ class ProjectCache():
         ca = b'\xff'
         ca += self._header()
         ca += self._library_section()
-        ca += self._user_clas_section(self._user)
+        ca += self._user_class_section(self._user)
         ca += self._compile_time_data()
         ca += self._data_section()
         ca += self._module_section()
