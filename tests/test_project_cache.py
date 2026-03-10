@@ -435,5 +435,5 @@ def test_doc_cache() -> None:
     file_data = f.read(len(ca))
     #assert ca == file_data
 
-    assert len(ca.to_bytes()) == 0x2c2b
+    assert len(cache.to_bytes()) == 0x2c2b
 
