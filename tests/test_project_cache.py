@@ -136,7 +136,7 @@ def test_doc_cache() -> None:
         (b'_Evaluate', 128, 0xd918, 0, 0x103), (b'Sheet1', 12, 0x1ae8),
         (b'iSQLConnection', 12, 0xc813), (b'Connection', 4, 0xd8da),
         (b'ConnectionString', 4, 0xf2bd), (b'sConnection', 4, 0x8aa5),
-        (b'OpenConnection', 4, 0x0d05), (b'CloseConnection', 4, 0x74e5),
+        (b'OpenConnection', 4, 0xd005), (b'CloseConnection', 4, 0x74e5),
         (b'State', 4, 0x6f9),
         (b'iSQLQuery', 12, 0x73DB),
         (b'toString', 4, 0x89A8),
