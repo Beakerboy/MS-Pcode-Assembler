@@ -203,4 +203,4 @@ class ProjectCache():
         return ca
 
     def _footer_section(self: T) -> bytes:
-        return cache._footer
+        return self._footer
