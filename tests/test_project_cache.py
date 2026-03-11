@@ -414,7 +414,7 @@ def test_doc_cache() -> None:
            "FF FF FF FF FF C7 02 09 00 31 00 FF FF FF FF FF",
            "FF FF FF FF FF FF FF 55 02 05 00 37 00 FF FF FF",
            "FF FF FF")
-    
+
     hex2 = ("2B 00 3C 00 00 00 01 00 8C 01 00 00 00 00 00 00",
             "00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00",
             "00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00",
