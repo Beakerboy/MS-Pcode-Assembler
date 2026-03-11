@@ -441,7 +441,7 @@ def test_doc_cache() -> None:
             "00 00 01 00 00 14 80 08 00 00 00 00 02 00 00 40",
             "00 00 00 10 01 00 00 00 00 00 00 00 00 00 00 00",
             "00 00 00 00 00 00 01 00 00 00 00 00 00 00 00")
-    
+
     cache._footer = [
         bytes.fromhex(" ".join(hex)),
         bytes.fromhex(" ".join(hex2))
