@@ -203,7 +203,7 @@ class ProjectCache():
         return ca
 
     def _footer_section(self: T) -> bytes:
-        len = len(self._footer[0])
+        length = len(self._footer[0])
         data0 = self._footer[0]
         data1 = self._footer[1]
-        return struct.pack("<BhHI", 2, -1, 0x101, len) + data0 + data1
+        return struct.pack("<BhHI", 2, -1, 0x101, length) + data0 + data1
