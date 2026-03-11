@@ -445,7 +445,7 @@ A large block of data. The last two bytes are the project cookie.
     <td class="tg-0pky" colspan="8">Records</td>
     <td class="tg-0pky" colspan="4">Index</td>
     <td class="tg-0pky" colspan="1">0</td>
-    <td class="tg-0pky" colspan="3">Data</td>
+    <td class="tg-0pky" colspan="3">Cache Size</td>
   </tr>
   <tr>
     <td class="tg-0pky" colspan="1">...</td>
@@ -457,6 +457,8 @@ A large block of data. The last two bytes are the project cookie.
 <b>Records (8 bytes each):</b> 4 bytes of data and 4 bytes of -1.
 
 <b>Index (4 bytes):</b> Incremented by 0x18 from the previous module.
+
+<b>Cache Size (4 bytes):</b> Number of bytes in the module's Performance Cache.
 
     Example Data:
                             18 00 54 00 68 00 69 00          ..T.h.i.
