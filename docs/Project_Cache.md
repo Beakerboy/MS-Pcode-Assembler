@@ -572,3 +572,40 @@ The first NumIds + W1 - W0 records are preceeded with four bytes of data
 
     Example Data:
     03 04 4D 61 63 B3 B2 10 00                       ..Mac3²..
+
+### Footer Record
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">00</th>
+    <th class="tg-0pky">01</th>
+    <th class="tg-0pky">02</th>
+    <th class="tg-0pky">03</th>
+    <th class="tg-0pky">04</th>
+    <th class="tg-0pky">05</th>
+    <th class="tg-0pky">06</th>
+    <th class="tg-0pky">07</th>
+    <th class="tg-0pky">08</th>
+    <th class="tg-0pky">09</th>
+    <th class="tg-0pky">0A</th>
+    <th class="tg-0pky">0B</th>
+    <th class="tg-0pky">0C</th>
+    <th class="tg-0pky">0D</th>
+    <th class="tg-0pky">0E</th>
+    <th class="tg-0pky">0F</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="1">2</td>
+    <td class="tg-0pky" colspan="2">-1</td>
+    <td class="tg-0pky" colspan="2">0x0101</td>
+    <td class="tg-0pky" colspan="4">Length</td>
+    <td class="tg-0pky" colspan="7">Data (varies)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="12">...</td>
+    <td class="tg-0pky" colspan="4">Data</td>
+  </tr>
+</tbody>
+</table>
