@@ -430,7 +430,7 @@ A large block of data. The last two bytes are the project cookie.
   <tr>
     <td class="tg-0pky" colspan="6">...</td>
     <td class="tg-0pky" colspan="2">-1</td>
-    <td class="tg-0pky" colspan="2">Data</td>
+    <td class="tg-0pky" colspan="2">ID</td>
     <td class="tg-0pky" colspan="2">Size</td>
     <td class="tg-0pky" colspan="4">Name</td>
   </tr>
@@ -453,6 +453,8 @@ A large block of data. The last two bytes are the project cookie.
   </tr>
 </tbody>
 </table>
+
+<b>ID (2 bytes):</b>This value will appear in the first section of the footer.
 
 <b>Records (8 bytes each):</b> 4 bytes of data and 4 bytes of -1.
 
