@@ -1,5 +1,5 @@
 # Project Cache
-The _VBA_PEOJECT stream contains a performance cache that begins 7 bytes after the beginning, and fills the remainder of the stream.
+The _VBA_PROJECT stream contains a performance cache that begins 7 bytes after the beginning, and fills the remainder of the stream.
 <table class="tg">
 <thead>
   <tr>
